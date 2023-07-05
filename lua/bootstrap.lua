@@ -3,7 +3,6 @@ local M = {}
 -- check the neovim version
 if vim.fn.has("nvim-0.9") ~= 1 then
   vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
-  log:ERROR("Please upgrade your Neovim base installation. Domacsvim requires v0.9+")
   vim.wait(4000, function()
     return false
   end)
@@ -16,6 +15,7 @@ _G.dvim_cache_dir = vim.env.DVIM_CACHE_DIR
 _G.dvim_config_dir = vim.env.DVIM_CONFIG_DIR
 
 function M.init()
+  -- remove neovim and set domacsvim runtimepaths
   if dvim_runtime_dir then
     vim.opt.rtp:remove(vim.call("stdpath", "config"))
     vim.opt.rtp:remove(vim.call("stdpath", "config") .. "/after")
@@ -23,17 +23,17 @@ function M.init()
     vim.opt.rtp:remove("$HOEM/.local/share/nvim/site/after")
     vim.opt.rtp:remove(vim.call("stdpath", "data") .. "/site")
 
-    vim.opt.rtp:append(dvim_runtime_dir .. "/site")
-    vim.opt.rtp:append(dvim_runtime_dir .. "/site" .. "/after")
+    vim.opt.rtp:append(dvim_runtime_dir .. "/database")
+    vim.opt.rtp:append(dvim_runtime_dir .. "/database" .. "/after")
     vim.opt.rtp:append(dvim_config_dir)
     vim.opt.rtp:append(dvim_config_dir .. "/after")
-    vim.opt.rtp:append(dvim_config_dir .. "/init.lua")
 
     vim.opt.packpath = vim.opt.rtp:get()
   end
+  -- change standard paths
   vim.fn.stdpath = function(what)
     if what == "data" then
-      return dvim_runtime_dir .. "/site"
+      return dvim_runtime_dir .. "/database"
     elseif what == "config" then
       return dvim_config_dir
     elseif what == "cache" then
@@ -41,6 +41,14 @@ function M.init()
     end
     return vim.call("stdpath", what)
   end
+  -- disable extra providers
+  for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+    vim.g["loaded_" .. provider .. "_provider"] = 0
+  end
+  -- setup dvim configs
+  require("config").load()
+  -- setup plugins
+  require("plugins.manager").setup()
 end
 
 return M
