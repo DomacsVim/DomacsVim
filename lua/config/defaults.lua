@@ -1,3 +1,4 @@
 return {
-  plugins = {}
+  plugins = {},
+  colorscheme = "onedark"
 }
