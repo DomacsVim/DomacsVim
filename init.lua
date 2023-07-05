@@ -3,3 +3,5 @@ _G.dvim_runtime_dir = vim.env.DVIM_RUNTIME_DIR or debug.getinfo(1, "S").source:s
 vim.opt.rtp:append(dvim_runtime_dir)
 -- import bootstrap to setup runtimepath and etc ...
 require("bootstrap").init()
+-- import plugins with load method to load dvim.plugins
+require("plugins.manager").load()
