@@ -22,6 +22,9 @@ end
 
 function M.load()
   dvim = vim.deepcopy(require("config.defaults"))
+
+  -- import default options
+  require("options").load()
 end
 
 return M
