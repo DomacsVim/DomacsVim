@@ -5,3 +5,5 @@ vim.opt.rtp:append(dvim_runtime_dir)
 require("bootstrap").init()
 -- import plugins with load method to load dvim.plugins
 require("plugins.manager").load()
+-- import keymappings to load keymappings
+require("keymappings").load(dvim.keys)
