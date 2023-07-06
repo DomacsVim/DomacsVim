@@ -48,4 +48,17 @@ return {
       require("core.gitsigns").setup()
     end,
   },
+  {
+    "https://github.com/ahmedkhalf/project.nvim",
+    config = function()
+      local status_ok, project = pcall(require, "project_nvim")
+      if not status_ok then
+        return
+      end
+      dvim.core.project = {}
+      project.setup(dvim.core.project)
+    end,
+    event = "VimEnter",
+    cmd = "Telescope projects",
+  },
 }
