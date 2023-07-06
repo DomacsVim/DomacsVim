@@ -1,4 +1,5 @@
 return {
+  core = {},
   keys = {},
   plugins = {},
   mapleader = " ",
