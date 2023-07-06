@@ -28,7 +28,7 @@ return {
     },
     event = "User FileOpened",
     config = function()
-      local path = dvim_runtime_dir .. "/database/pack/lazy/opt/nvim-treesitter"
+      local path = vim.fn.stdpath "data" .. "/lazy/nvim-treesitter"
       vim.opt.rtp:prepend(path) -- treesitter needs to be before nvim's runtime in rtp
       require("core.treesitter").setup()
     end,
@@ -38,6 +38,14 @@ return {
     event = "InsertEnter",
     config = function()
       require("core.autopairs").setup()
+    end,
+  },
+  {
+    "https://github.com/lewis6991/gitsigns.nvim",
+    event = "User FileOpened",
+    cmd = "Gitsigns",
+    config = function()
+      require("core.gitsigns").setup()
     end,
   },
 }
