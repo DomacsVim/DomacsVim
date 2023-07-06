@@ -5,5 +5,6 @@ return {
       local base16 = require("base18")
       base16.apply_theme()
     end
-  }
+  },
+  { "https://github.com/nvim-lua/plenary.nvim" }
 }
