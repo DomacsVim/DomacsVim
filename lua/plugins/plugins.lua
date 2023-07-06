@@ -33,4 +33,11 @@ return {
       require("core.treesitter").setup()
     end,
   },
+  {
+    "https://github.com/windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("core.autopairs").setup()
+    end,
+  },
 }
