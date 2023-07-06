@@ -7,6 +7,7 @@ local modules = {
   treesitter = "core.treesitter",
   autopairs = "core.autopairs",
   gitsigns = "core.gitsigns",
+  telescope = "core.telescope"
 }
 
 function M.load()
