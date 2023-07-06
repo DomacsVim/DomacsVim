@@ -15,4 +15,22 @@ return {
       require("core.nvimtree").setup()
     end,
   },
+  {
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    cmd = {
+      "TSInstall",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSInstallFromGrammar",
+    },
+    event = "User FileOpened",
+    config = function()
+      local path = dvim_runtime_dir .. "/database/pack/lazy/opt/nvim-treesitter"
+      vim.opt.rtp:prepend(path) -- treesitter needs to be before nvim's runtime in rtp
+      require("core.treesitter").setup()
+    end,
+  },
 }
