@@ -5,6 +5,7 @@ local Log = require("core.log")
 local modules = {
   nvimtree = "core.nvimtree",
   treesitter = "core.treesitter",
+  autopairs = "core.autopairs",
 }
 
 function M.load()
