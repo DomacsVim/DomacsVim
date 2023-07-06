@@ -4,6 +4,7 @@ local Log = require("core.log")
 
 local modules = {
   nvimtree = "core.nvimtree",
+  treesitter = "core.treesitter",
 }
 
 function M.load()
@@ -14,6 +15,7 @@ function M.load()
       return
     end
     dvim.core[module] = config.configs()
+    config.setup()
   end
 end
 
