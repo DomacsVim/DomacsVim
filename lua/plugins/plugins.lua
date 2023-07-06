@@ -61,4 +61,15 @@ return {
     event = "VimEnter",
     cmd = "Telescope projects",
   },
+  { "https://github.com/nvim-lua/plenary.nvim", cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" }, lazy = true },
+  {
+    "https://github.com/nvim-telescope/telescope.nvim",
+    config = function()
+      require("core.telescope").setup()
+    end,
+    dependencies = { "telescope-fzf-native.nvim" },
+    lazy = true,
+    cmd = "Telescope",
+  },
+  { "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 }
