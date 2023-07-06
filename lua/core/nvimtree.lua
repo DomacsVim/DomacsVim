@@ -205,7 +205,6 @@ end
 
 function M.setup()
   local nvimtree = require("nvim-tree")
-
   nvimtree.setup(dvim.core.nvimtree)
 end
 
