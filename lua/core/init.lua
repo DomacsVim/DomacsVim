@@ -6,6 +6,7 @@ local modules = {
   nvimtree = "core.nvimtree",
   treesitter = "core.treesitter",
   autopairs = "core.autopairs",
+  gitsigns = "core.gitsigns",
 }
 
 function M.load()
@@ -16,7 +17,6 @@ function M.load()
       return
     end
     dvim.core[module] = config.configs()
-    config.setup()
   end
 end
 
