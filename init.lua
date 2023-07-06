@@ -8,4 +8,4 @@ require("plugins.manager").load()
 -- import builtin configs
 require("core").load()
 -- import keymappings
-require("keymappings").load(dvim.keys)
+require("keymappings.manager").load()
