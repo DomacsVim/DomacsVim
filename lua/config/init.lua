@@ -26,8 +26,8 @@ function M.load()
   -- import default options
   require("options").load()
   -- import keyboard shortcuts handler
-  local keymappings = require("keymappings").defaults
-  dvim.keys = vim.tbl_extend("force", keymappings, dvim.keys)
+  local keymappings = require("keymappings.keymappings").defaults
+  dvim.keys = keymappings
 end
 
 return M
