@@ -104,17 +104,21 @@ return {
     end,
     config = function(_, opts)
       local telescope = require("telescope")
-      telescope.setup(opts)
-
       pcall(function()
         telescope.load_extension("projects")
       end)
+      pcall(function()
+        require("telescope").load_extension "fzf"
+      end)
+      pcall(function()
+        require("telescope").load_extension "file_browser"
+      end)
+      telescope.setup(opts)
     end,
-    dependencies = { "telescope-fzf-native.nvim" },
     lazy = true,
     cmd = "Telescope",
   },
-  { "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+  { "https://github.com/nvim-telescope/telescope-file-browser.nvim" },
   {
     "https://github.com/numToStr/Comment.nvim",
     opts = function()
@@ -150,5 +154,15 @@ return {
       local whichkey = require("which-key")
       whichkey.setup(opts)
     end,
+  },
+  { 
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    lazy = true,
+    opts = function()
+      return { override = require("icons").devicons }
+    end,
+    config = function(_, opts)
+      require('nvim-web-devicons').setup(opts)
+    end
   },
 }
