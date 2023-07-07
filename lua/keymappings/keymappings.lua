@@ -53,6 +53,14 @@ M.defaults = {
     normal_mode = {
       ["<C-e>"] = ":NvimTreeToggle<CR>"
     }
+  },
+  comments = {
+    normal_mode = {
+      ["<C-_>"] = "<Plug>(comment_toggle_linewise_current)"
+    },
+    visual_mode = {
+      ["<C-_>"] = "<Plug>(comment_toggle_linewise_visual)"
+    }
   }
 }
 
