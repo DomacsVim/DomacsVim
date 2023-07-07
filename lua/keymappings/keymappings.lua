@@ -70,6 +70,18 @@ M.defaults = {
     visual_mode = {
       ["<C-_>"] = "<Plug>(comment_toggle_linewise_visual)"
     }
+  },
+  terminal = {
+    normal_mode = {
+      ["t"] = ":ToggleTerm<CR>"
+    },
+    term_mode = {
+      ["<esc>"] = "<C-\\><C-n>",
+      ["<C-h>"] = "<C-\\><C-N><C-w>h",
+      ["<C-j>"] = "<C-\\><C-N><C-w>j",
+      ["<C-k>"] = "<C-\\><C-N><C-w>k",
+      ["<C-l>"] = "<C-\\><C-N><C-w>l"
+    }
   }
 }
 
