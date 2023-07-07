@@ -115,4 +115,14 @@ return {
     cmd = "Telescope",
   },
   { "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+  {
+    "https://github.com/numToStr/Comment.nvim",
+    opts = function()
+      dvim.core.comments = {}
+      return dvim.core.comments
+    end,
+    config = function()
+      require("Comment").setup(opts)
+    end,
+  },
 }
