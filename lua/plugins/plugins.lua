@@ -47,7 +47,7 @@ return {
     end,
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "https://github.com/nvim-treesitter/nvim-treesitter",
     init = function()
       lazy_load("nvim-treesitter")
     end,
@@ -123,6 +123,32 @@ return {
     end,
     config = function()
       require("Comment").setup(opts)
+    end,
+  },
+  {
+    "https://github.com/folke/which-key.nvim",
+    keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
+    event = "VeryLazy",
+    opts = function()
+      require("core.whichkey")
+
+      local whichkey = require("which-key")
+      whichkey.setup(opts)
+
+      local opt = dvim.core.whichkey.opts
+      local vopts = dvim.core.whichkey.vopts
+
+      local mappings = dvim.core.whichkey.mappings
+      local vmappings = dvim.core.whichkey.vmappings
+
+      whichkey.register(mappings, opt)
+      whichkey.register(vmappings, vopts)
+
+      return dvim.core.whichkey
+    end,
+    config = function(_, opts)
+      local whichkey = require("which-key")
+      whichkey.setup(opts)
     end,
   },
 }
