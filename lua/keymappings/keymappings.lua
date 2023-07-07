@@ -54,6 +54,15 @@ M.defaults = {
       ["<C-e>"] = ":NvimTreeToggle<CR>"
     }
   },
+  gitsigns = {
+    normal_mode = {
+      ["gr"] = ":Gitsigns reset_hunk<CR>",
+      ["gn"] = ":Gitsigns next_hunk<CR>",
+      ["gp"] = ":Gitsigns prev_hunk<CR>",
+      ["gk"] = ":Gitsigns preview_hunk<CR>",
+      ["gi"] = ":Gitsigns preview_hunk_inline<CR>"
+    }
+  },
   comments = {
     normal_mode = {
       ["<C-_>"] = "<Plug>(comment_toggle_linewise_current)"
