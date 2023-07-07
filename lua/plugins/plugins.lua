@@ -166,4 +166,21 @@ return {
       require("colorizer").setup()
     end,
   },
+  {
+    "https://github.com/akinsho/toggleterm.nvim",
+    cmd = {
+      "ToggleTerm",
+      "TermExec",
+      "ToggleTermToggleAll",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection",
+    },
+    opts = function()
+      return require("core.terminal")
+    end,
+    config = function(_, opts)
+      require("toggleterm").setup(opts)
+    end,
+  },
 }
