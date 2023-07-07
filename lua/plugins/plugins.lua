@@ -134,25 +134,20 @@ return {
     keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
     event = "VeryLazy",
     opts = function()
-      require("core.whichkey")
-
-      local whichkey = require("which-key")
-      whichkey.setup(opts)
-
-      local opt = dvim.core.whichkey.opts
-      local vopts = dvim.core.whichkey.vopts
-
-      local mappings = dvim.core.whichkey.mappings
-      local vmappings = dvim.core.whichkey.vmappings
-
-      whichkey.register(mappings, opt)
-      whichkey.register(vmappings, vopts)
-
-      return dvim.core.whichkey
+      return require("core.whichkey")
     end,
     config = function(_, opts)
       local whichkey = require("which-key")
-      whichkey.setup(opts)
+      whichkey.setup(opts.setup)
+
+      local opt = opts.opts
+      local vopts = opts.vopts
+
+      local mappings = opts.mappings
+      local vmappings = opts.vmappings
+
+      whichkey.register(mappings, opt)
+      whichkey.register(vmappings, vopts)
     end,
   },
   { 
@@ -164,5 +159,11 @@ return {
     config = function(_, opts)
       require('nvim-web-devicons').setup(opts)
     end
+  },
+  {
+    "https://github.com/norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
   },
 }
