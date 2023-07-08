@@ -213,4 +213,11 @@ return {
       require("indent_blankline").setup(opts)
     end,
   },
+  {
+    "https://gitlab.com/domacsvim/statusline",
+    config = function()
+      local statusline = require("statusline")
+      statusline.setup()
+    end
+  }
 }
