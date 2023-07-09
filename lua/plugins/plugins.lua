@@ -195,6 +195,7 @@ return {
           "help",
           "terminal",
           "lazy",
+          "alpha",
           "lspinfo",
           "TelescopePrompt",
           "TelescopeResults",
@@ -219,5 +220,15 @@ return {
       local statusline = require("statusline")
       statusline.setup()
     end
-  }
+  },
+  {
+    "https://github.com/goolord/alpha-nvim",
+    event = "VimEnter",
+    opts = function()
+      return require("core.dashboard")
+    end,
+    config = function(_, opts)
+      require("alpha").setup(opts)
+    end
+  },
 }
