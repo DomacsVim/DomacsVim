@@ -1,3 +1,8 @@
+local editor_layout = {
+  height = vim.o.lines - vim.o.cmdheight - 2,
+  width = vim.o.columns,
+}
+
 dvim.core.terminal = {
   size = 15,
   open_mapping = nil,
@@ -13,20 +18,25 @@ dvim.core.terminal = {
   close_on_exit = true, -- close the terminal window when the process exits
   shell = nil, -- change the default shell
   -- This field is only relevant if direction is set to 'float'
+  highlights = {
+    NormalFloat = {
+      link = "NormalFloat",
+    },
+    FloatBorder = {
+      link = "FloatBorder",
+      link = "FloatBorder",
+    },
+  },
   float_opts = {
     -- The border key is *almost* the same as 'nvim_win_open'
     -- see :h nvim_win_open for details on borders however
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
     -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-    border = "curved",
-    -- width = <value>,
-    -- height = <value>,
+    width = math.floor(editor_layout.width * 0.8),
+    height = math.floor(editor_layout.height * 0.73),
+    border = "single",
     winblend = 0,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    },
   },
 }
 
