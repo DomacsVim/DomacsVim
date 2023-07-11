@@ -1,168 +1,168 @@
 local M = {}
 
-local base18 = require("base18").get_theme_table().base18
+local themer = require("themer").get_theme_table().hex
 
 M.devicons = {
   c = {
     icon = "",
     name = "c",
-    color = base18.base0E
+    color = themer.blue
   },
 
   css = {
     icon = "",
     name = "css",
-    color = base18.base0E
+    color = themer.blue
   },
 
   deb = {
     icon = "",
     name = "deb",
-    color = base18.base10
+    color = themer.red
   },
 
   Dockerfile = {
     icon = "",
     name = "Dockerfile",
-    color = base18.base0E
+    color = themer.blue
   },
 
   html = {
     icon = "",
     name = "html",
-    color = base18.base10
+    color = themer.red
   },
 
   jpeg = {
     icon = "󰉏",
     name = "jpeg",
-    color = base18.base0A
+    color = themer.yellow
   },
 
   jpg = {
     icon = "󰉏",
     name = "jpg",
-    color = base18.base0A
+    color = themer.yellow
   },
 
   js = {
     icon = "󰌞",
     name = "js",
-    color = base18.base0B
+    color = themer.yellow
   },
 
   kt = {
     icon = "󱈙",
     name = "kt",
-    color = base18.base0F
+    color = themer.purple
   },
 
   lock = {
     icon = "󰌾",
     name = "lock",
-    color = base18.base10
+    color = themer.red
   },
 
   lua = {
     icon = "",
     name = "lua",
-    color = base18.base0E
+    color = themer.blue
   },
 
   mp3 = {
     icon = "󰎆",
     name = "mp3",
-    color = base18.base0F
+    color = themer.purple
   },
 
   mp4 = {
     icon = "",
     name = "mp4",
-    color = base18.base0F
+    color = themer.purple
   },
 
   out = {
     icon = "",
     name = "out",
-    color = base18.base0C
+    color = themer.green
   },
 
   png = {
     icon = "󰉏",
     name = "png",
-    color = base18.base0A
+    color = themer.yellow
   },
 
   py = {
     icon = "",
     name = "py",
-    color = base18.base0B
+    color = themer.yellow
   },
 
   ["robots.txt"] = {
     icon = "󰚩",
     name = "robots",
-    color = base18.base0G
+    color = themer.orange
   },
 
   toml = {
     icon = "",
     name = "toml",
-    color = base18.base0E
+    color = themer.blue
   },
 
   ts = {
     icon = "󰛦",
     name = "ts",
-    color = base18.base0B
+    color = themer.blue
   },
 
   ttf = {
     icon = "",
     name = "TrueTypeFont",
-    color = base18.base0D
+    color = themer.orange
   },
 
   rb = {
     icon = "",
     name = "rb",
-    color = base18.base10
+    color = themer.red
   },
 
   rpm = {
     icon = "",
     name = "rpm",
-    color = base18.base10
+    color = themer.red
   },
 
   vue = {
     icon = "󰡄",
     name = "vue",
-    color = base18.base0C
+    color = themer.green
   },
 
   woff = {
     icon = "",
     name = "WebOpenFontFormat",
-    color = base18.base0D
+    color = themer.orange
   },
 
   woff2 = {
     icon = "",
     name = "WebOpenFontFormat2",
-    color = base18.base0D
+    color = themer.orange
   },
 
   xz = {
     icon = "",
     name = "xz",
-    color = base18.base0E
+    color = themer.cyan
   },
 
   zip = {
     icon = "",
     name = "zip",
-    color = base18.base0E
+    color = themer.cyan
   },
 }
 
