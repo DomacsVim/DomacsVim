@@ -28,10 +28,10 @@ end
 
 return {
   {
-    "https://gitlab.com/domacsvim/base18",
+    "https://gitlab.com/domacsvim/themer",
     config = function()
-      local base16 = require("base18")
-      base16.apply_theme()
+      local themer = require("themer")
+      themer.apply_theme()
     end
   },
   { "https://github.com/nvim-lua/plenary.nvim" },
