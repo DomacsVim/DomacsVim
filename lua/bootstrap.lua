@@ -1,5 +1,7 @@
 local M = {}
 
+local utils = require("utils")
+
 -- check the neovim version
 if vim.fn.has("nvim-0.9") ~= 1 then
   vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
@@ -11,8 +13,14 @@ end
 
 -- get the domacsvim cache directory
 _G.dvim_cache_dir = vim.env.DVIM_CACHE_DIR
+if not utils.is_directory(dvim_cache_dir) then
+  vim.fn.mkdir(dvim_cache_dir)
+end
 -- get the domacsvim config directory
 _G.dvim_config_dir = vim.env.DVIM_CONFIG_DIR
+if not utils.is_directory(dvim_config_dir) then
+  vim.fn.mkdir(dvim_config_dir)
+end
 
 function M.init()
   -- remove neovim and set domacsvim runtimepaths
