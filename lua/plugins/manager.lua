@@ -170,8 +170,6 @@ function M.load()
     return
   end
 
-  require("config").init()
-  
   local core_plugins = require("plugins.plugins")
   local plugins = {}
   
