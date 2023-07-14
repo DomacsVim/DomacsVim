@@ -87,7 +87,7 @@ local footer = {
     hl = "Number",
   },
 }
-return {
+dvim.core.dashboard = {
   layout = {
     padding_up,
     header,
@@ -97,3 +97,5 @@ return {
     footer,
   }
 }
+
+return dvim.core.dashboard

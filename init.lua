@@ -4,6 +4,8 @@ vim.opt.rtp:append(dvim_runtime_dir)
 -- import bootstrap to setup runtimepath and etc ...
 require("bootstrap").init()
 -- import configs
+require("core").load()
+-- import configs
 require("config").init()
 -- import plugins with load method to load dvim.plugins
 require("plugins.manager").load()

@@ -13,6 +13,9 @@ local mode_adapters = {
 }
 
 function M.load()
+  local keymappings = require("keymappings.keymappings").defaults
+  dvim.keys = vim.tbl_extend("keep", keymappings, dvim.keys)
+
   for group, _ in pairs(dvim.keys) do
     for modes, _ in pairs(dvim.keys[group]) do
       for key, value in pairs(dvim.keys[group][modes]) do

@@ -39,11 +39,8 @@ return {
     "https://github.com/nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     event = "User DirOpened",
-    opts = function()
-      return require("core.nvimtree")
-    end,
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
+    config = function()
+      require("nvim-tree").setup(dvim.core.nvimtree)
     end,
   },
   {
@@ -52,21 +49,15 @@ return {
       lazy_load("nvim-treesitter")
     end,
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-    opts = function()
-      return require("core.treesitter")
-    end,
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+    config = function()
+      require("nvim-treesitter.configs").setup(dvim.core.treesitter)
     end,
   },
   {
     "https://github.com/windwp/nvim-autopairs",
     event = "InsertEnter",
-    opts = function()
-      return require("core.autopairs")
-    end,
-    config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
+    config = function()
+      require("nvim-autopairs").setup(dvim.core.autopairs)
     end,
   },
   {
@@ -76,11 +67,8 @@ return {
     init = function()
       lazy_load("gitsigns.nvim")
     end,
-    opts = function()
-      return require("core.gitsigns")
-    end,
-    config = function(_, opts)
-      require("gitsigns").setup(opts)
+    config = function()
+      require("gitsigns").setup(dvim.core.gitsigns)
     end,
   },
   {
@@ -99,11 +87,25 @@ return {
   { "https://github.com/nvim-lua/plenary.nvim", cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" }, lazy = true },
   {
     "https://github.com/nvim-telescope/telescope.nvim",
-    opts = function()
-      return require("core.telescope")
-    end,
-    config = function(_, opts)
+    config = function()
       local telescope = require("telescope")
+      dvim.core.telescope.defaults = vim.tbl_extend("keep", {
+        file_sorter = require("telescope.sorters").get_fuzzy_file,
+        file_ignore_patterns = { "node_modules" },
+        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+        path_display = { "truncate" },
+        winblend = 0,
+        border = {},
+        color_devicons = true,
+        set_env = { ["COLORTERM"] = "truecolor" },
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+        mappings = {
+          n = { ["q"] = require("telescope.actions").close },
+        }
+      }, dvim.core.telescope.defaults)
       pcall(function()
         telescope.load_extension("projects")
       end)
@@ -113,7 +115,7 @@ return {
       pcall(function()
         require("telescope").load_extension "file_browser"
       end)
-      telescope.setup(opts)
+      telescope.setup(dvim.core.telescope)
     end,
     lazy = true,
     cmd = "Telescope",
@@ -133,18 +135,15 @@ return {
     "https://github.com/folke/which-key.nvim",
     keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
     event = "VeryLazy",
-    opts = function()
-      return require("core.whichkey")
-    end,
-    config = function(_, opts)
+    config = function()
       local whichkey = require("which-key")
-      whichkey.setup(opts.setup)
+      whichkey.setup(dvim.core.whichkey.setup)
 
-      local opt = opts.opts
-      local vopts = opts.vopts
+      local opt = dvim.core.whichkey.opts
+      local vopts = dvim.core.whichkey.vopts
 
-      local mappings = opts.mappings
-      local vmappings = opts.vmappings
+      local mappings = dvim.core.whichkey.mappings
+      local vmappings = dvim.core.whichkey.vmappings
 
       whichkey.register(mappings, opt)
       whichkey.register(vmappings, vopts)
@@ -176,11 +175,8 @@ return {
       "ToggleTermSendVisualLines",
       "ToggleTermSendVisualSelection",
     },
-    opts = function()
-      return require("core.terminal")
-    end,
-    config = function(_, opts)
-      require("toggleterm").setup(opts)
+    config = function()
+      require("toggleterm").setup(dvim.core.terminal)
     end,
   },
   {
@@ -224,11 +220,8 @@ return {
   {
     "https://github.com/goolord/alpha-nvim",
     event = "VimEnter",
-    opts = function()
-      return require("core.dashboard")
-    end,
-    config = function(_, opts)
-      require("alpha").setup(opts)
+    config = function()
+      require("alpha").setup(dvim.core.dashboard)
     end
   },
 }
