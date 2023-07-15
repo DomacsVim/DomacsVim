@@ -40,7 +40,7 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     event = "User DirOpened",
     config = function()
-      require("nvim-tree").setup(dvim.core.nvimtree)
+      require("core.nvimtree").setup()
     end,
   },
   {
@@ -50,14 +50,14 @@ return {
     end,
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     config = function()
-      require("nvim-treesitter.configs").setup(dvim.core.treesitter)
+      require("core.treesitter").setup()
     end,
   },
   {
     "https://github.com/windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
-      require("nvim-autopairs").setup(dvim.core.autopairs)
+      require("core.autopairs").setup()
     end,
   },
   {
@@ -136,17 +136,7 @@ return {
     keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
     event = "VeryLazy",
     config = function()
-      local whichkey = require("which-key")
-      whichkey.setup(dvim.core.whichkey.setup)
-
-      local opt = dvim.core.whichkey.opts
-      local vopts = dvim.core.whichkey.vopts
-
-      local mappings = dvim.core.whichkey.mappings
-      local vmappings = dvim.core.whichkey.vmappings
-
-      whichkey.register(mappings, opt)
-      whichkey.register(vmappings, vopts)
+      require("core.whichkey").setup()
     end,
   },
   { 
@@ -176,7 +166,7 @@ return {
       "ToggleTermSendVisualSelection",
     },
     config = function()
-      require("toggleterm").setup(dvim.core.terminal)
+      require("core.terminal").setup()
     end,
   },
   {
@@ -221,7 +211,7 @@ return {
     "https://github.com/goolord/alpha-nvim",
     event = "VimEnter",
     config = function()
-      require("alpha").setup(dvim.core.dashboard)
+      require("core.dashboard").setup()
     end
   },
 }

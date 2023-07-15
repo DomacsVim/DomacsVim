@@ -14,7 +14,7 @@ local modules = {
 function M.load()
   for _, k in pairs(modules) do
     xpcall(function()
-      require(k)
+      require(k).config()
     end, function() return end)
   end
 end

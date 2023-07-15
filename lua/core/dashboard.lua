@@ -1,3 +1,4 @@
+local M = {}
 local fn = vim.fn
 local marginTopPercent = 0.1
 local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
@@ -87,15 +88,22 @@ local footer = {
     hl = "Number",
   },
 }
-dvim.core.dashboard = {
-  layout = {
-    padding_up,
-    header,
-    padding_down,
-    buttons,
-    padding_down,
-    footer,
-  }
-}
 
-return dvim.core.dashboard
+function M.config()
+  dvim.core.dashboard = {
+    layout = {
+      padding_up,
+      header,
+      padding_down,
+      buttons,
+      padding_down,
+      footer,
+    }
+  }
+end
+
+function M.setup()
+  require("alpha").setup(dvim.core.dashboard)
+end
+
+return M
