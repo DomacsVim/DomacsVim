@@ -13,10 +13,6 @@ local function lazy_load(plugin)
         if plugin ~= "nvim-treesitter" then
           vim.schedule(function()
             require("lazy").load { plugins = plugin }
-
-            if plugin == "nvim-lspconfig" then
-              vim.cmd "silent! do FileType"
-            end
           end, 0)
         else
           require("lazy").load { plugins = plugin }
@@ -214,4 +210,61 @@ return {
       require("core.dashboard").setup()
     end
   },
+  {
+    "https://github.com/williamboman/mason.nvim",
+    lazy = true,
+    config = function()
+      require("core.mason").setup()
+    end
+  },
+  { "https://github.com/williamboman/mason-lspconfig.nvim", lazy = true },
+  { "https://github.com/neovim/nvim-lspconfig", lazy = true },
+  { "https://github.com/tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
+  { "https://github.com/jose-elias-alvarez/null-ls.nvim", lazy = true },
+  {
+    "https://github.com/williamboman/mason.nvim",
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    build = function()
+      pcall(function()
+        require("mason-registry").refresh()
+      end)
+    end,
+    lazy = true,
+  },
+  {
+    "https://github.com/hrsh7th/nvim-cmp",
+    dependencies = {
+      "cmp-nvim-lsp",
+      "cmp_luasnip",
+      "cmp-buffer",
+      "cmp-path",
+    },
+    config = function()
+      require("core.cmp").setup()
+    end
+  },
+  { "https://github.com/hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "https://github.com/saadparwaiz1/cmp_luasnip", lazy = true },
+  { "https://github.com/hrsh7th/cmp-buffer", lazy = true },
+  { "https://github.com/hrsh7th/cmp-path", lazy = true },
+  {
+    "https://github.com/L3MON4D3/LuaSnip",
+    config = function()
+      local utils = require "utils"
+      local paths = {}
+      paths[#paths + 1] = dvim_runtime_dir .. "/site/pack/lazy/opt/friendly-snippets"
+      local user_snippets = dvim_config_dir .. "/snippets"
+      if utils.is_directory(user_snippets) then
+        paths[#paths + 1] = user_snippets
+      end
+      require("luasnip.loaders.from_vscode").lazy_load { paths = paths }
+      require("luasnip.loaders.from_snipmate").lazy_load { paths = paths }
+      require("luasnip.loaders.from_lua").lazy_load { paths = paths }
+    end,
+    dependencies = {
+      "friendly-snippets",
+    },
+  },
+  { "https://github.com/rafamadriz/friendly-snippets", lazy = true },
+  { "https://github.com/folke/neodev.nvim", lazy = true },
 }
