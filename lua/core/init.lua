@@ -8,7 +8,9 @@ local modules = {
   "core.telescope",
   "core.terminal",
   "core.treesitter",
-  "core.whichkey"
+  "core.whichkey",
+  "core.mason",
+  "core.cmp"
 }
 
 function M.load()

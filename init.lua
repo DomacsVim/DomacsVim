@@ -11,3 +11,5 @@ require("config").init()
 require("plugins.manager").load()
 -- import keymappings
 require("keymappings.manager").load()
+-- import and setup lspconfigs
+require("lsp").setup()
