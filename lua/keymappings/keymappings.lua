@@ -82,6 +82,12 @@ M.defaults = {
       ["<C-k>"] = "<C-\\><C-N><C-w>k",
       ["<C-l>"] = "<C-\\><C-N><C-w>l"
     }
+  },
+  bufferline = {
+    normal_mode = {
+      ["<Tab>"] = ":bnext<CR>",
+      ["<S-Tab>"] = ":bprevious<CR>"
+    }
   }
 }
 
