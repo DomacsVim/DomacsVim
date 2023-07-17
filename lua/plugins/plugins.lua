@@ -13,7 +13,7 @@ local function lazy_load(plugin)
         if plugin ~= "nvim-treesitter" then
           vim.schedule(function()
             require("lazy").load { plugins = plugin }
-          end, 0)
+          end)
         else
           require("lazy").load { plugins = plugin }
         end
@@ -123,7 +123,7 @@ return {
       dvim.core.comments = {}
       return dvim.core.comments
     end,
-    config = function()
+    config = function(_, opts)
       require("Comment").setup(opts)
     end,
   },
@@ -135,7 +135,7 @@ return {
       require("core.whichkey").setup()
     end,
   },
-  { 
+  {
     "https://github.com/nvim-tree/nvim-web-devicons",
     lazy = true,
     opts = function()
@@ -267,4 +267,10 @@ return {
   },
   { "https://github.com/rafamadriz/friendly-snippets", lazy = true },
   { "https://github.com/folke/neodev.nvim", lazy = true },
+  {
+    "https://github.com/akinsho/bufferline.nvim",
+    config = function()
+      require("core.bufferline").setup()
+    end
+  }
 }
