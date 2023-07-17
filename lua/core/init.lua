@@ -10,7 +10,8 @@ local modules = {
   "core.treesitter",
   "core.whichkey",
   "core.mason",
-  "core.cmp"
+  "core.cmp",
+  "core.bufferline"
 }
 
 function M.load()
