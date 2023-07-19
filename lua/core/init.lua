@@ -11,14 +11,14 @@ local modules = {
   "core.whichkey",
   "core.mason",
   "core.cmp",
-  "core.bufferline"
+  "core.bufferline",
 }
 
 function M.load()
   for _, k in pairs(modules) do
     xpcall(function()
       require(k).config()
-    end, function() return end)
+    end, function(err) return err end)
   end
 end
 
