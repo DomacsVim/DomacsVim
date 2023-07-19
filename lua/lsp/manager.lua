@@ -23,7 +23,13 @@ mason_lspconfig.setup_handlers({
             callSnippet = "Replace",
           },
           diagnostics = {
-            globals = { "vim", "dvim" },
+            globals = {
+              "vim",
+              "dvim",
+              "dvim_runtime_dir",
+              "dvim_config_dir",
+              "dvim_cache_dir"
+            },
           },
           workspace = {
             library = {
