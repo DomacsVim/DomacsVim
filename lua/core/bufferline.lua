@@ -12,7 +12,7 @@ end
 
 function M.commit()
   local message = string.format("%s", vim.fn.input("Enter Commit Message: "):gsub("%s+", ""))
-  vim.fn.system("git add " .. vim.fn.expand('%:p') .. " && git commit -m '" .. message .. "'")
+  vim.fn.system("git add " .. vim.fn.expand('%:p') .. " && git commit -m \"" .. message .. "\"")
 end
 
 function M.push()
