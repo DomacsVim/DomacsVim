@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  return {
+  dvim.core.mason = {
     ensure_installed = {
       "lua-language-server",
     },
