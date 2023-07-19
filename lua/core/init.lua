@@ -12,6 +12,7 @@ local modules = {
   "core.mason",
   "core.cmp",
   "core.bufferline",
+  "core.dap"
 }
 
 function M.load()
