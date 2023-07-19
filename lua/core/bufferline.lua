@@ -11,11 +11,8 @@ function M.pull()
 end
 
 function M.commit()
-  local file = vim.fn.expand('%:p')
-  local message = string.format("%s", vim.fn.input("Enter Commit Message: "))
-  if file and message then
-    vim.fn.system("git add " .. file .. " && git commit -m '" .. message .. "'")
-  end
+  local message = string.format("%s", vim.fn.input("Enter Commit Message: "):gsub("%s+", ""))
+  vim.fn.system("git add " .. vim.fn.expand('%:p') .. " && git commit -m '" .. message .. "'")
 end
 
 function M.push()
