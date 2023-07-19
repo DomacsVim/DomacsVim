@@ -230,6 +230,7 @@ return {
   },
   {
     "https://github.com/hrsh7th/nvim-cmp",
+    event = { "InsertEnter" },
     dependencies = {
       "cmp-nvim-lsp",
       "cmp_luasnip",
@@ -240,7 +241,7 @@ return {
       require("core.cmp").setup()
     end
   },
-  { "https://github.com/hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "https://github.com/hrsh7th/cmp-nvim-lsp", lazy = true},
   { "https://github.com/saadparwaiz1/cmp_luasnip", lazy = true },
   { "https://github.com/hrsh7th/cmp-buffer", lazy = true },
   { "https://github.com/hrsh7th/cmp-path", lazy = true },
@@ -268,6 +269,29 @@ return {
     "https://github.com/akinsho/bufferline.nvim",
     config = function()
       require("core.bufferline").setup()
+    end
+  },
+  {
+    "https://github.com/mfussenegger/nvim-dap",
+    config = function()
+      require("core.dap").setup()
+    end,
+  },
+  {
+    "https://github.com/rcarriga/nvim-dap-ui",
+    config = function()
+      require("core.dap").ui()
+    end,
+  },
+  {
+    "https://github.com/jay-babu/mason-nvim-dap.nvim",
+    config = function()
+      require ('mason-nvim-dap').setup({
+        handlers = {
+          function(config)
+            require('mason-nvim-dap').default_setup(config)
+          end
+        }})
     end
   }
 }
