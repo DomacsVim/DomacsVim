@@ -212,15 +212,13 @@ return {
   },
   {
     "https://github.com/williamboman/mason.nvim",
-    lazy = true,
     config = function()
       require("core.mason").setup()
     end
   },
-  { "https://github.com/williamboman/mason-lspconfig.nvim", lazy = true },
-  { "https://github.com/neovim/nvim-lspconfig", lazy = true },
-  { "https://github.com/tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
-  { "https://github.com/jose-elias-alvarez/null-ls.nvim", lazy = true },
+  { "https://github.com/williamboman/mason-lspconfig.nvim" },
+  { "https://github.com/neovim/nvim-lspconfig"},
+  { "https://github.com/tamago324/nlsp-settings.nvim", cmd = "LspSettings" },
   {
     "https://github.com/williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
@@ -229,7 +227,6 @@ return {
         require("mason-registry").refresh()
       end)
     end,
-    lazy = true,
   },
   {
     "https://github.com/hrsh7th/nvim-cmp",
