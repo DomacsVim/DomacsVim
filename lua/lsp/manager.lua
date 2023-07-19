@@ -15,6 +15,10 @@ mason_lspconfig.setup_handlers({
       capabilities = capabilities,
       settings = {
         Lua = {
+          telemetry = { enable = false },
+          runtime = {
+            version = "LuaJIT",
+          },
           completion = {
             callSnippet = "Replace",
           },
@@ -23,14 +27,14 @@ mason_lspconfig.setup_handlers({
           },
           workspace = {
             library = {
-              vim.fn.expand "$VIMRUNTIME",
+              [vim.fn.expand "$VIMRUNTIME/lua"] = true,
               dvim_runtime_dir,
-              -- require("neodev.config").types(),
+              require("neodev.config").types(),
               "${3rd}/busted/library",
               "${3rd}/luassert/library",
               "${3rd}/luv/library",
             },
-            maxPreload = 100000,
+            maxPreload = 5000,
             preloadFileSize = 10000,
           },
         },
@@ -104,3 +108,4 @@ mason_lspconfig.setup_handlers({
     })
   end,
 })
+
