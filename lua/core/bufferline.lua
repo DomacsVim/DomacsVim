@@ -24,7 +24,7 @@ end
 
 vim.cmd "function! TbOpen_settings(a,b,c,d) \n edit ~/.config/dvim/init.lua \n endfunction"
 vim.cmd "function! TbToggle_search(a,b,c,d) \n Telescope live_grep \n endfunction"
-vim.cmd "function! TbToggle_debuging(a,b,c,d) \n lua print('We are working on this new feature...') \n endfunction"
+vim.cmd "function! TbToggle_debuging(a,b,c,d) \n lua require('dap').toggle_breakpoint() \n lua require('dap').continue() \n endfunction"
 vim.cmd "function! GitPull(a,b,c,d) \n lua require('core.bufferline').pull() \n endfunction"
 vim.cmd "function! GitCommit(a,b,c,d) \n lua require('core.bufferline').commit() \n endfunction"
 vim.cmd "function! GitPush(a,b,c,d) \n lua require('core.bufferline').push() \n endfunction"
