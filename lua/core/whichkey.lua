@@ -28,7 +28,7 @@ function M.config()
       border = "none", -- none/single/double/shadow
     },
     layout = {
-      height = { min = 1, max = 3 }, -- min and max height of the columns
+      height = { min = 1, max = 6 }, -- min and max height of the columns
       spacing = 6, -- spacing between columns
     },
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
@@ -168,6 +168,10 @@ function M.config()
         s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
         q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
         U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
+      },
+      ["h"] = {
+        name = "Help",
+        h = { ":lua print('We are working on this new feature...')<CR>", "Help" }
       },
     }
   }
