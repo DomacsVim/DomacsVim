@@ -57,6 +57,8 @@ function M.init()
   require("config").load()
   -- setup plugins
   require("plugins.manager").setup()
+  -- import icons
+  dvim.icons = require("icons")
 end
 
 return M
