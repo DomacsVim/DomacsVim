@@ -139,7 +139,7 @@ return {
     "https://github.com/nvim-tree/nvim-web-devicons",
     lazy = true,
     opts = function()
-      return { override = require("icons").devicons }
+      return { override = dvim.icons.devicons() }
     end,
     config = function(_, opts)
       require('nvim-web-devicons').setup(opts)
