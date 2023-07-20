@@ -2,41 +2,39 @@ local M = {}
 
 function M.config()
   dvim.core.whichkey = {
-    setup = {
-      icons = {
-        breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "  ", -- symbol used between a key and it's label
-        group = "", -- symbol prepended to a group
+    icons = {
+      breadcrumb = dvim.icons.ui.breadcrumb, -- symbol used in the command line area that shows your active key combo
+      separator = dvim.icons.ui.separator, -- symbol used between a key and it's label
+      group = "", -- symbol prepended to a group
+    },
+    plugins = {
+      marks = false, -- shows a list of your marks on ' and `
+      registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+      presets = {
+        operators = false, -- adds help for operators like d, y, ...
+        motions = false, -- adds help for motions
+        text_objects = false, -- help for text objects triggered after entering an operator
+        windows = false, -- default bindings on <c-w>
+        nav = false, -- misc bindings to work with windows
+        z = false, -- bindings for folds, spelling and others prefixed with z
+        g = false, -- bindings for prefixed with g
       },
-      plugins = {
-        marks = false, -- shows a list of your marks on ' and `
-        registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-        presets = {
-          operators = false, -- adds help for operators like d, y, ...
-          motions = false, -- adds help for motions
-          text_objects = false, -- help for text objects triggered after entering an operator
-          windows = false, -- default bindings on <c-w>
-          nav = false, -- misc bindings to work with windows
-          z = false, -- bindings for folds, spelling and others prefixed with z
-          g = false, -- bindings for prefixed with g
-        },
-      },
-      popup_mappings = {
-        scroll_down = "<c-d>", -- binding to scroll down inside the popup
-        scroll_up = "<c-u>", -- binding to scroll up inside the popup
-      },
-      window = {
-        border = "none", -- none/single/double/shadow
-      },
-      layout = {
-        spacing = 6, -- spacing between columns
-      },
-      hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
-      triggers_blacklist = {
-        -- list of mode / prefixes that should never be hooked by WhichKey
-        i = { "j", "k" },
-        v = { "j", "k" },
-      }
+    },
+    popup_mappings = {
+      scroll_down = "<c-d>", -- binding to scroll down inside the popup
+      scroll_up = "<c-u>", -- binding to scroll up inside the popup
+    },
+    window = {
+      border = "none", -- none/single/double/shadow
+    },
+    layout = {
+      spacing = 6, -- spacing between columns
+    },
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
+    triggers_blacklist = {
+      -- list of mode / prefixes that should never be hooked by WhichKey
+      i = { "j", "k" },
+      v = { "j", "k" },
     },
     opts = {
       mode = "n", -- NORMAL mode
@@ -45,17 +43,6 @@ function M.config()
       silent = true, -- use `silent` when creating keymaps
       noremap = true, -- use `noremap` when creating keymaps
       nowait = true, -- use `nowait` when creating keymaps
-    },
-    vopts = {
-      mode = "v", -- VISUAL mode
-      prefix = "<leader>",
-      buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-      silent = true, -- use `silent` when creating keymaps
-      noremap = true, -- use `noremap` when creating keymaps
-      nowait = true, -- use `nowait` when creating keymaps
-    },
-    vmappings = {
-      ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
     },
     mappings = {
       ["n"] = { "<esc><cmd> edit Untitled-File <cr>", "New File" },
@@ -172,22 +159,17 @@ function M.config()
         q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
         U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
       },
-    },
+    }
   }
 end
 
 function M.setup()
   local whichkey = require("which-key")
-  whichkey.setup(dvim.core.whichkey.setup)
+  whichkey.setup(dvim.core.whichkey)
 
   local opt = dvim.core.whichkey.opts
-  local vopts = dvim.core.whichkey.vopts
-
   local mappings = dvim.core.whichkey.mappings
-  local vmappings = dvim.core.whichkey.vmappings
-
   whichkey.register(mappings, opt)
-  whichkey.register(vmappings, vopts)
 end
 
 return M
