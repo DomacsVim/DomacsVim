@@ -181,7 +181,19 @@ M.ui = {
   new_file = " ",
   word = " ",
   recent_file = " ",
-  recent_project = " "
+  recent_project = " ",
+  bug = " ",
+  right_select = "",
+  buttom_select = "",
+  circular = "",
+  pause = "",
+  play = "",
+  step_into = "",
+  step_over = "",
+  step_out = "",
+  step_back = "",
+  run_last = "",
+  terminate = "",
 }
 
 return M

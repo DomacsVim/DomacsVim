@@ -3,19 +3,19 @@ local M = {}
 function M.config()
   dvim.core.dap = {
     breakpoint = {
-      text = " ",
+      text = dvim.icons.ui.bug,
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     },
     breakpoint_rejected = {
-      text = " ",
+      text = dvim.icons.ui.bug,
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     },
     stopped = {
-      text = "",
+      text = dvim.icons.ui.right_select,
       texthl = "DiagnosticSignWarn",
       linehl = "Visual",
       numhl = "DiagnosticSignWarn",
@@ -29,7 +29,7 @@ function M.config()
         threshold = vim.log.levels.INFO,
       },
       config = {
-        icons = { expanded = "", collapsed = "", circular = "" },
+        icons = { expanded = dvim.icons.ui.buttom_select, collapsed = dvim.icons.ui.right_select, circular = dvim.icons.ui.circular },
         mappings = {
           -- Use a table to apply multiple mappings
           expand = { "<CR>", "<2-LeftMouse>" },
@@ -67,14 +67,14 @@ function M.config()
           -- Display controls in this element
           element = "repl",
           icons = {
-            pause = "",
-            play = "",
-            step_into = "",
-            step_over = "",
-            step_out = "",
-            step_back = "",
-            run_last = "",
-            terminate = "",
+            pause = dvim.icons.ui.pause,
+            play = dvim.icons.ui.play,
+            step_into = dvim.icons.ui.step_into,
+            step_over = dvim.icons.ui.step_over,
+            step_out = dvim.icons.ui.step_out,
+            step_back = dvim.icons.ui.step_back,
+            run_last = dvim.icons.ui.run_last,
+            terminate = dvim.icons.ui.terminate,
           },
         },
         floating = {
