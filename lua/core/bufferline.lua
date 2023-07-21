@@ -78,12 +78,11 @@ function M.config()
           attribute = "bg",
           highlight = "BufBg"
         },
-        bold = true
       },
       separator = {
         fg = {
           attribute = "fg",
-          highlight = "BufSep"
+          highlight = "BufFill"
         },
         bg = {
           attribute = "bg",
@@ -116,9 +115,23 @@ function M.config()
           highlight = "BufFill"
         },
       },
+      indicator_visible = {
+        fg = {
+          attribute = "fg",
+          highlight = "BufFill"
+        },
+        bg = {
+          attribute = "bg",
+          highlight = "BufFill"
+        },
+      },
       separator_visible = {
         fg = {
           attribute = "fg",
+          highlight = "BufFill"
+        },
+        bg = {
+          attribute = "bg",
           highlight = "BufFill"
         },
       },
@@ -242,16 +255,35 @@ function M.config()
           highlight = "BufFill"
         },
       },
-      duplicate_visible = {
+      duplicate_selected = {
         fg = {
           attribute = "fg",
-          highlight = "BufFill"
+          highlight = "BufDup"
         },
         bg = {
           attribute = "bg",
-          highlight = "BufFill"
+          highlight = "BufDup"
         },
-        italic = true,
+      },
+      duplicate = {
+        fg = {
+          attribute = "fg",
+          highlight = "BufDup"
+        },
+        bg = {
+          attribute = "bg",
+          highlight = "BufDup"
+        },
+      },
+      duplicate_visible = {
+        fg = {
+          attribute = "fg",
+          highlight = "BufDup"
+        },
+        bg = {
+          attribute = "bg",
+          highlight = "BufDup"
+        },
       },
     },
     options = {
