@@ -55,7 +55,7 @@ function M.config()
         ["s"] = { ":w!<CR>", "Save" },
         ["S"] = { "wa!<CR>", "Save All" },
         ["c"] = { ":edit " .. dvim_config_dir .. "/init.lua<CR>", "Preferences" },
-        ["q"] = { ":q<CR>", "Close Buffer" }
+        ["q"] = { ":q<CR>", "Exit" }
       },
       ["e"] = {
         name = "Edit",
