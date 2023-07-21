@@ -63,6 +63,17 @@ function M.config()
           git = true,
           modified = true,
         },
+        glyphs = {
+          git = {
+            unstaged = "",
+            staged = "",
+            unmerged = "",
+            renamed = "",
+            untracked = "",
+            deleted = "",
+            ignored = "",
+          },
+        },
       },
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
       symlink_destination = true,
