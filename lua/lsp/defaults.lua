@@ -36,6 +36,7 @@ dvim.core.lspconfig = {
     },
     config = {},
   },
+  luasnip = {},
   diagnostics = {
     setup = {
       virtual_text = {
