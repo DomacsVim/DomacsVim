@@ -231,12 +231,6 @@ return {
   {
     "https://github.com/hrsh7th/nvim-cmp",
     event = { "InsertEnter" },
-    dependencies = {
-      "cmp-nvim-lsp",
-      "cmp_luasnip",
-      "cmp-buffer",
-      "cmp-path",
-    },
     config = function()
       require("core.cmp").setup()
     end
@@ -251,9 +245,6 @@ return {
       require("lsp.defaults")
       require("lsp.luasnip")
     end,
-    dependencies = {
-      "friendly-snippets",
-    },
   },
   { "https://github.com/rafamadriz/friendly-snippets", lazy = true },
   { "https://github.com/folke/neodev.nvim", lazy = true },
