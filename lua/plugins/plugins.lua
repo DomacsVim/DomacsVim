@@ -276,5 +276,21 @@ return {
           end
         }})
     end
+  },
+  { "https://github.com/SmiteshP/nvim-navic" },
+  {
+    "https://github.com/utilyre/barbecue.nvim",
+    config = function()
+      local themer = require("themer")
+      local theme = themer.get_theme_table().hex
+      require("barbecue").setup {
+        theme = {
+          separator = {fg = theme.white}
+        },
+        symbols = {
+          separator = dvim.icons.ui.right_arrow,
+        },
+      }
+    end
   }
 }
