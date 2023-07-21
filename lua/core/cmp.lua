@@ -42,7 +42,7 @@ function M.config()
         cmp_tabnine = "(Tabnine)",
         vsnip = "(Snippet)",
         luasnip = "(Snippet)",
-        buffer = "(Buffer)",
+        buffer = "(Self)",
         tmux = "(TMUX)",
         treesitter = "(TreeSitter)",
       },
@@ -133,7 +133,7 @@ function M.setup()
         end
       end,
     },
-    ["<Tab>"] = cmp_mapping(function(fallback)
+    ["<C-n>"] = cmp_mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_locally_jumpable() then
@@ -144,7 +144,7 @@ function M.setup()
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp_mapping(function(fallback)
+    ["<C-p>"] = cmp_mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
