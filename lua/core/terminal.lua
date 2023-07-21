@@ -27,7 +27,6 @@ function M.config()
       },
       FloatBorder = {
         link = "FloatBorder",
-        link = "FloatBorder",
       },
     },
     float_opts = {
