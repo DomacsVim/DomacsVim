@@ -8,11 +8,11 @@ function M.config()
     ui = {
       icons = {
         -- The list icon to use for installed packages.
-        package_installed = " ",
+        package_installed = dvim.icons.ui.check,
         -- The list icon to use for packages that are installing, or queued for installation.
-        package_pending = " ",
+        package_pending = dvim.icons.ui.pending,
         -- The list icon to use for packages that are not installed.
-        package_uninstalled = " ",
+        package_uninstalled = dvim.icons.fail,
       },
       border = "none",
       keymaps = {

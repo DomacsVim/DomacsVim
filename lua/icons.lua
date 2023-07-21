@@ -174,7 +174,9 @@ M.ui = {
   search = "   ",
   right_arrow = " > ",
   left_arrow = " < ",
-
+  check = " ",
+  pending = " ",
+  fail = " ",
 }
 
 return M
