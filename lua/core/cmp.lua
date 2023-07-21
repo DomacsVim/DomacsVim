@@ -33,33 +33,7 @@ function M.config()
     },
     formatting = {
       max_width = 0,
-      kind_icons = {
-        Text = "󰉿",
-        Method = "󰆧",
-        Function = "󰊕",
-        Constructor = "",
-        Field = "󰜢",
-        Variable = "󰀫",
-        Class = "󰠱",
-        Interface = "",
-        Module = "",
-        Property = "󰜢",
-        Unit = "󰑭",
-        Value = "󰎠",
-        Enum = "",
-        Keyword = "󰌋",
-        Snippet = "",
-        Color = "󰏘",
-        File = "󰈙",
-        Reference = "󰈇",
-        Folder = "󰉋",
-        EnumMember = "",
-        Constant = "󰏿",
-        Struct = "󰙅",
-        Event = "",
-        Operator = "󰆕",
-        TypeParameter = "",
-      },
+      kind_icons = dvim.icons.kind_icons,
       source_names = {
         nvim_lsp = "(LSP)",
         emoji = "(Emoji)",
@@ -79,9 +53,12 @@ function M.config()
         luasnip = 1,
       },
       duplicates_default = 0,
-      fields = {"abbr", "kind"},
-      format = function(_, vim_item)
-        vim_item.kind = string.format('%s  %s', dvim.core.cmp.formatting.kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      fields = {"abbr", "menu", "kind"},
+      format = function(entry, vim_item)
+        local icon = dvim.core.cmp.formatting.kind_icons[vim_item.kind]
+        vim_item.kind = string.format("%s", vim_item.kind)
+        vim_item.menu = dvim.core.cmp.formatting.source_names[entry.source.name]
+        vim_item.abbr = string.format("%s  %s", icon, vim_item.abbr)
         return vim_item
       end,
     },
