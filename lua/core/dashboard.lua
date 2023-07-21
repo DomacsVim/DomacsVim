@@ -70,11 +70,11 @@ local header = {
 local buttons = {
   type = "group",
   val = {
-    button("Space f n", "  New File  ", ":ene <BAR> startinsert <CR>"),
-    button("Space s t", "  Find Word  ", ":Telescope live_grep<CR>"),
-    button("Space s f", "  Open File ", ":Telescope find_files<CR>"),
-    button("Space s r", "  Recent File  ", ":Telescope oldfiles<CR>"),
-    button("Space s p", "  Recent Projects", ":Telescope projects <CR>"),
+    button("Space f n", dvim.icons.ui.new_file .. " New File  ", ":ene <BAR> startinsert <CR>"),
+    button("Space s t", dvim.icons.ui.word .. " Find Word  ", ":Telescope live_grep<CR>"),
+    button("Space s f", dvim.icons.ui.search .. " Open File ", ":Telescope find_files<CR>"),
+    button("Space s r", dvim.icons.ui.recent_file .. " Recent File  ", ":Telescope oldfiles<CR>"),
+    button("Space s p", dvim.icons.ui.recent_project .. " Recent Projects", ":Telescope projects <CR>"),
   },
   opts = {
     spacing = 1,

@@ -171,13 +171,17 @@ end
 M.ui = {
   breadcrumb = "󰄾 ",
   separator = " ",
-  search = "   ",
+  search = " ",
   right_arrow = " > ",
   left_arrow = " < ",
   check = " ",
   pending = " ",
   fail = " ",
   left_side = "▎",
+  new_file = " ",
+  word = " ",
+  recent_file = " ",
+  recent_project = " "
 }
 
 return M
