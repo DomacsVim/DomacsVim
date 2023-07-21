@@ -5,31 +5,31 @@ function M.config()
     signs = {
       add = {
         hl = "GitSignsAdd",
-        text = "▎",
+        text = dvim.icons.ui.left_side,
         numhl = "GitSignsAddNr",
         linehl = "GitSignsAddLn",
       },
       change = {
         hl = "GitSignsChange",
-        text = "▎",
+        text = dvim.icons.ui.left_side,
         numhl = "GitSignsChangeNr",
         linehl = "GitSignsChangeLn",
       },
       delete = {
         hl = "GitSignsDelete",
-        text = "▎",
+        text = dvim.icons.ui.left_side,
         numhl = "GitSignsDeleteNr",
         linehl = "GitSignsDeleteLn",
       },
       topdelete = {
         hl = "GitSignsDelete",
-        text = "▎",
+        text = dvim.icons.ui.left_side,
         numhl = "GitSignsDeleteNr",
         linehl = "GitSignsDeleteLn",
       },
       changedelete = {
         hl = "GitSignsChange",
-        text = "▎",
+        text = dvim.icons.ui.left_side,
         numhl = "GitSignsChangeNr",
         linehl = "GitSignsChangeLn",
       },

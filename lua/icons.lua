@@ -177,6 +177,7 @@ M.ui = {
   check = " ",
   pending = " ",
   fail = " ",
+  left_side = "▎",
 }
 
 return M
