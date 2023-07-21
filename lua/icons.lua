@@ -172,6 +172,9 @@ M.ui = {
   breadcrumb = "󰄾 ",
   separator = " ",
   search = "   ",
+  right_arrow = " > ",
+  left_arrow = " < ",
+
 }
 
 return M
