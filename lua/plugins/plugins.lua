@@ -248,16 +248,8 @@ return {
   {
     "https://github.com/L3MON4D3/LuaSnip",
     config = function()
-      local utils = require "utils"
-      local paths = {}
-      paths[#paths + 1] = dvim_runtime_dir .. "/site/pack/lazy/opt/friendly-snippets"
-      local user_snippets = dvim_config_dir .. "/snippets"
-      if utils.is_directory(user_snippets) then
-        paths[#paths + 1] = user_snippets
-      end
-      require("luasnip.loaders.from_vscode").lazy_load { paths = paths }
-      require("luasnip.loaders.from_snipmate").lazy_load { paths = paths }
-      require("luasnip.loaders.from_lua").lazy_load { paths = paths }
+      require("lsp.defaults")
+      require("lsp.luasnip")
     end,
     dependencies = {
       "friendly-snippets",
