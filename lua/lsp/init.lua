@@ -1,7 +1,5 @@
 local M = {}
 
-require("lsp.defaults")
-
 function M.capabilities()
   local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if status_ok then
