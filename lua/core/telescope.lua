@@ -13,7 +13,7 @@ function M.config()
         "--column",
         "--smart-case",
       },
-      prompt_prefix = "   ",
+      prompt_prefix = dvim.icons.ui.search,
       selection_caret = "  ",
       entry_prefix = "  ",
       initial_mode = "insert",

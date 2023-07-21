@@ -171,6 +171,7 @@ end
 M.ui = {
   breadcrumb = "󰄾 ",
   separator = " ",
+  search = "   ",
 }
 
 return M
