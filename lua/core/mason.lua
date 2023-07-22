@@ -1,5 +1,10 @@
 local M = {}
 
+local editor_layout = {
+  height = vim.o.lines - vim.o.cmdheight + 1,
+  width = vim.o.columns,
+}
+
 function M.config()
   dvim.core.mason = {
     ensure_installed = {
@@ -15,6 +20,8 @@ function M.config()
         package_uninstalled = dvim.icons.fail,
       },
       border = "none",
+      width = math.floor(editor_layout.width * 0.8),
+      height = math.floor(editor_layout.height * 0.73),
       keymaps = {
         -- Keymap to expand a package
         toggle_package_expand = "<CR>",
