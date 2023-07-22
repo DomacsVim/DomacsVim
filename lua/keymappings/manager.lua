@@ -20,9 +20,9 @@ function M.load()
 		for modes, _ in pairs(dvim.keys[group]) do
 			for key, value in pairs(dvim.keys[group][modes]) do
 				if
-					type(key) == "string" and type(value) == "string"
-					or type(value) == "function" and not value == false
-					or not value == nil
+					type(key) and type(value) == "string"
+					or type(value) == "function" and value ~= false
+					or value ~= nil
 				then
 					-- set keymappings
 					vim.keymap.set(mode_adapters[modes], key, value, options)
