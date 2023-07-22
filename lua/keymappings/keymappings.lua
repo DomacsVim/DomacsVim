@@ -56,7 +56,7 @@ M.defaults = {
   },
   gitsigns = {
     normal_mode = {
-      ["gr"] = ":Gitsigns reset_hunk<CR>",
+      ["gh"] = ":Gitsigns reset_hunk<CR>",
       ["gn"] = ":Gitsigns next_hunk<CR>",
       ["gp"] = ":Gitsigns prev_hunk<CR>",
       ["gk"] = ":Gitsigns preview_hunk<CR>",
