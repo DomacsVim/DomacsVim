@@ -1,7 +1,7 @@
 return {
-  core = {},
-  keys = {},
-  plugins = {},
-  mapleader = " ",
-  colorscheme = "onedark"
+	core = {},
+	keys = {},
+	plugins = {},
+	mapleader = " ",
+	colorscheme = "onedark",
 }
