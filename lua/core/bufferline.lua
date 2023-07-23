@@ -110,7 +110,7 @@ function M.config()
 				},
 				bg = {
 					attribute = "bg",
-					highlight = "BufFill",
+					highlight = "BufBg",
 				},
 			},
 			buffer_visible = {
