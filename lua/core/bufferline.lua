@@ -8,9 +8,9 @@ end
 
 function M.pull()
 	exec_toggle({
-		cmd = "echo 'Receiving the latest changes. Please wait...' \
-    && git fetch --recurse-submodules --tags --force --progress \
-    && echo 'Done.'",
+		cmd = "echo 'Receiving the latest changes. Please wait...' && \
+    git pull --ff-only --progress --rebase=false && \
+    echo 'Done.'",
 	})
 end
 
