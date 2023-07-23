@@ -270,7 +270,7 @@ function M.config()
 				},
 				bg = {
 					attribute = "bg",
-					highlight = "BufBg",
+					highlight = "BufDup",
 				},
 			},
 			duplicate = {
