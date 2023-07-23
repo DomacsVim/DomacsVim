@@ -171,7 +171,13 @@ function M.config()
 			},
 			["h"] = {
 				name = "Help",
-				h = { ":lua print('We are working on this new feature...')<CR>", "Help" },
+        w = { "<cmd>lua require('help').welcome()<cr>", "Welcome" },
+        c = { "<cmd>lua require('help').show_all_commands()<cr>", "Show all commands" },
+        d = { "<cmd>lua require('help').documentation()<cr>", "Documentation" },
+        k = { "<cmd>lua require('help').keyboard_shortcuts_reference()<cr>", "Keyboard shortcuts reference" },
+        r = { "<cmd>lua require('help').report_issue()<cr>", "Report issue" },
+        l = { "<cmd>lua require('help').view_license()<cr>", "View licence" },
+        a = { "<cmd>lua require('help').about()<cr>", "About" },
 			},
 		},
 	}
