@@ -270,27 +270,27 @@ function M.config()
 				},
 				bg = {
 					attribute = "bg",
-					highlight = "BufDup",
+					highlight = "BufBg",
 				},
 			},
 			duplicate = {
 				fg = {
 					attribute = "fg",
-					highlight = "BufDup",
+					highlight = "BufBg",
 				},
 				bg = {
 					attribute = "bg",
-					highlight = "BufDup",
+					highlight = "BufBg",
 				},
 			},
 			duplicate_visible = {
 				fg = {
 					attribute = "fg",
-					highlight = "BufDup",
+					highlight = "BufBg",
 				},
 				bg = {
 					attribute = "bg",
-					highlight = "BufDup",
+					highlight = "BufBg",
 				},
 			},
 		},
