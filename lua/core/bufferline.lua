@@ -335,11 +335,17 @@ function M.config()
 					end
 
 					if rawget(vim, "lsp") then
+            local status
 						for _, client in ipairs(vim.lsp.get_active_clients()) do
 							if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-								table.insert(result, { text = "%@TbToggle_debuging@%#Debuging#   " })
+                status = true
+              else
+                status = false
 							end
 						end
+            if status then
+              table.insert(result, { text = "%@TbToggle_debuging@%#Debuging#   " })
+            end
 					end
 					table.insert(result, { text = "%@TbToggle_search@   " })
 					table.insert(result, { text = "%@TbOpen_settings@   " })
