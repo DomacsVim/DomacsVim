@@ -3,7 +3,7 @@ local M = {}
 function M.config()
 	dvim.core.treesitter = {
 		-- A list of parser names, or "all"
-		ensure_installed = { "comment", "markdown_inline", "regex" },
+		ensure_installed = "all",
 
 		-- List of parsers to ignore installing (for "all")
 		ignore_install = {},
