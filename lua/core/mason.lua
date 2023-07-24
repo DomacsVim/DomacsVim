@@ -17,7 +17,7 @@ function M.config()
 				-- The list icon to use for packages that are installing, or queued for installation.
 				package_pending = dvim.icons.ui.pending,
 				-- The list icon to use for packages that are not installed.
-				package_uninstalled = dvim.icons.fail,
+				package_uninstalled = dvim.icons.ui.fail,
 			},
 			border = "none",
 			width = math.floor(editor_layout.width * 0.8),
