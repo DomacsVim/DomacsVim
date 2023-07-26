@@ -284,4 +284,16 @@ return {
 	},
 	{ "https://github.com/SmiteshP/nvim-navic" },
 	{ "https://github.com/utilyre/barbecue.nvim" },
+  {
+    "https://github.com/windwp/nvim-ts-autotag",
+    cofnig = function()
+      local filetypes = {
+        'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript',
+        'xml', 'php', 'markdown', 'astro', 'glimmer', 'handlebars', 'hbs'
+      }
+      require('nvim-ts-autotag').setup {
+          filetypes = filetypes
+      }
+    end
+  }
 }

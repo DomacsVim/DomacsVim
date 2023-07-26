@@ -50,7 +50,7 @@ function M.config()
 			},
 		},
 		indent = { enable = true, disable = { "yaml", "python" } },
-		autotag = { enable = false },
+		autotag = { enable = true },
 		textobjects = {
 			swap = {
 				enable = false,
