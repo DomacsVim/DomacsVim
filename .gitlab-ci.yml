@@ -4,5 +4,5 @@ formatting:
     tags:
         - Stylua
     script:
-        - apt install stylua
+        - apt-get update && apt-get install -y
         - stylua -v .
