@@ -1,5 +1,7 @@
+image: fnichol/stylua
+
 formatting:
     tags:
         - Stylua
     script:
-        - echo 'hi'
+        - stylua -v .
