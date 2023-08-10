@@ -1,7 +1,8 @@
 formatting:
-    image: archlinux:latest
+    image: johnnymorganz/stylua:latest
     tags:
         - Stylua
+    before_script:
+        - apt-get update
     script:
-        - pacman -Suy && pacman -S --noconfirm stylua
         - stylua -v .
