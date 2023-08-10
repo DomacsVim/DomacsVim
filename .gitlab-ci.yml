@@ -1,7 +1,8 @@
-image: fnichol/stylua
+image: debian:latest
 
 formatting:
     tags:
         - Stylua
     script:
+        - apt install stylua
         - stylua -v .
