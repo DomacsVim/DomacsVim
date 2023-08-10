@@ -1,7 +1,20 @@
-image: johnnymorganz/stylua
-
 formatting:
     tags:
         - Stylua
     script:
-        - stylua -v .
+        - local DOWNLOAD_DIR
+        - local URL="https://github.com/JohnnyMorganz/StyLua/releases/download/v$RELEASE/$FILENAME.zip"
+        - DOWNLOAD_DIR="$(mktemp -d)"
+        - echo "Initiating download for Stylua v$RELEASE"
+        - if ! curl --progress-bar --fail -L "$URL" -o "$DOWNLOAD_DIR/$FILENAME.zip";
+            - echo "Download failed.  Check that the release/filename are correct."
+            - exit 1
+        - fi
+        - echo "Installation in progress.."
+        - unzip -q "$DOWNLOAD_DIR/$FILENAME.zip" -d "$DOWNLOAD_DIR"
+        - if [ -f "$DOWNLOAD_DIR/stylua" ]; then
+            - mv "$DOWNLOAD_DIR/stylua" "$INSTALL_DIR/stylua"
+        - else
+            - mv "$DOWNLOAD_DIR/$FILENAME/stylua" "$INSTALL_DIR/."
+        - fi
+        - chmod u+x "$INSTALL_DIR/stylua"
