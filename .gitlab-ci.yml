@@ -2,8 +2,7 @@ formatting:
     tags:
         - Stylua
     script:
-        - local DOWNLOAD_DIR
-        - local URL="https://github.com/JohnnyMorganz/StyLua/releases/download/v$RELEASE/$FILENAME.zip"
+        - URL="https://github.com/JohnnyMorganz/StyLua/releases/download/v$RELEASE/$FILENAME.zip"
         - DOWNLOAD_DIR="$(mktemp -d)"
         - echo "Initiating download for Stylua v$RELEASE"
         - if ! curl --progress-bar --fail -L "$URL" -o "$DOWNLOAD_DIR/$FILENAME.zip";
