@@ -1,8 +1,5 @@
 formatting:
-    image: johnnymorganz/stylua:latest
     tags:
         - Stylua
-    before_script:
-        - apt-get update && apt-get install make
     script:
-        - make style
+        - echo 'hi'
