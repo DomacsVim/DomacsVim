@@ -1,0 +1,5 @@
+stylua:
+    tags:
+        - stylua
+    script:
+        - echo 'hi'
