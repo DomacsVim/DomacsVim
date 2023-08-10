@@ -1,6 +1,5 @@
-image: archlinux:latest
-
 formatting:
+    image: archlinux:latest
     tags:
         - Stylua
     script:
