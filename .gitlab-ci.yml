@@ -1,8 +1,7 @@
-image: debian:latest
+image: johnnymorganz/stylua
 
 formatting:
     tags:
         - Stylua
     script:
-        - apt-get update && apt-get install -y stylua
         - stylua -v .
