@@ -3,6 +3,6 @@ formatting:
     tags:
         - Stylua
     before_script:
-        - apt-get update && apt-get install -y make
+        - apt-get update && apt-get install make
     script:
         - make style
