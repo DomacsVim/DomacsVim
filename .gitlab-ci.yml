@@ -1,5 +1,5 @@
 formatting:
     tags:
-        - stylua
+        - Stylua
     script:
         - echo 'hi'
