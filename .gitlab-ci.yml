@@ -1,17 +1,26 @@
 stages:
   - install_dependencies
+  - install_neovim
   - install_domacsvim
 
 install_dependencies:
-    stage: install_dependencies
-    script:
-        - echo 'Installing DomacsVim dependencies.'
-        - apk add yarn npm git nodejs neovim ripgrep build-base wget curl --update
+  stage: install_dependencies
+  script:
+      - echo 'Installing DomacsVim dependencies.'
+      - apt-get install -y yarn npm git nodejs ninja-build gettext cmake unzip curl
+
+install_neovim:
+  stage: install_neovim
+  script:
+    - echo 'Installing neovim'
+    - git clone https://github.com/neovim/neovim
+    - cd neovim
+    - make clean install
 
 install_domacsvim:
-    stage: install_domacsvim
-    script:
-        - echo 'Installing DomacsVim'
-        - curl -s 'https://gitlab.com/domacsvim/domacsvim/-/raw/V-1.0.0/installer/install.sh' >> domacsvim-install.sh
-        - chmod +x ./domacsvim-install.sh
-        - ./domacsvim-install.sh --no-install-dependencies
+  stage: install_domacsvim
+  script:
+      - echo 'Installing DomacsVim'
+      - curl -s 'https://gitlab.com/domacsvim/domacsvim/-/raw/V-1.0.0/installer/install.sh' >> domacsvim-install.sh
+      - chmod +x ./domacsvim-install.sh
+      - ./domacsvim-install.sh --no-install-dependencies
