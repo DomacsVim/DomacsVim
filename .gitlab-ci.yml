@@ -1,6 +1,8 @@
 formatting:
+    image: archlinux:latest
     tags:
         - Stylua
-    image: johnnymorganz/stylua:latest
+    before_script:
+        - pacman -Suy && pacman -S --noconfirm stylua
     script:
         - stylua -v .
