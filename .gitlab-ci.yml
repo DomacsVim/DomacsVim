@@ -7,8 +7,7 @@ install_dependencies:
   stage: install_dependencies
   script:
       - echo 'Installing DomacsVim dependencies.'
-      - apt-get update
-      - apt-get install -y yarn npm git nodejs ninja-build gettext cmake unzip curl
+      - apt-get update && apt-get install -y yarn npm git nodejs ninja-build gettext cmake unzip curl
 
 install_neovim:
   stage: install_neovim
