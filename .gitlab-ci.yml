@@ -1,0 +1,4 @@
+formatting:
+    image: johnnymorganz/stylua:latest
+    script:
+        - stylua -v .
