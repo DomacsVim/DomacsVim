@@ -1,7 +1,0 @@
-formatting:
-    image: johnnymorganz/stylua:latest
-    tags:
-        - Stylua
-    script:
-        - apt update && apt install -y make
-        - make style
