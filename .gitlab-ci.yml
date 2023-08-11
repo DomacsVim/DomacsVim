@@ -1,4 +1,6 @@
 formatting:
+    tags:
+        - Stylua
     image: johnnymorganz/stylua:latest
     script:
         - stylua -v .
