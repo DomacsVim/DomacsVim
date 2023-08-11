@@ -4,15 +4,13 @@ stages:
     - install_dependencies
     - formatting
 
-before_script:
-    - echo "Update packages"
-    - pacman -Suy --noconfirm
-
 install_dependencies:
     stage: install_dependencies
     tags:
         - Stylua
     script:
+        - echo "Update packages"
+        - pacman -Suy --noconfirm
         - echo "Installing dependencies"
         - pacman -S --noconfirm stylua
 
