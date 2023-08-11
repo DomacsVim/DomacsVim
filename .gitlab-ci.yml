@@ -1,8 +1,8 @@
 formatting:
-    image: archlinux:latest
+    image: johnnymorganz/stylua:latest
     tags:
         - Stylua
     before_script:
-        - pacman -Suy
+        - cp JohnnyMorganz/StyLua:0.18.0 /stylua /usr/bin/stylua
     script:
         - echo 'hi'
