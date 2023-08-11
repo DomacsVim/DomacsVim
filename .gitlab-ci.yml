@@ -1,0 +1,13 @@
+image: archlinux:latest
+
+before_script:
+    - echo "Update packages"
+    - pacman -Suy --noconfirm
+
+install_dependencies:
+    - echo "Installing dependencies"
+    - pacman -S --noconfirm stylua
+
+formatting:
+    - echo "Formatting with stylua"
+    - stylua -v .
