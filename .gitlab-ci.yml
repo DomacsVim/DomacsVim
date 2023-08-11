@@ -1,5 +1,6 @@
 formatting:
+    image: johnnymorganz/stylua:latest
     tags:
         - Stylua
     script:
-        - stylua -v .
+        - make style
