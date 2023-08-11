@@ -1,10 +1,15 @@
 image: archlinux:latest
 
+stages:
+    - install_dependencies
+    - formatting
+
 before_script:
     - echo "Update packages"
     - pacman -Suy --noconfirm
 
 install_dependencies:
+    stage: install_dependencies
     tags:
         - Stylua
     script:
@@ -12,6 +17,7 @@ install_dependencies:
         - pacman -S --noconfirm stylua
 
 formatting:
+    stage: formatting
     tags:
         - Stylua
     script:
