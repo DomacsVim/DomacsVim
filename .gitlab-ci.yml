@@ -5,9 +5,11 @@ before_script:
     - pacman -Suy --noconfirm
 
 install_dependencies:
-    - echo "Installing dependencies"
-    - pacman -S --noconfirm stylua
+    script:
+        - echo "Installing dependencies"
+        - pacman -S --noconfirm stylua
 
 formatting:
-    - echo "Formatting with stylua"
-    - stylua -v .
+    script:
+        - echo "Formatting with stylua"
+        - stylua -v .
