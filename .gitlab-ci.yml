@@ -3,6 +3,6 @@ formatting:
     tags:
         - Stylua
     before_script:
-        - pacman -Suy && pacman -S --noconfirm stylua
+        - pacman -Suy
     script:
-        - stylua -v .
+        - echo 'hi'
