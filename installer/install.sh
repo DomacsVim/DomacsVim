@@ -345,6 +345,7 @@ parse_arguments(){
 }
 
 main(){
+  parse_arguments "$@"
   clear
   welcome_message
   check_neovim_min_version
