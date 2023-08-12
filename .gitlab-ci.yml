@@ -33,5 +33,5 @@ install_domacsvim:
 test:
   stage: test
   script:
-    - ehco 'Testing DomacsVim'
+    - echo 'Testing DomacsVim'
     - /root/.local/bin/dvim --cmd ":qa!"
