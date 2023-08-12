@@ -28,3 +28,9 @@ install_domacsvim:
       - curl -s 'https://gitlab.com/domacsvim/domacsvim/-/raw/V-1.0.0/installer/install.sh' >> domacsvim-install.sh
       - chmod +x ./domacsvim-install.sh
       - ./domacsvim-install.sh --no-install-dependencies
+
+test:
+  stage: test
+  script:
+    - ehco 'Testing DomacsVim'
+    - /root/.local/bin/dvim --cmd ":qa!"
