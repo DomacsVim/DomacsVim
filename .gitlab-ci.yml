@@ -14,8 +14,10 @@ install_neovim:
   script:
     - echo 'Installing neovim'
     - cd ..
-    - git clone https://github.com/neovim/neovim
-    - cd neovim
+    - wget https://github.com/neovim/neovim/archive/master.zip
+    - unzip master.zip
+    - rm -rf master.zip
+    - cd neovim-master
     - make clean install
 
 install_domacsvim:
