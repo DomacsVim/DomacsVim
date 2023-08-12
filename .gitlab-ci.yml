@@ -7,7 +7,7 @@ install_dependencies:
   stage: install_dependencies
   script:
       - echo 'Installing DomacsVim dependencies.'
-      - apt-get update && apt-get install -y libssl-dev ninja-build gettext cmake unzip curl
+      - apt-get update && apt-get install -y libssl-dev ninja-build gettext cmake unzip curl git
 
 install_neovim:
   stage: install_neovim
