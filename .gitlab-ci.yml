@@ -13,6 +13,7 @@ install_neovim:
   stage: install_neovim
   script:
     - echo 'Installing neovim'
+    - cd ..
     - git clone https://github.com/neovim/neovim
     - cd neovim
     - make clean install
