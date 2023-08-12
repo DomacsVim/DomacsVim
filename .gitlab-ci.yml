@@ -2,6 +2,7 @@ stages:
   - install_dependencies
   - install_neovim
   - install_domacsvim
+  - test
 
 install_dependencies:
   stage: install_dependencies
