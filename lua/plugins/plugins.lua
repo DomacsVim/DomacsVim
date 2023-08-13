@@ -295,5 +295,16 @@ return {
           filetypes = filetypes
       }
     end
+  },
+  {
+    "https://github.com/ivanjermakov/troublesum.nvim",
+    config = function()
+      require("troublesum").setup({
+          enabled = true,
+          autocmd = true,
+          severity_format = { dvim.icons.ui.error, dvim.icons.ui.warn, dvim.icons.ui.hing, dvim.icons.ui.info },
+          severity_highlight = { "DiagnosticError", "DiagnosticWarn", "DiagnosticInfo", "DiagnosticHint" },
+      })
+    end
   }
 }
