@@ -196,6 +196,10 @@ M.ui = {
 	step_back = "",
 	run_last = "",
 	terminate = "",
+  error = " ",
+  warn = " ",
+  hint = "",
+  info = " "
 }
 
 M.kind_icons = {
