@@ -302,9 +302,9 @@ function M.config()
 			end,
 			right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
 			left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-			middle_mouse_command = "enew", -- can be a string | function, see "Mouse actions"
+			middle_mouse_command = function() return M.buf_kill() end, -- can be a string | function, see "Mouse actions"
 			indicator = {
-				icon = "▎",
+				icon = " ",
 				style = "icon",
 			},
 			buffer_close_icon = "󰅖",
@@ -355,7 +355,7 @@ function M.config()
 			max_name_length = 18,
 			max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 			truncate_names = true, -- whether or not tab names should be truncated
-			tab_size = 18,
+			tab_size = 20,
 			diagnostics = "",
 			diagnostics_update_in_insert = false,
 			diagnostics_indicator = diagnostics_indicator,
@@ -396,11 +396,11 @@ function M.config()
 			show_buffer_icons = true, -- disable filetype icons for buffers
 			show_buffer_close_icons = true,
 			show_close_icon = false,
-			show_tab_indicators = true,
+			show_tab_indicators = false,
 			persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 			-- can also be a table containing 2 custom separators
 			-- [focused and unfocused]. eg: { '|', '|' }
-			separator_style = "thin",
+			separator_style = {""},
 			enforce_regular_tabs = false,
 			always_show_bufferline = true,
 			hover = {
