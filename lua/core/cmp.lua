@@ -35,16 +35,17 @@ function M.config()
 			max_width = 0,
 			kind_icons = dvim.icons.kind_icons,
 			source_names = {
-				nvim_lsp = "(LSP)",
-				emoji = "(Emoji)",
-				path = "(Path)",
-				calc = "(Calc)",
-				cmp_tabnine = "(Tabnine)",
-				vsnip = "(Snippet)",
-				luasnip = "(Snippet)",
-				buffer = "(Self)",
-				tmux = "(TMUX)",
-				treesitter = "(TreeSitter)",
+        nvim_lsp = "(LSP)",
+        emoji = "(Emoji)",
+        path = "(Path)",
+        calc = "(Calc)",
+        cmp_tabnine = "(Tabnine)",
+        vsnip = "(Snippet)",
+        luasnip = "(Snippet)",
+        buffer = "(Buffer)",
+        tmux = "(TMUX)",
+        copilot = "(Copilot)",
+        treesitter = "(TreeSitter)",
 			},
 			duplicates = {
 				buffer = 1,
@@ -55,10 +56,8 @@ function M.config()
 			duplicates_default = 0,
 			fields = { "abbr", "menu", "kind" },
 			format = function(entry, vim_item)
-				local icon = dvim.core.cmp.formatting.kind_icons[vim_item.kind]
-				vim_item.kind = string.format("%s", vim_item.kind)
+				vim_item.kind = string.format("%s  %s",dvim.core.cmp.formatting.kind_icons[vim_item.kind], vim_item.kind)
 				vim_item.menu = dvim.core.cmp.formatting.source_names[entry.source.name]
-				vim_item.abbr = string.format("%s  %s", icon, vim_item.abbr)
 				return vim_item
 			end,
 		},
@@ -117,12 +116,10 @@ function M.setup()
 	}
 
 	dvim.core.cmp.mapping = cmp_mapping.preset.insert({
-		["<C-k>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
-		["<C-j>"] = cmp_mapping(cmp_mapping.select_next_item(), { "i", "c" }),
 		["<Down>"] = cmp_mapping(cmp_mapping.select_next_item({ behavior = SelectBehavior.Select }), { "i" }),
 		["<Up>"] = cmp_mapping(cmp_mapping.select_prev_item({ behavior = SelectBehavior.Select }), { "i" }),
-		["<C-d>"] = cmp_mapping.scroll_docs(-4),
-		["<C-f>"] = cmp_mapping.scroll_docs(4),
+		["<C-k>"] = cmp_mapping.scroll_docs(-4),
+		["<C-j>"] = cmp_mapping.scroll_docs(4),
 		["<C-y>"] = cmp_mapping({
 			i = cmp_mapping.confirm({ behavior = ConfirmBehavior.Replace, select = false }),
 			c = function(fallback)
@@ -155,7 +152,7 @@ function M.setup()
 		end, { "i", "s" }),
 		["<C-Space>"] = cmp_mapping.complete(),
 		["<C-e>"] = cmp_mapping.abort(),
-		["<CR>"] = cmp_mapping(function(fallback)
+		["<Tab>"] = cmp_mapping(function(fallback)
 			if cmp.visible() then
 				local confirm_opts = vim.deepcopy(dvim.core.cmp.confirm_opts) -- avoid mutating the original opts below
 				local is_insert_mode = function()
