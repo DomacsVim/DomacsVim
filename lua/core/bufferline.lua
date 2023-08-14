@@ -1,5 +1,15 @@
 local M = {}
 
+local size = function(term)
+  if term.direction == "horizontal" then
+    return 15
+  elseif term.direction == "vertical" and vim.bo.filetype == "markdown" then
+    return vim.o.columns * 0.5
+  end
+end
+
+dvim.core.terminal.size = size
+
 local function exec_toggle(opts)
 	local Terminal = require("toggleterm.terminal").Terminal
 	local term = Terminal:new({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
@@ -26,8 +36,14 @@ function M.push()
 	exec_toggle({ cmd = "echo 'Pushing the latest changes...' && git push -u " .. remote .. " " .. branch })
 end
 
+function M.TbToggle_markdown_preview()
+  local cmd = "slides " .. vim.fn.expand("%:p")
+  exec_toggle({cmd = cmd, direction="vertical"})
+end
+
 vim.cmd("function! TbOpen_settings(a,b,c,d) \n edit ~/.config/dvim/init.lua \n endfunction")
 vim.cmd("function! TbToggle_search(a,b,c,d) \n Telescope live_grep \n endfunction")
+vim.cmd("function! TbToggle_markdown_preview(a,b,c,d) \n lua require('core.bufferline').TbToggle_markdown_preview() \n endfunction")
 vim.cmd(
 	"function! TbToggle_debuging(a,b,c,d) \n \
     lua require('dap').toggle_breakpoint() \n \
@@ -347,6 +363,9 @@ function M.config()
               table.insert(result, { text = "%@TbToggle_debuging@%#Debuging#   " })
             end
 					end
+          if vim.bo.filetype == "markdown" then
+            table.insert(result, { text = "%@TbToggle_markdown_preview@   " })
+          end
 					table.insert(result, { text = "%@TbToggle_search@   " })
 					table.insert(result, { text = "%@TbOpen_settings@   " })
 					return result
