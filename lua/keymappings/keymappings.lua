@@ -28,6 +28,7 @@ return {
     ["<A-h>"] = ":vertical resize -2<CR>",
     ["<A-l>"] = ":vertical resize +2<CR>",
     ["<C-w>"] = ":lua require('core.bufferline').buf_kill()<CR>",
+    ["<C-_>"] = "<Plug>(comment_toggle_linewise_current)",
     ["f"] = "za",
     ["H"] = "I<esc>",
     ["E"] = "<end>",
@@ -42,6 +43,7 @@ return {
     ["<C-y>"] = "y",
     ["<A-j>"] = ":m '>+1<CR>gv-gv",
     ["<A-k>"] = ":m '<-2<CR>gv-gv",
+  ["<C-_>"] = "<Plug>(comment_toggle_linewise_visual)"
   },
   command_mode = {},
   term_mode = {},
