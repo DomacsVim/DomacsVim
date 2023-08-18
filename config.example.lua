@@ -1,5 +1,9 @@
 -- add custom keys
 dvim.keys = {}
+-- template :
+--   dvim.keys[mode][key] = value
+--   modes:
+--     you can see modes with :dvim.key<tab>
 -- add custom plugins
 dvim.plugins = {}
 -- set leaderkey
