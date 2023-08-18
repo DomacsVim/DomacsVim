@@ -124,7 +124,9 @@ return {
 	{
 		"https://github.com/numToStr/Comment.nvim",
 		opts = function()
-			dvim.core.comments = {}
+      dvim.core.comments = {}
+      dvim.keys.normal_mode["<C-_>"] = "<Plug>(comment_toggle_linewise_current)"
+      dvim.keys.visual_mode["<C-_>"] = "<Plug>(comment_toggle_linewise_visual)"
 			return dvim.core.comments
 		end,
 		config = function(_, opts)

@@ -25,6 +25,8 @@ function M.load()
 
 	-- import default options
 	require("options").load()
+  -- import default keybindings
+	require("keymappings.manager").init()
 end
 
 return M

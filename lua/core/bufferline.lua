@@ -430,6 +430,8 @@ function M.config()
 			sort_by = "id",
 		},
 	}
+  dvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
+  dvim.keys.normal_mode["<S-Tab>"] = ":bprevious<CR>"
 end
 
 function M.buf_kill(kill_command, bufnr, force)

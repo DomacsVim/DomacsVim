@@ -5,11 +5,11 @@ vim.opt.rtp:append(dvim_runtime_dir)
 require("bootstrap").init()
 -- import configs
 require("core").load()
--- import configs
-require("config").init()
--- import plugins with load method to load dvim.plugins
-require("plugins.manager").load()
 -- import keymappings
 require("keymappings.manager").load()
+-- import plugins with load method to load dvim.plugins
+require("plugins.manager").load()
 -- import and setup lspconfigs
 require("lsp").setup()
+-- import configs
+require("config").init()
