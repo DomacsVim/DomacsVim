@@ -12,26 +12,42 @@ local mode_adapters = {
 	command_mode = "c",
 }
 
-function M.load()
-	local keymappings = require("keymappings.keymappings").defaults
-	dvim.keys = vim.tbl_extend("keep", keymappings, dvim.keys)
+-- import keymappings
+local keymappings = require("keymappings.keymappings")
 
-	for group, _ in pairs(dvim.keys) do
-		for modes, _ in pairs(dvim.keys[group]) do
-			for key, value in pairs(dvim.keys[group][modes]) do
-				if
-					type(key) and type(value) == "string"
-					or type(value) == "function" and value ~= false
-					or value ~= nil
-				then
-					-- set keymappings
-					vim.keymap.set(mode_adapters[modes], key, value, options)
-				else
-					-- remove disable keys
-					pcall(vim.api.nvim_del_keymap, mode_adapters[modes], key)
-				end
-			end
-		end
+function M.init()
+	for modes, _ in pairs(keymappings) do
+    dvim.keys[modes] = {}
+    for key, value in pairs(keymappings[modes]) do
+    	if
+    		type(key) and type(value) == "string"
+    		or type(value) == "function" and value ~= false
+    		or value ~= nil
+    	then
+        dvim.keys[modes][key] = value
+      else
+        print("Keybindings are not set.")
+    	end
+    end
+	end
+end
+
+function M.load()
+  local keys = dvim.keys
+	for modes, _ in pairs(keys) do
+    for key, value in pairs(keys[modes]) do
+    	if
+    		type(key) and type(value) == "string"
+    		or type(value) == "function" and value ~= false
+    		or value ~= nil
+    	then
+    		-- set keymappings
+    		vim.keymap.set(mode_adapters[modes], key, value, options)
+    	else
+    		-- remove disable keys
+    		pcall(vim.api.nvim_del_keymap, mode_adapters[modes], key)
+    	end
+    end
 	end
 end
 
