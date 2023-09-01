@@ -58,9 +58,9 @@ dvim.core.lspconfig = {
 		},
 		signs = {
 			{ name = "DiagnosticSignError", text = dvim.icons.ui.error },
-			{ name = "DiagnosticSignWarn", text = dvim.icons.ui.warn  },
-			{ name = "DiagnosticSignHint", text = dvim.icons.ui.hint  },
-			{ name = "DiagnosticSignInfo", text = dvim.icons.ui.info  },
+			{ name = "DiagnosticSignWarn", text = dvim.icons.ui.warn },
+			{ name = "DiagnosticSignHint", text = dvim.icons.ui.hint },
+			{ name = "DiagnosticSignInfo", text = dvim.icons.ui.info },
 		},
 	},
 	installer = {

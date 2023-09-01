@@ -180,7 +180,7 @@ function M.config()
 			args = {},
 		},
 	}
-  dvim.keys.normal_mode["<C-e>"] = ":NvimTreeToggle<CR>"
+	dvim.keys.normal_mode["<C-e>"] = ":NvimTreeToggle<CR>"
 end
 
 function M.setup()

@@ -124,7 +124,7 @@ return {
 	{
 		"https://github.com/numToStr/Comment.nvim",
 		opts = function()
-      dvim.core.comments = {}
+			dvim.core.comments = {}
 			return dvim.core.comments
 		end,
 		config = function(_, opts)
@@ -284,55 +284,70 @@ return {
 	},
 	{ "https://github.com/SmiteshP/nvim-navic" },
 	{ "https://github.com/utilyre/barbecue.nvim" },
-  {
-    "https://github.com/windwp/nvim-ts-autotag",
-    cofnig = function()
-      local filetypes = {
-        'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript',
-        'xml', 'php', 'markdown', 'astro', 'glimmer', 'handlebars', 'hbs'
-      }
-      require('nvim-ts-autotag').setup {
-          filetypes = filetypes
-      }
-    end
-  },
-  {
-    "https://github.com/ivanjermakov/troublesum.nvim",
-    config = function()
-      local severity_format = { dvim.icons.ui.error, dvim.icons.ui.warn, dvim.icons.ui.hing, dvim.icons.ui.info }
-      local severity_highlight = { "DiagnosticError", "DiagnosticWarn", "DiagnosticInfo", "DiagnosticHint" }
-      require("troublesum").setup({
-        enabled = true,
-        autocmd = true,
-        severity_format = severity_format,
-        severity_highlight = severity_highlight,
-        format = function(counts)
-          local text = {}
-          for severity, count in pairs(counts) do
-              if count ~= 0 then
-                  if #text ~= 0 then
-                      table.insert(text, { " ", "Normal" })
-                  end
-                  if severity_format[severity] ~= nil then
-                    table.insert(text, {
-                      table.concat({ severity_format[severity], tostring(count) }, " "),
-                      severity_highlight[severity]
-                    })
-                  end
-              end
-          end
-          return text
-        end,
-        display_summary = function(bufnr, ns, text)
-          local line = vim.fn.line("w0") - 1
-          if line then
-            vim.api.nvim_buf_set_extmark(bufnr, ns, line, 0, {
-                virt_text = text,
-                virt_text_pos = "right_align"
-            })
-          end
-        end
-      })
-    end
-  }
+	{
+		"https://github.com/windwp/nvim-ts-autotag",
+		cofnig = function()
+			local filetypes = {
+				"html",
+				"javascript",
+				"typescript",
+				"javascriptreact",
+				"typescriptreact",
+				"svelte",
+				"vue",
+				"tsx",
+				"jsx",
+				"rescript",
+				"xml",
+				"php",
+				"markdown",
+				"astro",
+				"glimmer",
+				"handlebars",
+				"hbs",
+			}
+			require("nvim-ts-autotag").setup({
+				filetypes = filetypes,
+			})
+		end,
+	},
+	{
+		"https://github.com/ivanjermakov/troublesum.nvim",
+		config = function()
+			local severity_format = { dvim.icons.ui.error, dvim.icons.ui.warn, dvim.icons.ui.hing, dvim.icons.ui.info }
+			local severity_highlight = { "DiagnosticError", "DiagnosticWarn", "DiagnosticInfo", "DiagnosticHint" }
+			require("troublesum").setup({
+				enabled = true,
+				autocmd = true,
+				severity_format = severity_format,
+				severity_highlight = severity_highlight,
+				format = function(counts)
+					local text = {}
+					for severity, count in pairs(counts) do
+						if count ~= 0 then
+							if #text ~= 0 then
+								table.insert(text, { " ", "Normal" })
+							end
+							if severity_format[severity] ~= nil then
+								table.insert(text, {
+									table.concat({ severity_format[severity], tostring(count) }, " "),
+									severity_highlight[severity],
+								})
+							end
+						end
+					end
+					return text
+				end,
+				display_summary = function(bufnr, ns, text)
+					local line = vim.fn.line("w0") - 1
+					if line then
+						vim.api.nvim_buf_set_extmark(bufnr, ns, line, 0, {
+							virt_text = text,
+							virt_text_pos = "right_align",
+						})
+					end
+				end,
+			})
+		end,
+	},
 }

@@ -41,12 +41,12 @@ function M.config()
 			winblend = 0,
 		},
 	}
-  dvim.keys.normal_mode["t"] = ":ToggleTerm<CR>"
-  dvim.keys.term_mode["<esc>"] = "<C-\\><C-n>"
-  dvim.keys.term_mode["<C-h>"] = "<C-\\><C-N><C-w>h"
-  dvim.keys.term_mode["<C-j>"] = "<C-\\><C-N><C-w>j"
-  dvim.keys.term_mode["<C-k>"] = "<C-\\><C-N><C-w>k"
-  dvim.keys.term_mode["<C-l>"] = "<C-\\><C-N><C-w>l"
+	dvim.keys.normal_mode["t"] = ":ToggleTerm<CR>"
+	dvim.keys.term_mode["<esc>"] = "<C-\\><C-n>"
+	dvim.keys.term_mode["<C-h>"] = "<C-\\><C-N><C-w>h"
+	dvim.keys.term_mode["<C-j>"] = "<C-\\><C-N><C-w>j"
+	dvim.keys.term_mode["<C-k>"] = "<C-\\><C-N><C-w>k"
+	dvim.keys.term_mode["<C-l>"] = "<C-\\><C-N><C-w>l"
 end
 
 function M.setup()

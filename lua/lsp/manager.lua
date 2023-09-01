@@ -50,8 +50,8 @@ mason_lspconfig.setup_handlers({
 					require("nvim-navic").attach(client, bufnr)
 				end
 			end,
-      settings = {
-        Lua = {
+			settings = {
+				Lua = {
 					completion = {
 						callSnippet = "Replace",
 					},
@@ -67,7 +67,7 @@ mason_lspconfig.setup_handlers({
 					workspace = {
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
 							[require("neodev.config").types()] = true,
 							["${3rd}/busted/library"] = true,
 							["${3rd}/luassert/library"] = true,

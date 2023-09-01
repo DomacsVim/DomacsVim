@@ -35,17 +35,17 @@ function M.config()
 			max_width = 0,
 			kind_icons = dvim.icons.kind_icons,
 			source_names = {
-        nvim_lsp = "(LSP)",
-        emoji = "(Emoji)",
-        path = "(Path)",
-        calc = "(Calc)",
-        cmp_tabnine = "(Tabnine)",
-        vsnip = "(Snippet)",
-        luasnip = "(Snippet)",
-        buffer = "(Buffer)",
-        tmux = "(TMUX)",
-        copilot = "(Copilot)",
-        treesitter = "(TreeSitter)",
+				nvim_lsp = "(LSP)",
+				emoji = "(Emoji)",
+				path = "(Path)",
+				calc = "(Calc)",
+				cmp_tabnine = "(Tabnine)",
+				vsnip = "(Snippet)",
+				luasnip = "(Snippet)",
+				buffer = "(Buffer)",
+				tmux = "(TMUX)",
+				copilot = "(Copilot)",
+				treesitter = "(TreeSitter)",
 			},
 			duplicates = {
 				buffer = 1,
@@ -56,7 +56,8 @@ function M.config()
 			duplicates_default = 0,
 			fields = { "abbr", "menu", "kind" },
 			format = function(entry, vim_item)
-				vim_item.kind = string.format("%s  %s",dvim.core.cmp.formatting.kind_icons[vim_item.kind], vim_item.kind)
+				vim_item.kind =
+					string.format("%s  %s", dvim.core.cmp.formatting.kind_icons[vim_item.kind], vim_item.kind)
 				vim_item.menu = dvim.core.cmp.formatting.source_names[entry.source.name]
 				return vim_item
 			end,

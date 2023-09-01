@@ -1,11 +1,11 @@
 local M = {}
 
 local size = function(term)
-  if term.direction == "horizontal" then
-    return 15
-  elseif term.direction == "vertical" and vim.bo.filetype == "markdown" then
-    return vim.o.columns * 0.5
-  end
+	if term.direction == "horizontal" then
+		return 15
+	elseif term.direction == "vertical" and vim.bo.filetype == "markdown" then
+		return vim.o.columns * 0.5
+	end
 end
 
 dvim.core.terminal.size = size
@@ -37,18 +37,18 @@ function M.push()
 end
 
 function M.TbToggle_markdown_preview()
-  local cmd = "slides " .. vim.fn.expand("%:p")
-  exec_toggle({cmd = cmd, direction="vertical"})
+	local cmd = "slides " .. vim.fn.expand("%:p")
+	exec_toggle({ cmd = cmd, direction = "vertical" })
 end
 
 vim.cmd("function! TbOpen_settings(a,b,c,d) \n edit ~/.config/dvim/init.lua \n endfunction")
 vim.cmd("function! TbToggle_search(a,b,c,d) \n Telescope live_grep \n endfunction")
-vim.cmd("function! TbToggle_markdown_preview(a,b,c,d) \n lua require('core.bufferline').TbToggle_markdown_preview() \n endfunction")
 vim.cmd(
-	"function! TbToggle_debuging(a,b,c,d) \n \
-    lua require('dap').toggle_breakpoint() \n \
-    lua require('dap').continue() \n endfunction"
+	"function! TbToggle_markdown_preview(a,b,c,d) \n lua require('core.bufferline').TbToggle_markdown_preview() \n endfunction"
 )
+vim.cmd("function! TbToggle_debuging(a,b,c,d) \n \
+    lua require('dap').toggle_breakpoint() \n \
+    lua require('dap').continue() \n endfunction")
 vim.cmd("function! GitPull(a,b,c,d) \n lua require('core.bufferline').pull() \n endfunction")
 vim.cmd("function! GitCommit(a,b,c,d) \n lua require('core.bufferline').commit() \n endfunction")
 vim.cmd("function! GitPush(a,b,c,d) \n lua require('core.bufferline').push() \n endfunction")
@@ -318,7 +318,9 @@ function M.config()
 			end,
 			right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
 			left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-			middle_mouse_command = function() return M.buf_kill() end, -- can be a string | function, see "Mouse actions"
+			middle_mouse_command = function()
+				return M.buf_kill()
+			end, -- can be a string | function, see "Mouse actions"
 			indicator = {
 				icon = " ",
 				style = "icon",
@@ -351,21 +353,21 @@ function M.config()
 					end
 
 					if rawget(vim, "lsp") then
-            local status
+						local status
 						for _, client in ipairs(vim.lsp.get_active_clients()) do
 							if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-                status = true
-              else
-                status = false
+								status = true
+							else
+								status = false
 							end
 						end
-            if status then
-              table.insert(result, { text = "%@TbToggle_debuging@%#Debuging#   " })
-            end
+						if status then
+							table.insert(result, { text = "%@TbToggle_debuging@%#Debuging#   " })
+						end
 					end
-          if vim.bo.filetype == "markdown" then
-            table.insert(result, { text = "%@TbToggle_markdown_preview@   " })
-          end
+					if vim.bo.filetype == "markdown" then
+						table.insert(result, { text = "%@TbToggle_markdown_preview@   " })
+					end
 					table.insert(result, { text = "%@TbToggle_search@   " })
 					table.insert(result, { text = "%@TbOpen_settings@   " })
 					return result
@@ -419,7 +421,7 @@ function M.config()
 			persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 			-- can also be a table containing 2 custom separators
 			-- [focused and unfocused]. eg: { '|', '|' }
-			separator_style = {""},
+			separator_style = { "" },
 			enforce_regular_tabs = false,
 			always_show_bufferline = true,
 			hover = {
@@ -430,8 +432,8 @@ function M.config()
 			sort_by = "id",
 		},
 	}
-  dvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
-  dvim.keys.normal_mode["<S-Tab>"] = ":bprevious<CR>"
+	dvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
+	dvim.keys.normal_mode["<S-Tab>"] = ":bprevious<CR>"
 end
 
 function M.buf_kill(kill_command, bufnr, force)

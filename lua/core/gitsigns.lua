@@ -65,11 +65,11 @@ function M.config()
 		},
 		yadm = { enable = false },
 	}
-  dvim.keys.normal_mode["gh"] = ":Gitsigns reset_hunk<CR>"
-  dvim.keys.normal_mode["gn"] = ":Gitsigns next_hunk<CR>"
-  dvim.keys.normal_mode["gp"] = ":Gitsigns prev_hunk<CR>"
-  dvim.keys.normal_mode["gk"] = ":Gitsigns preview_hunk<CR>"
-  dvim.keys.normal_mode["gi"] = ":Gitsigns preview_hunk_inline<CR>"
+	dvim.keys.normal_mode["gh"] = ":Gitsigns reset_hunk<CR>"
+	dvim.keys.normal_mode["gn"] = ":Gitsigns next_hunk<CR>"
+	dvim.keys.normal_mode["gp"] = ":Gitsigns prev_hunk<CR>"
+	dvim.keys.normal_mode["gk"] = ":Gitsigns preview_hunk<CR>"
+	dvim.keys.normal_mode["gi"] = ":Gitsigns preview_hunk_inline<CR>"
 end
 
 function M.setup()
