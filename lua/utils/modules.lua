@@ -16,4 +16,10 @@ function M.runtime_error(runtime_path)
 	end
 end
 
+-- checking file (type)
+function M.is_file(path)
+	local stat = vim.loop.fs_stat(path)
+	return stat and stat.type == "file" or false
+end
+
 return M
