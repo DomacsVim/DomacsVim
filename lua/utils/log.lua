@@ -1,6 +1,6 @@
 local log = {}
 
-local utils = requrie("utils.modules")
+local utils = require("utils.modules")
 
 log.levels = {
 	INFO = "INFO",
