@@ -23,6 +23,8 @@ function M.handle_user_config_file()
   		vim.loop.fs_copyfile(example_config, config_path)
 			log:TRACE("The example config file was copied to the config directory.")
   	end
+	else
+		log:INFO("The configuration file has been loaded successfully.")
   end
 end
 
