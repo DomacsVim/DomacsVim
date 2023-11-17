@@ -9,10 +9,6 @@ function M.handle_user_config_file()
 
 	local status_ok, err = pcall(dofile, config_path)
 
-	if err then
-		log:ERROR(err)
-	end
-
   if not status_ok then
   	if utils.is_file(config_path) then
 			local message = "Invalid configuration: " .. err
