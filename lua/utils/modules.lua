@@ -1,5 +1,8 @@
 local M = {}
 
+local uv = vim.loop
+local path_sep = uv.os_uname().version:match "Windows" and "\\" or "/"
+
 -- checking directory (type)
 function M.is_directory(path)
 	local stat = vim.loop.fs_stat(path)
@@ -20,6 +23,12 @@ end
 function M.is_file(path)
 	local stat = vim.loop.fs_stat(path)
 	return stat and stat.type == "file" or false
+end
+
+---Join path segments that were passed as input
+function M.join_paths(...)
+  local result = table.concat({ ... }, path_sep)
+  return result
 end
 
 return M
