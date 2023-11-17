@@ -66,5 +66,10 @@ for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
+local bootstrap = require("bootstrap")
+
 -- initialize user config file.
-require("bootstrap").handle_user_config_file()
+bootstrap.handle_user_config_file()
+
+-- initialize plugin manager
+bootstrap.initialize_plugin_manager()
