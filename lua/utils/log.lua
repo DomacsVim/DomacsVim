@@ -1,5 +1,7 @@
 local log = {}
 
+local utils = requrie("utils.modules")
+
 log.levels = {
 	INFO = "INFO",
 	TRACE = "TRACE",
@@ -17,7 +19,7 @@ function log:log_format(text, level)
 end
 
 function log:init(message)
-	local file_path = dvim_cache_dir .. "/dvim.log"
+	local file_path = utils.join_paths(dvim_cache_dir, "dvim.log")
 	local file = io.open(file_path, "a")
 	if file ~= nil then
 		io.output(file)

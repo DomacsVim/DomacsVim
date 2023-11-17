@@ -4,8 +4,8 @@ local utils = require("utils.modules")
 local log = require("utils.log")
 
 function M.handle_user_config_file()
-	local config_path = dvim_config_dir .. "/init.lua"
-	local example_config = dvim_runtime_dir .. "/config.example.lua"
+	local config_path = utils.join_paths(dvim_config_dir, "init.lua")
+	local example_config = utils.join_paths(dvim_runtime_dir, "config.example.lua")
 
 	local status_ok, err = pcall(dofile, config_path)
 

@@ -39,20 +39,20 @@ end
 vim.opt.rtp:remove(vim.call("stdpath", "data"))
 vim.opt.rtp:remove(vim.call("stdpath", "cache"))
 vim.opt.rtp:remove(vim.call("stdpath", "config"))
-vim.opt.rtp:remove(vim.call("stdpath", "data") .. "/site")
-vim.opt.rtp:remove(vim.call("stdpath", "config") .. "/after")
-vim.opt.rtp:remove(vim.call("stdpath", "data") .. "/site/after")
+vim.opt.rtp:remove(utils.join_paths(vim.call("stdpath", "data"), "site"))
+vim.opt.rtp:remove(utils.join_paths(vim.call("stdpath", "config"), "after"))
+vim.opt.rtp:remove(utils.join_paths(vim.call("stdpath", "data"), "site", "after"))
 vim.opt.rtp:append(dvim_cache_dir)
 vim.opt.rtp:append(dvim_config_dir)
-vim.opt.rtp:append(dvim_config_dir .. "/after")
-vim.opt.rtp:append(dvim_cache_dir .. "/database")
-vim.opt.rtp:append(dvim_cache_dir .. "/database" .. "/after")
+vim.opt.rtp:append(utils.join_paths(dvim_config_dir, "after"))
+vim.opt.rtp:append(utils.join_paths(dvim_cache_dir, "database"))
+vim.opt.rtp:append(utils.join_paths(dvim_cache_dir, "database", "after"))
 
 vim.opt.packpath = vim.opt.rtp:get()
 
 vim.fn.stdpath = function(what)
 	if what == "data" then
-		return dvim_cache_dir .. "/database"
+		return utils.join_paths(dvim_cache_dir, "database")
 	elseif what == "config" then
 		return dvim_config_dir
 	elseif what == "cache" then
