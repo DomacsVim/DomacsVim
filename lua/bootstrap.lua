@@ -28,6 +28,10 @@ function M.handle_user_config_file()
 	else
 		log:INFO("The configuration file has been loaded successfully.")
   end
+
+	local default_configs = require("config").default_configs()
+
+	dvim = vim.tbl_extend("force", default_configs, dvim)
 end
 
 function M.initialize_plugin_manager()

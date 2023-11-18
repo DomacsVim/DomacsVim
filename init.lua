@@ -66,6 +66,11 @@ for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
+local config = require("config")
+
+-- Initialize dvim default configuration and vars
+config.load_default_configs()
+
 local bootstrap = require("bootstrap")
 
 -- initialize user config file.
