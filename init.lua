@@ -78,3 +78,9 @@ bootstrap.handle_user_config_file()
 
 -- initialize plugin manager
 bootstrap.initialize_plugin_manager()
+
+local plugins = require("plugins")
+
+-- load the default plugins
+
+plugins.load()
