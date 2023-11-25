@@ -2,8 +2,8 @@ local M = {}
 
 local log = require("utils.log")
 local utils = require("utils.modules")
-local plugins_dir = utils.join_paths(vim.fn.stdpath("cache"), "site", "pack", "lazy", "opt")
-local lazy_dir = utils.join_paths(vim.fn.stdpath("cache"), "site", "pack", "lazy", "opt", "lazy.nvim")
+_G.plugins_dir = utils.join_paths(vim.fn.stdpath("cache"), "site", "pack", "lazy", "opt")
+_G.lazy_dir = utils.join_paths(vim.fn.stdpath("cache"), "site", "pack", "lazy", "opt", "lazy.nvim")
 
 function M.handle_user_config_file()
 	local config_path = utils.join_paths(dvim_config_dir, "init.lua")
