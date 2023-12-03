@@ -5,6 +5,9 @@ local utils = require("utils.modules")
 _G.plugins_dir = utils.join_paths(vim.fn.stdpath("cache"), "site", "pack", "lazy", "opt")
 _G.lazy_dir = utils.join_paths(vim.fn.stdpath("cache"), "site", "pack", "lazy", "opt", "lazy.nvim")
 
+local default_configs = require("config").default_configs()
+dvim = vim.tbl_extend("force", default_configs, dvim)
+
 function M.handle_user_config_file()
 	local config_path = utils.join_paths(dvim_config_dir, "init.lua")
 	local example_config = utils.join_paths(dvim_runtime_dir, "config.example.lua")
@@ -28,10 +31,6 @@ function M.handle_user_config_file()
 	else
 		log:INFO("The configuration file has been loaded successfully.")
   end
-
-	local default_configs = require("config").default_configs()
-
-	dvim = vim.tbl_extend("force", default_configs, dvim)
 end
 
 function M.initialize_plugin_manager()
