@@ -84,3 +84,11 @@ local plugins = require("plugins")
 -- load the default plugins
 
 plugins.load()
+
+local keymappings = require("keymappings")
+
+-- initialize keymapping structure
+keymappings.init()
+
+-- load the default keymappings
+keymappings.load_mappings() 
