@@ -2,7 +2,18 @@ local M = {}
 
 -- return a table of default configs
 function M.default_configs()
-	return {}
+	return {
+		keys = {
+			leadermap = " ",
+			term_mode = {},
+			insert_mode = {},
+			normal_mode = {},
+			visual_mode = {},
+			command_mode = {},
+		},
+		lazy = {},
+		plugins = {},
+	}
 end
 
 -- load default configs add set dvim global var
