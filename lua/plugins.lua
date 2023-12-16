@@ -154,7 +154,11 @@ dvim.lazy = {
 	},
 }
 
-function M.load(plugins)
+local defaults = {
+	"https://github.com/folke/tokyonight.nvim"
+}
+
+function M.load()
 	log:TRACE "loading plugins"
 	local lazy_available, lazy = pcall(require, "lazy")
 	if not lazy_available then
@@ -164,6 +168,8 @@ function M.load(plugins)
 
 	-- remove plugins from rtp before loading lazy, so that all plugins won't be loaded on startup
 	vim.opt.rtp:remove(utils.join_paths(plugins_dir, "*"))
+
+	dvim.plugins = vim.tbl_extend("force", defaults, dvim.plugins)
 
 	local status_ok = xpcall(function()
 		table.insert(dvim.lazy.install.colorscheme, 1, dvim.colorscheme)
