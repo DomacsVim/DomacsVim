@@ -13,6 +13,7 @@ function M.default_configs()
 		},
 		lazy = {},
 		plugins = {},
+		colorscheme = "onedark"
 	}
 end
 
