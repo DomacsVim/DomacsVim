@@ -6,7 +6,8 @@ vim.g.mapleader = dvim.keys.leadermap
 
 local options = { noremap = true, silent = true }
 
-local mode_adapters = {
+-- defined modes
+local modes = {
 	term_mode = "t",
 	insert_mode = "i",
 	normal_mode = "n",
@@ -23,38 +24,41 @@ local defaults = {
 	command_mode = {},
 }
 
-function M.init()
-	for modes, _ in pairs(defaults) do
-		for key, value in pairs(defaults[modes]) do
-			if
-				type(key) and type(value) == "string"
-				or type(value) == "function" and value ~= false
-				or value ~= nil
-			then
-				dvim.keys[modes][key] = value
-				local message = "Keybindings are set."
-				log:TRACE(message)
-			else
-				local message = "Keybindings are not set."
-				log:WARN(message)
-			end
+dvim.keys = vim.tbl_deep_extend("force", defaults, dvim.keys)
+
+-- @param mode, key, value type checking returns true output if confirmed else return false
+local function check_input_type(mode, key, value)
+	local result
+	if type(mode) == "string" and type(key) == "string" and type(value) == "string" or type(value) == "function" then
+		if mode ~= "" and key ~= "" and value ~= "" then
+			result = true
+			log:TRACE("The structure of the keys is correct.")
 		end
+	elseif value == false or value == {} or value == nil then
+		result = false
+		log:TRACE("The structure of the keys is incorrect.")
+	end
+	return result
+end
+
+local function set_keymappings(mode, key, value)
+	if check_input_type(mode, key, value) == true then
+		vim.keymap.set(mode, key, value, options)
 	end
 end
 
-function M.load_mappings()
-	for modes, _ in pairs(defaults) do
-		for key, value in pairs(dvim.keys[modes]) do
-			if
-				type(key) and type(value) == "string"
-				or type(value) == "function" and value ~= false
-				or value ~= nil
-			then
-				-- set keymappings
-				vim.keymap.set(mode_adapters[modes], key, value, options)
-			else
-				-- remove disable keys
-				pcall(vim.api.nvim_del_keymap, mode_adapters[modes], key)
+local function remove_disabled_keys(mode, key)
+	if check_input_type(mode, key) then
+		vim.keymap.del(mode, key)
+	end
+end
+
+function M.load_keymappings()
+	for items, values in pairs(dvim.keys) do
+		if type(values) == "table" then
+			for key, value in pairs(values) do
+				set_keymappings(modes[items], key, value)
+				remove_disabled_keys(modes[items], key)
 			end
 		end
 	end
