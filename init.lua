@@ -87,8 +87,5 @@ plugins.load()
 
 local keymappings = require("keymappings")
 
--- initialize keymapping structure
-keymappings.init()
-
 -- load the default keymappings
-keymappings.load_mappings() 
+keymappings.load_keymappings() 
