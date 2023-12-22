@@ -79,13 +79,12 @@ bootstrap.handle_user_config_file()
 -- initialize plugin manager
 bootstrap.initialize_plugin_manager()
 
-local plugins = require("plugins")
-
--- load the default plugins
-
-plugins.load()
-
 local keymappings = require("keymappings")
 
 -- load the default keymappings
 keymappings.load_keymappings() 
+
+local plugin_manager = require("plugin-manager")
+
+-- load the default plugins
+plugin_manager.load()
