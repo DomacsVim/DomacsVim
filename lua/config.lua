@@ -11,6 +11,7 @@ function M.default_configs()
 			visual_mode = {},
 			command_mode = {},
 		},
+    core = {},
 		lazy = {},
 		plugins = {},
 		colorscheme = "onedark"

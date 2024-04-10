@@ -1,8 +1,8 @@
 -- check the neovim version
 if vim.fn.has("nvim-0.9") ~= 1 then
-	vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
-	vim.wait(4000, function() return false end)
-	vim.cmd("cquit")
+  vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
+  vim.wait(4000, function() return false end)
+  vim.cmd("cquit")
 end
 
 -- get and set the domacsvim runtimepath
@@ -16,9 +16,9 @@ local utils = require("utils.modules")
 -- get the domacsvim config directory
 _G.dvim_config_dir = os.getenv("DVIM_CONFIG_DIR")
 if dvim_config_dir then
-	if not utils.is_directory(dvim_config_dir) then
-		vim.fn.mkdir(dvim_config_dir)
-	end
+  if not utils.is_directory(dvim_config_dir) then
+    vim.fn.mkdir(dvim_config_dir)
+  end
 else
 	local message = string.format("dvim_config_dir : %s", (dvim_config_dir))
 	utils.runtime_error(message)
@@ -82,10 +82,15 @@ bootstrap.handle_user_config_file()
 -- initialize plugin manager
 bootstrap.initialize_plugin_manager()
 
+local core = require("core")
+
+-- load default configs
+core.load_default_configs()
+
 local keymappings = require("keymappings")
 
 -- load the default keymappings
-keymappings.load_keymappings() 
+keymappings.load_keymappings()
 
 local plugin_manager = require("plugin-manager")
 
