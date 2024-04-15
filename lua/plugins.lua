@@ -16,4 +16,13 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus", "NvimTreeFindFileToggle" },
     event = "User DirOpened",
   },
+  {
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
+    config = function()
+      require("core.treesitter").setup()
+    end,
+  },
 }
