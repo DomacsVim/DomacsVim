@@ -15,7 +15,6 @@ local default_options = {
 	fileencoding = "utf-8", -- the encoding written to a file
 	foldmethod = "manual", -- folding, set to "expr" for treesitter based folding
 	foldexpr = "", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-	guifont = "monospace:h17", -- the font used in graphical neovim applications
 	hidden = true, -- required to keep multiple buffers and open multiple buffers
 	hlsearch = true, -- highlight all matches on previous search pattern
 	ignorecase = true, -- ignore case in search patterns
@@ -49,6 +48,15 @@ local default_options = {
 	ruler = false,
 	laststatus = 3,
 }
+
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font:h11.5" -- text below applies for VimScript
+  vim.g.neovide_scale_factor = 1.0
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+end
 
 ---  SETTINGS  ---
 vim.opt.spelllang:append "cjk" -- disable spellchecking for asian characters (VIM algorithm does not support it)
