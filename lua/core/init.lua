@@ -3,6 +3,7 @@ local M = {}
 local modules = {
   nvimtree = "core.nvimtree",
   treesitter = "core.treesitter",
+  gitsigns = "core.gitsigns",
 }
 
 function M.load_default_configs()
