@@ -11,6 +11,7 @@ function M.default_configs()
 			visual_mode = {},
 			command_mode = {},
 		},
+    icons = require("icons"),
     core = {},
 		lazy = {},
 		plugins = {},
