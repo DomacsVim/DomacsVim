@@ -97,7 +97,7 @@ M.defaults = {
 function M.setup()
   local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
-    log:ERROR "Failed to load nvim-treesitter.configs"
+    log:ERROR("Failed to load nvim-treesitter.configs module.")
     return
   end
 

@@ -1,5 +1,7 @@
 local M = {}
 
+local log = require("utils.log")
+
 -- default configurations
 M.defaults = {
   active = true,
@@ -79,7 +81,13 @@ M.defaults = {
 }
 
 function M.setup()
-  require("gitsigns").setup(dvim.core.gitsigns.configs)
+  local status_ok, gitsigns = pcall(require, "gitsigns")
+  if not status_ok then
+    log:ERROR("Failed to load gitsigns module.")
+    return
+  end
+
+  gitsigns.setup(dvim.core.gitsigns.configs)
 end
 
 return M

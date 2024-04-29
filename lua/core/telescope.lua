@@ -37,19 +37,17 @@ M.defaults = {
 				preview_cutoff = 120,
 			},
 		},
-		extensions = {
-			fzf = {
-				fuzzy = true, -- false will only do exact matching
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true, -- override the file sorter
-				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			},
-		},
+		extensions = {},
   }
 }
 
 function M.setup()
-	local telescope = require("telescope")
+  local status_ok, telescope = pcall(require, "telescope")
+  if not status_ok then
+    log:ERROR("Failed to load telescope module.")
+    return
+  end
+
 	dvim.core.telescope.configs.defaults = vim.tbl_extend("keep", {
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		file_ignore_patterns = { "node_modules" },
@@ -71,7 +69,7 @@ function M.setup()
 		telescope.load_extension("projects")
 	end)
 	pcall(function()
-		require("telescope").load_extension("file_browser")
+		telescope.load_extension("file_browser")
 	end)
 	telescope.setup(dvim.core.telescope.configs)
 end
