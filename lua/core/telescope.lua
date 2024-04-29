@@ -37,7 +37,12 @@ M.defaults = {
 				preview_cutoff = 120,
 			},
 		},
-		extensions = {},
+		extensions = {
+      file_browser = {
+        theme = "ivy",
+        hijack_netrw = true,
+      },
+    },
   }
 }
 
