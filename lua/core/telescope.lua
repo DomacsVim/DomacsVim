@@ -3,7 +3,11 @@ local M = {}
 -- default configurations
 M.defaults = {
   active = true,
-  keymappings = {},
+  keymappings = {
+    normal_mode = {
+      ["<C-b>"] = ":Telescope file_browser<cr>"
+    }
+  },
   configs = {
 		defaults = {
 			vimgrep_arguments = {

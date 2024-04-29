@@ -7,7 +7,7 @@ M.defaults = {
   active = true,
   keymappings = {
     normal_mode = {
-      ["<C-S-e>"] = "<cmd>NvimTreeToggle<CR>"
+      ["<C-S-e>"] = ":NvimTreeToggle<CR>"
     }
   },
   configs = {
