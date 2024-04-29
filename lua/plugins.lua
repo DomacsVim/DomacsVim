@@ -79,4 +79,9 @@ return {
     event = "User FileOpened",
     enabled = dvim.core.comment.active,
   },
+  {
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    enabled = dvim.icons.active,
+    lazy = true,
+  },
 }

@@ -230,4 +230,6 @@ M.kind_icons = {
 	TypeParameter = "",
 }
 
+M.active = true
+
 return M
