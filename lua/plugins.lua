@@ -1,9 +1,8 @@
 return {
-  {
-    "https://gitlab.com/domacsvim/themer",
+  { 
+    "https://github.com/folke/tokyonight.nvim",
     config = function()
-      local themer = require 'themer'
-      themer.apply_theme()
+      vim.cmd("colorscheme tokyonight-night")
     end,
     lazy = false
   },
