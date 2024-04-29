@@ -2,6 +2,7 @@ local M = {}
 
 -- a list of modules to load configurations
 local modules = {
+  autopairs = "core.autopairs",
   nvimtree = "core.nvimtree",
   treesitter = "core.treesitter",
   gitsigns = "core.gitsigns",

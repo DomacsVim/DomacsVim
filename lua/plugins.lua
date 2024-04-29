@@ -62,4 +62,12 @@ return {
     cmd = "Telescope",
     enabled = dvim.core.telescope.active,
   },
+  {
+    "https://github.com/windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("core.autopairs").setup()
+    end,
+    enabled = dvim.core.autopairs.active,
+  },
 }
