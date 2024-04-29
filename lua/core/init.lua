@@ -6,6 +6,7 @@ local modules = {
   treesitter = "core.treesitter",
   gitsigns = "core.gitsigns",
   telescope = "core.telescope",
+  project = "core.project",
 }
 
 function M.load_default_configs()
