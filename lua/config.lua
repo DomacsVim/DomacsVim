@@ -22,6 +22,14 @@ end
 -- load default configs add set dvim global var
 function M.load_default_configs()
 	dvim = {}
+
+  local core = require("core")
+  -- load default configs
+  core.load_default_configs()
+
+  local keymappings = require("keymappings")
+  -- load the default keymappings
+  keymappings.load_keymappings()
 end
 
 return M

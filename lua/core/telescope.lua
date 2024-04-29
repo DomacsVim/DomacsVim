@@ -1,5 +1,6 @@
 local M = {}
 
+-- default configurations
 M.defaults = {
   active = true,
   keymappings = {},

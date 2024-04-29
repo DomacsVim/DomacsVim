@@ -2,8 +2,10 @@ local M = {}
 
 local log = require("utils.log")
 
+-- set mapleader key
 vim.g.mapleader = dvim.keys.leadermap
 
+-- set options
 local options = { noremap = true, silent = true }
 
 -- defined modes
@@ -24,9 +26,9 @@ local defaults = {
 	command_mode = {},
 }
 
+-- global key to call keys
 dvim.keys = vim.tbl_deep_extend("force", defaults, dvim.keys)
 
--- @param mode, key, value type checking returns true output if confirmed else return false
 local function check_input_type(mode, key, value)
 	local result
 	if type(mode) == "string" and type(key) == "string" and type(value) == "string" or type(value) == "function" then

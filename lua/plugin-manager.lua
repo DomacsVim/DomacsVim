@@ -3,6 +3,7 @@ local M = {}
 local utils = require("utils.modules")
 local log = require("utils.log")
 
+-- lazy configuration
 dvim.lazy = {
 	root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
 	defaults = {
@@ -154,9 +155,11 @@ dvim.lazy = {
 	},
 }
 
+-- builtin (core) plugins
 local defaults = require("plugins")
 
-function M.load()
+-- 
+function M.setup()
 	log:TRACE "loading plugins"
 	local lazy_available, lazy = pcall(require, "lazy")
 	if not lazy_available then

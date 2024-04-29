@@ -2,6 +2,7 @@ local M = {}
 
 local log = require("utils.log")
 
+-- default configurations
 M.defaults = {
   active = true,
   keymappings = {

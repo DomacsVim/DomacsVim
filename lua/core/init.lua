@@ -1,5 +1,6 @@
 local M = {}
 
+-- a list of modules to load configurations
 local modules = {
   nvimtree = "core.nvimtree",
   treesitter = "core.treesitter",

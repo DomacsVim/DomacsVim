@@ -49,6 +49,7 @@ local default_options = {
 	laststatus = 3,
 }
 
+-- neovide configs
 if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font:h11.5" -- text below applies for VimScript
   vim.g.neovide_scale_factor = 1.0
@@ -64,6 +65,7 @@ vim.opt.shortmess:append "c" -- don't show redundant messages from ins-completio
 vim.opt.shortmess:append "I" -- don't show the default intro message
 vim.opt.whichwrap:append "<,>,[,],h,l"
 
+-- set default options
 for k, v in pairs(default_options) do
 	vim.opt[k] = v
 end
