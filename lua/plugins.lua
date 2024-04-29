@@ -37,6 +37,15 @@ return {
     lazy = true
   },
   {
+    "https://github.com/ahmedkhalf/project.nvim",
+    config = function()
+      require("core.project").setup()
+    end,
+    enabled = dvim.core.project.active,
+    event = "VimEnter",
+    cmd = "Telescope projects",
+  },
+  {
     "https://github.com/nvim-lua/plenary.nvim",
     cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
     lazy = true
@@ -50,11 +59,5 @@ return {
     lazy = true,
     cmd = "Telescope",
     enabled = dvim.core.telescope.active,
-  },
-  {
-    "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
-    lazy = true,
-    enabled = dvim.core.telescope.active
   },
 }
