@@ -19,10 +19,8 @@ function M.default_configs()
 	}
 end
 
--- load default configs add set dvim global var
+-- load default configs
 function M.load_default_configs()
-	dvim = {}
-
   local core = require("core")
   -- load default configs
   core.load_default_configs()

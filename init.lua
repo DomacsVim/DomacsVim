@@ -69,10 +69,8 @@ end
 -- load defautl options
 require("options")
 
-local config = require("config")
-
--- Initialize dvim default configuration and vars
-config.load_default_configs()
+-- dvim global variable
+dvim = {}
 
 local bootstrap = require("bootstrap")
 
@@ -81,6 +79,11 @@ bootstrap.handle_user_config_file()
 
 -- initialize plugin manager
 bootstrap.initialize_plugin_manager()
+
+local config = require("config")
+
+-- load dvim default configuration
+config.load_default_configs()
 
 local plugin_manager = require("plugin-manager")
 
