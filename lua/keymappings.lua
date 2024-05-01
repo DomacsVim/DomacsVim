@@ -37,14 +37,14 @@ local function check_input_type(mode, key, value)
 			log:TRACE("The structure of the keys is correct.")
 		end
 	elseif value == false or value == {} or value == nil then
+		log:TRACE(value)
 		result = false
-		log:TRACE("The structure of the keys is incorrect.")
 	end
 	return result
 end
 
 local function set_keymappings(mode, key, value)
-	if check_input_type(mode, key, value) == true then
+	if check_input_type(mode, key, value) then
 		vim.keymap.set(mode, key, value, options)
 	end
 end
