@@ -75,7 +75,6 @@ return {
     config = function()
       require("core.comment").setup()
     end,
-    keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
     event = { "BufReadPost", "BufNewFile" },
     enabled = dvim.core.comment.active,
   },
@@ -92,5 +91,21 @@ return {
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     enabled = dvim.core.indentlines.active
-  }
+  },
+  {
+    "https://github.com/akinsho/toggleterm.nvim",
+    branch = "main",
+    config = function()
+      require("core.terminal").setup()
+    end,
+    cmd = {
+      "ToggleTerm",
+      "TermExec",
+      "ToggleTermToggleAll",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection",
+    },
+    enabled = dvim.core.terminal.active,
+  },
 }

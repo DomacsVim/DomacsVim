@@ -9,7 +9,8 @@ local modules = {
   gitsigns = "core.gitsigns",
   telescope = "core.telescope",
   project = "core.project",
-  indentlines = "core.indentlines"
+  indentlines = "core.indentlines",
+  terminal = "core.terminal"
 }
 
 function M.load_default_configs()
