@@ -76,7 +76,7 @@ return {
       require("core.comment").setup()
     end,
     keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
-    event = "User FileOpened",
+    event = { "BufReadPost", "BufNewFile" },
     enabled = dvim.core.comment.active,
   },
   {
@@ -84,4 +84,13 @@ return {
     enabled = dvim.icons.active,
     lazy = true,
   },
+  {
+    "https://github.com/lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("core.indentlines").setup()
+    end,
+    main = "ibl",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = dvim.core.indentlines.active
+  }
 }
