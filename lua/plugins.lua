@@ -108,4 +108,12 @@ return {
     },
     enabled = dvim.core.terminal.active,
   },
+  {
+    "https://github.com/goolord/alpha-nvim",
+    config = function()
+      require("core.dashboard").setup()
+    end,
+    enabled = dvim.core.dashboard.active,
+    event = "VimEnter",
+  },
 }

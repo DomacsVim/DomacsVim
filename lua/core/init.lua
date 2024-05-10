@@ -4,13 +4,14 @@ local M = {}
 local modules = {
   autopairs = "core.autopairs",
   comment = "core.comment",
-  nvimtree = "core.nvimtree",
-  treesitter = "core.treesitter",
+  dashboard = "core.dashboard",
   gitsigns = "core.gitsigns",
-  telescope = "core.telescope",
-  project = "core.project",
   indentlines = "core.indentlines",
-  terminal = "core.terminal"
+  nvimtree = "core.nvimtree",
+  project = "core.project",
+  telescope = "core.telescope",
+  terminal = "core.terminal",
+  treesitter = "core.treesitter"
 }
 
 function M.load_default_configs()
