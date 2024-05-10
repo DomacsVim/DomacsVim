@@ -61,6 +61,39 @@ M.defaults = {
   }
 }
 
+function M.change_log()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local change_log = Terminal:new {
+    cmd = "git -C " .. dvim_runtime_dir .. " log",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+      border = "none",
+      width = 100000,
+      height = 100000,
+    },
+  }
+  change_log:toggle()
+end
+
+function M.lazygit_toggle()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new {
+    cmd = "lazygit",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+      border = "none",
+      width = 100000,
+      height = 100000,
+    },
+    on_open = function(_)
+      vim.cmd "startinsert!"
+    end,
+  }
+  lazygit:toggle()
+end
+
 function M.setup()
   local status_ok, term = pcall(require, "toggleterm")
   if not status_ok then

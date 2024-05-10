@@ -116,4 +116,13 @@ return {
     enabled = dvim.core.dashboard.active,
     event = "VimEnter",
   },
+  {
+    "https://github.com/folke/which-key.nvim",
+    config = function()
+      require("core.whichkey").setup()
+    end,
+    cmd = "WhichKey",
+    event = "VeryLazy",
+    enabled = dvim.core.which_key.active,
+  },
 }

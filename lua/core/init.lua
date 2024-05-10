@@ -11,7 +11,8 @@ local modules = {
   project = "core.project",
   telescope = "core.telescope",
   terminal = "core.terminal",
-  treesitter = "core.treesitter"
+  treesitter = "core.treesitter",
+  which_key = "core.whichkey"
 }
 
 function M.load_default_configs()
