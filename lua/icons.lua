@@ -171,20 +171,20 @@ function M.devicons()
 end
 
 M.ui = {
-	breadcrumb = "󰄾 ",
-	separator = " ",
+	breadcrumb = " ",
+	separator = "",
 	search = " ",
-	right_arrow = " > ",
-	left_arrow = " < ",
+	right_arrow = "  ",
+	left_arrow = "  ",
 	check = " ",
 	pending = " ",
 	fail = " ",
 	left_side = "▎",
 	new_file = " ",
-	word = " ",
-	recent_file = " ",
-	recent_project = " ",
-	bug = " ",
+	word = "󰈭 ",
+	recent_file = "󰈚 ",
+	recent_project = " ",
+	bug = " ",
 	right_select = "",
 	buttom_select = "",
 	circular = "",
@@ -198,7 +198,7 @@ M.ui = {
 	terminate = "",
 	error = " ",
 	warn = " ",
-	hint = "",
+	hint = "󰌵",
 	info = " ",
 }
 
