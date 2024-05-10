@@ -93,9 +93,9 @@ local footer = {
 }
 
 M.defaults = {
-  active = true,
-  keymappings = {},
-  configs = {
+	active = true,
+	keymappings = {},
+	configs = {
 		layout = {
 			padding_up,
 			header,
@@ -104,17 +104,17 @@ M.defaults = {
 			padding_down,
 			footer,
 		},
-  }
+	},
 }
 
 function M.setup()
-  local status_ok, alpha = pcall(require, "alpha")
-  if not status_ok then
-    log:ERROR("Failed to load alpha module.")
-    return
-  end
+	local status_ok, alpha = pcall(require, "alpha")
+	if not status_ok then
+		log:ERROR("Failed to load alpha module.")
+		return
+	end
 
-  alpha.setup(dvim.core.dashboard.configs)
+	alpha.setup(dvim.core.dashboard.configs)
 end
 
 return M

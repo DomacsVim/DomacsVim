@@ -11,23 +11,23 @@ function M.default_configs()
 			visual_mode = {},
 			command_mode = {},
 		},
-    icons = require("icons"),
-    core = {},
+		icons = require("icons"),
+		core = {},
 		lazy = {},
 		plugins = {},
-		colorscheme = "onedark"
+		colorscheme = "onedark",
 	}
 end
 
 -- load default configs
 function M.load_default_configs()
-  local core = require("core")
-  -- load default configs
-  core.load_default_configs()
+	local core = require("core")
+	-- load default configs
+	core.load_default_configs()
 
-  local keymappings = require("keymappings")
-  -- load the default keymappings
-  keymappings.load_keymappings()
+	local keymappings = require("keymappings")
+	-- load the default keymappings
+	keymappings.load_keymappings()
 end
 
 return M

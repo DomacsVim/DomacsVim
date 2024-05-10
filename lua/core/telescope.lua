@@ -2,13 +2,13 @@ local M = {}
 
 -- default configurations
 M.defaults = {
-  active = true,
-  keymappings = {
-    normal_mode = {
-      ["<C-b>"] = ":Telescope file_browser<cr>"
-    }
-  },
-  configs = {
+	active = true,
+	keymappings = {
+		normal_mode = {
+			["<C-b>"] = ":Telescope file_browser<cr>",
+		},
+	},
+	configs = {
 		defaults = {
 			vimgrep_arguments = {
 				"rg",
@@ -42,20 +42,20 @@ M.defaults = {
 			},
 		},
 		extensions = {
-      file_browser = {
-        theme = "ivy",
-        hijack_netrw = true,
-      },
-    },
-  }
+			file_browser = {
+				theme = "ivy",
+				hijack_netrw = true,
+			},
+		},
+	},
 }
 
 function M.setup()
-  local status_ok, telescope = pcall(require, "telescope")
-  if not status_ok then
-    log:ERROR("Failed to load telescope module.")
-    return
-  end
+	local status_ok, telescope = pcall(require, "telescope")
+	if not status_ok then
+		log:ERROR("Failed to load telescope module.")
+		return
+	end
 
 	dvim.core.telescope.configs.defaults = vim.tbl_extend("keep", {
 		file_sorter = require("telescope.sorters").get_fuzzy_file,

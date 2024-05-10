@@ -1,14 +1,16 @@
 -- check the neovim version
 if vim.fn.has("nvim-0.9") ~= 1 then
-  vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
-  vim.wait(4000, function() return false end)
-  vim.cmd("cquit")
+	vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
+	vim.wait(4000, function()
+		return false
+	end)
+	vim.cmd("cquit")
 end
 
 -- get and set the domacsvim runtimepath
 _G.dvim_runtime_dir = os.getenv("DVIM_RUNTIME_DIR") or debug.getinfo(1, "S").source:sub(2):match("(.*[/\\])"):sub(1, -2)
 if not vim.tbl_contains(vim.opt.rtp:get(), dvim_runtime_dir) then
-  vim.opt.rtp:prepend(dvim_runtime_dir)
+	vim.opt.rtp:prepend(dvim_runtime_dir)
 end
 
 local utils = require("utils.modules")
@@ -16,11 +18,11 @@ local utils = require("utils.modules")
 -- get the domacsvim config directory
 _G.dvim_config_dir = os.getenv("DVIM_CONFIG_DIR")
 if dvim_config_dir then
-  if not utils.is_directory(dvim_config_dir) then
-    vim.fn.mkdir(dvim_config_dir)
-  end
+	if not utils.is_directory(dvim_config_dir) then
+		vim.fn.mkdir(dvim_config_dir)
+	end
 else
-	local message = string.format("dvim_config_dir : %s", (dvim_config_dir))
+	local message = string.format("dvim_config_dir : %s", dvim_config_dir)
 	utils.runtime_error(message)
 end
 
@@ -31,7 +33,7 @@ if dvim_cache_dir then
 		vim.fn.mkdir(dvim_cache_dir)
 	end
 else
-	local message = string.format("dvim_cache_dir : %s", (dvim_cache_dir))
+	local message = string.format("dvim_cache_dir : %s", dvim_cache_dir)
 	utils.runtime_error(message)
 end
 

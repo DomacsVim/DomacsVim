@@ -53,10 +53,10 @@ dvim.lazy = {
 		-- Show pills on top of the Lazy window
 		pills = true, ---@type boolean
 		icons = {
-      ft = "",
-      lazy = "󰂠 ",
-      loaded = "",
-      not_loaded = "",
+			ft = "",
+			lazy = "󰂠 ",
+			loaded = "",
+			not_loaded = "",
 		},
 		-- leave nil, to automatically select a browser depending on your OS.
 		-- If you want to use a specific browser, you can define it here
@@ -97,34 +97,34 @@ dvim.lazy = {
 			paths = {}, -- add any custom paths here that you want to includes in the rtp
 			---@type string[] list any plugins you want to disable here
 			disabled_plugins = {
-        "2html_plugin",
-        "tohtml",
-        "getscript",
-        "getscriptPlugin",
-        "gzip",
-        "logipat",
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "matchit",
-        "tar",
-        "tarPlugin",
-        "rrhelper",
-        "spellfile_plugin",
-        "vimball",
-        "vimballPlugin",
-        "zip",
-        "zipPlugin",
-        "tutor",
-        "rplugin",
-        "syntax",
-        "synmenu",
-        "optwin",
-        "compiler",
-        "bugreport",
-        "ftplugin",
-      },
+				"2html_plugin",
+				"tohtml",
+				"getscript",
+				"getscriptPlugin",
+				"gzip",
+				"logipat",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"matchit",
+				"tar",
+				"tarPlugin",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
+				"zipPlugin",
+				"tutor",
+				"rplugin",
+				"syntax",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+				"ftplugin",
+			},
 		},
 	},
 	-- lazy can generate helptags from the headings in markdown readme files,
@@ -158,12 +158,12 @@ dvim.lazy = {
 -- builtin (core) plugins
 local defaults = require("plugins")
 
--- 
+--
 function M.setup()
-	log:TRACE "loading plugins"
+	log:TRACE("loading plugins")
 	local lazy_available, lazy = pcall(require, "lazy")
 	if not lazy_available then
-		log:ERROR "skipping loading plugins until lazy.nvim is installed"
+		log:ERROR("skipping loading plugins until lazy.nvim is installed")
 		return
 	end
 
@@ -178,7 +178,7 @@ function M.setup()
 	end, debug.traceback)
 
 	if not status_ok then
-		log:WARN "problems detected while loading plugins"
+		log:WARN("problems detected while loading plugins")
 		log:TRACE(debug.traceback())
 	end
 end
