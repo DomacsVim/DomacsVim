@@ -1,10 +1,11 @@
 return {
 	{
-		"https://github.com/folke/tokyonight.nvim",
+		"https://gitlab.com/domacsvim/themer",
 		config = function()
-			vim.cmd("colorscheme tokyonight-night")
+			local themer = require("themer")
+			themer.apply_theme()
 		end,
-		lazy = false,
+		lazy = false
 	},
 	{
 		"https://github.com/nvim-tree/nvim-tree.lua",
@@ -125,4 +126,11 @@ return {
 		event = "VeryLazy",
 		enabled = dvim.core.which_key.active,
 	},
+  {
+    "https://github.com/norcalli/nvim-colorizer.lua",
+    config = function()
+      require'colorizer'.setup()
+    end,
+    event = { "BufReadPost", "BufNewFile" }
+  },
 }
