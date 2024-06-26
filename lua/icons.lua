@@ -185,6 +185,7 @@ M.ui = {
 	recent_file = "󰈚 ",
 	recent_project = " ",
 	bug = " ",
+	top_select = "",
 	right_select = "",
 	buttom_select = "",
 	circular = "",
