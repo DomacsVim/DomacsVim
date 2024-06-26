@@ -15,38 +15,13 @@ M.defaults = {
 		},
 	},
 	configs = {
-		signs = {
-			add = {
-				hl = "GitSignsAdd",
-				text = dvim.icons.ui.left_side,
-				numhl = "GitSignsAddNr",
-				linehl = "GitSignsAddLn",
-			},
-			change = {
-				hl = "GitSignsChange",
-				text = dvim.icons.ui.left_side,
-				numhl = "GitSignsChangeNr",
-				linehl = "GitSignsChangeLn",
-			},
-			delete = {
-				hl = "GitSignsDelete",
-				text = dvim.icons.ui.left_side,
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
-			topdelete = {
-				hl = "GitSignsDelete",
-				text = dvim.icons.ui.left_side,
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
-			changedelete = {
-				hl = "GitSignsChange",
-				text = dvim.icons.ui.left_side,
-				numhl = "GitSignsChangeNr",
-				linehl = "GitSignsChangeLn",
-			},
-		},
+    signs = {
+      add = { text = dvim.icons.ui.BoldLineLeft },
+      change = { text = dvim.icons.ui.BoldLineLeft },
+      delete = { text = dvim.icons.ui.right_select },
+      topdelete = { text = dvim.icons.ui.top_select },
+      changedelete = { text = dvim.icons.ui.right_select },
+    },
 		signcolumn = true,
 		numhl = false,
 		linehl = false,
@@ -76,7 +51,6 @@ M.defaults = {
 			row = 0,
 			col = 1,
 		},
-		yadm = { enable = false },
 	},
 }
 
