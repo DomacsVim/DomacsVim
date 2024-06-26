@@ -27,18 +27,12 @@ M.defaults = {
 		},
 		-- add operators that will trigger motion and text object completion
 		-- to enable all native operators, set the preset / operators plugin above
-		operators = { gc = "Comments" },
 		key_labels = {
 			-- override the label used to display some keys. It doesn't effect WK in any other way.
 			-- For example:
 			-- ["<space>"] = "SPC",
 			-- ["<cr>"] = "RET",
 			-- ["<tab>"] = "TAB",
-		},
-		icons = {
-			breadcrumb = dvim.icons.ui.DoubleChevronRight, -- symbol used in the command line area that shows your active key combo
-			separator = dvim.icons.ui.BoldArrowRight, -- symbol used between a key and it's label
-			group = dvim.icons.ui.Plus, -- symbol prepended to a group
 		},
 		popup_mappings = {
 			scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -109,7 +103,7 @@ M.defaults = {
 			[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
 			["w"] = { "<cmd>w!<CR>", "Save" },
 			["q"] = { "<cmd>confirm q<CR>", "Quit" },
-			["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
+			-- ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
 			["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
 			["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 			["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
