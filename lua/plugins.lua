@@ -5,7 +5,7 @@ return {
 			local themer = require("themer")
 			themer.apply_theme()
 		end,
-		lazy = false
+		lazy = false,
 	},
 	{
 		"https://github.com/nvim-tree/nvim-tree.lua",
@@ -126,18 +126,18 @@ return {
 		event = "VeryLazy",
 		enabled = dvim.core.which_key.active,
 	},
-  {
-    "https://github.com/norcalli/nvim-colorizer.lua",
-    config = function()
-      require'colorizer'.setup()
-    end,
-    event = { "BufReadPost", "BufNewFile" }
-  },
-  {
-    "https://gitlab.com/domacsvim/statusline",
-    config = function()
-      require("statusline").setup()
-    end,
-		lazy = false
-  }
+	{
+		"https://github.com/norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+		event = { "BufReadPost", "BufNewFile" },
+	},
+	{
+		"https://gitlab.com/domacsvim/statusline",
+		config = function()
+			require("statusline").setup()
+		end,
+		lazy = false,
+	},
 }

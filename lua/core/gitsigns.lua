@@ -15,13 +15,13 @@ M.defaults = {
 		},
 	},
 	configs = {
-    signs = {
-      add = { text = dvim.icons.ui.BoldLineLeft },
-      change = { text = dvim.icons.ui.BoldLineLeft },
-      delete = { text = dvim.icons.ui.right_select },
-      topdelete = { text = dvim.icons.ui.top_select },
-      changedelete = { text = dvim.icons.ui.right_select },
-    },
+		signs = {
+			add = { text = dvim.icons.ui.BoldLineLeft },
+			change = { text = dvim.icons.ui.BoldLineLeft },
+			delete = { text = dvim.icons.ui.right_select },
+			topdelete = { text = dvim.icons.ui.top_select },
+			changedelete = { text = dvim.icons.ui.right_select },
+		},
 		signcolumn = true,
 		numhl = false,
 		linehl = false,
