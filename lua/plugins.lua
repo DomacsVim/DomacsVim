@@ -133,4 +133,11 @@ return {
     end,
     event = { "BufReadPost", "BufNewFile" }
   },
+  {
+    "https://gitlab.com/domacsvim/statusline",
+    config = function()
+      require("statusline").setup()
+    end,
+		lazy = false
+  }
 }
