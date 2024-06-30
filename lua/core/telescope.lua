@@ -36,8 +36,8 @@ M.defaults = {
 				vertical = {
 					mirror = false,
 				},
-				width = 0.80,
-				height = 0.73,
+				width = 0.7,
+				height = 0.7,
 				preview_cutoff = 120,
 			},
 		},
