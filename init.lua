@@ -71,9 +71,6 @@ end
 -- dvim global variable
 dvim = {}
 
--- load defautl options
-require("options")
-
 local bootstrap = require("bootstrap")
 
 -- initialize user config file.
@@ -91,3 +88,6 @@ local plugin_manager = require("plugin-manager")
 
 -- load the default plugins
 plugin_manager.setup()
+
+-- load lspconfig
+require("lsp")
