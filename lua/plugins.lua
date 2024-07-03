@@ -79,6 +79,10 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = dvim.core.comment.active,
 	},
+  {
+    "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true,
+  },
 	{
 		"https://github.com/nvim-tree/nvim-web-devicons",
 		enabled = dvim.icons.active,
@@ -140,4 +144,70 @@ return {
 		end,
 		lazy = false,
 	},
+  { "https://github.com/neovim/nvim-lspconfig", lazy = true },
+  {
+    "https://github.com/williamboman/mason.nvim",
+    config = function()
+      require("core.mason").setup()
+    end,
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    build = function()
+      pcall(function()
+        require("mason-registry").refresh()
+      end)
+    end,
+    event = "User FileOpened",
+    lazy = true,
+  },
+  {
+    "https://github.com/williamboman/mason-lspconfig.nvim",
+    cmd = { "LspInstall", "LspUninstall" },
+    lazy = true,
+    event = "User FileOpened"
+  },
+  { "https://github.com/stevearc/conform.nvim", lazy = true },
+  { "https://github.com/utilyre/barbecue.nvim", lazy = true },
+  { "https://github.com/tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
+  {
+    "https://github.com/SmiteshP/nvim-navic",
+    config = function()
+      require("core.breadcrumbs").setup()
+    end,
+    event = "User FileOpened",
+  },
+  { "https://github.com/folke/neodev.nvim", lazy = true },
+  {
+    "https://github.com/hrsh7th/nvim-cmp",
+    config = function()
+      require("core.cmp").setup()
+    end,
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      "cmp-nvim-lsp",
+      "cmp_luasnip",
+      "cmp-buffer",
+      "cmp-path",
+      "cmp-cmdline",
+    },
+  },
+  { "https://github.com/hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "https://github.com/saadparwaiz1/cmp_luasnip", lazy = true },
+  { "https://github.com/hrsh7th/cmp-buffer", lazy = true },
+  { "https://github.com/hrsh7th/cmp-path", lazy = true },
+  {
+    "https://github.com/hrsh7th/cmp-cmdline",
+    lazy = true,
+  },
+  {
+    "https://github.com/L3MON4D3/LuaSnip",
+    event = "InsertEnter",
+    dependencies = {
+      "friendly-snippets",
+    },
+  },
+  { "https://github.com/rafamadriz/friendly-snippets", lazy = true, cond = dvim.lsp.luasnip.sources.friendly_snippets },
+  {
+    "https://github.com/folke/neodev.nvim",
+    lazy = true,
+  },
 }
