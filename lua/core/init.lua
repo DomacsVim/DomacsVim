@@ -13,6 +13,9 @@ local modules = {
 	terminal = "core.terminal",
 	treesitter = "core.treesitter",
 	which_key = "core.whichkey",
+  breadcrumbs = "core.breadcrumbs",
+  mason = "core.mason",
+  cmp = "core.cmp"
 }
 
 function M.load_default_configs()
