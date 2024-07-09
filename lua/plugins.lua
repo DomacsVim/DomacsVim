@@ -137,13 +137,13 @@ return {
 		end,
 		event = { "BufReadPost", "BufNewFile" },
 	},
-	{
-		"https://gitlab.com/domacsvim/statusline",
-		config = function()
-			require("statusline").setup()
-		end,
-		lazy = false,
-	},
+  {
+    "https://github.com/nvim-lualine/lualine.nvim",
+    config = function()
+      require("core.lualine").setup()
+    end,
+    event = "VimEnter",
+  },
   { "https://github.com/neovim/nvim-lspconfig", lazy = true },
   {
     "https://github.com/williamboman/mason.nvim",
