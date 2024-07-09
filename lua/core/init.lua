@@ -15,7 +15,8 @@ local modules = {
 	which_key = "core.whichkey",
   breadcrumbs = "core.breadcrumbs",
   mason = "core.mason",
-  cmp = "core.cmp"
+  cmp = "core.cmp",
+  lualine = "core.lualine"
 }
 
 function M.load_default_configs()
