@@ -3,34 +3,49 @@ local M = {}
 local utils = require("utils.modules")
 
 local function system()
-  local icon
-  if vim.loop.os_uname().sysname == "Linux" then
-    if utils.is_file("/etc/arch-release") or utils.is_file("/etc/artix-release") then
-      icon = "%#StatusLineArchLinux#" .. "  "
-    elseif utils.is_file("/etc/fedora-release") or utils.is_file("/etc/redhat-release") then
-      icon = "%#StatusLineFedoraLinux#" .. "  "
-    elseif utils.is_file("/etc/SuSE-release") then
-      icon = "%#StatusLineSuseLinux#" .. "  "
-    else
-      icon = "%#StatusLineUbuntuLinux#" .. "  "
+  local system_name = ""
+  return {
+    function()
+      local icon
+      if vim.loop.os_uname().sysname == "Linux" then
+        if utils.is_file("/etc/arch-release") or utils.is_file("/etc/artix-release") then
+          icon = "%#StatusLineArchLinux#" .. "  "
+          system_name = "ArchLinux"
+        elseif utils.is_file("/etc/fedora-release") or utils.is_file("/etc/redhat-release") then
+          icon = "%#StatusLineFedoraLinux#" .. "  "
+          system_name = "FedoraLinux"
+        elseif utils.is_file("/etc/SuSE-release") then
+          icon = "%#StatusLineSuseLinux#" .. "  "
+          system_name = "SuSELinux"
+        else
+          icon = "%#StatusLineUbuntuLinux#" .. "  "
+          system_name = "LinuxDebian or based on"
+        end
+      elseif
+        vim.loop.os_uname().sysname == "FreeBSD"
+        or vim.loop.os_uname().sysname == "NetBSD"
+        or vim.loop.os_uname().sysname == "OpenBSD"
+      then
+        icon = "%#StatusLineBSD#" .. "  "
+      elseif vim.loop.os_uname().sysname == "Darwin" then
+        icon = "%#StatusLineDarwin#" .. "  "
+      end
+      return icon
+    end,
+    on_click = function()
+      print(system_name)
     end
-  elseif
-    vim.loop.os_uname().sysname == "FreeBSD"
-    or vim.loop.os_uname().sysname == "NetBSD"
-    or vim.loop.os_uname().sysname == "OpenBSD"
-  then
-    icon = "%#StatusLineBSD#" .. "  "
-  elseif vim.loop.os_uname().sysname == "Darwin" then
-    icon = "%#StatusLineDarwin#" .. "  "
-  end
-  return icon
+  }
 end
 
 local function branch()
   return {
     "branch",
     color = "StatusLinegitIcons",
-    separator = { right = dvim.core.lualine.configs.options.section_separators.left}
+    separator = { right = dvim.core.lualine.configs.options.section_separators.left},
+    on_click = function()
+      vim.cmd("Telescope git_commits")
+    end
   }
 end
 
@@ -46,7 +61,10 @@ local function diff()
   return {
     "diff",
     color = "StatusLineDiffIcons",
-    separator = { right = dvim.core.lualine.configs.options.section_separators.left}
+    separator = { right = dvim.core.lualine.configs.options.section_separators.left},
+    on_click = function()
+      vim.cmd("Telescope git_status")
+    end
   }
 end
 
@@ -59,6 +77,9 @@ local function diagnostics()
       info  = 'StatusLinelspInfo',
       hint  = 'StatusLinelspHints',
     },
+    on_click = function()
+      vim.cmd("Telescope diagnostics")
+    end
   }
 end
 
@@ -74,19 +95,33 @@ local function filename()
       readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
       unnamed = '[No Name]', -- Text to show for unnamed buffers.
       newfile = '[New]',     -- Text to show for newly created file before first write
-    }
+    },
+    on_click = function()
+      vim.cmd("Telescope file_browser")
+    end
   }
 end
 
 local function tabsize()
-  return string.format("TabSize: %s", vim.opt.tabstop["_value"])
+  return {
+    function()
+      return string.format("TabSize: %s", vim.opt.tabstop["_value"])
+    end,
+    on_click = function()
+      local TSize = vim.fn.input("Enter TabSize : ")
+      vim.opt.tabstop = tonumber(TSize)
+    end
+  }
 end
 
 local function filetype()
   return {
     "filetype",
     color = "StatusLineFTIcons",
-    separator = { left = dvim.core.lualine.configs.options.section_separators.right}
+    separator = { left = dvim.core.lualine.configs.options.section_separators.right},
+    on_click = function()
+      vim.cmd("Telescope filetypes")
+    end
   }
 end
 
@@ -95,6 +130,7 @@ local function lsp()
     function()
       local buf_client_names = {}
       if rawget(vim, "lsp") then
+        ---@diagnostic disable-next-line: deprecated
         for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
           if client.attached_buffers[vim.api.nvim_get_current_buf()] then
             table.insert(buf_client_names, client.name)
@@ -197,7 +233,7 @@ function M.setup()
       lualine_a = {system()},
       lualine_b = {},
       lualine_c = {branch(), diff(), mode(), diagnostics(), filename(), python_venv(), npm()},
-      lualine_x = {"location", tabsize, lsp(), encoding(), filetype()},
+      lualine_x = {"location", tabsize(), lsp(), encoding(), filetype()},
       lualine_y = {},
       lualine_z = {}
   }, dvim.core.lualine.configs.sections)
