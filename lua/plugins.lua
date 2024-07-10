@@ -71,14 +71,14 @@ return {
 		end,
 		enabled = dvim.core.autopairs.active,
 	},
-	{
-		"https://github.com/numToStr/Comment.nvim",
-		config = function()
-			require("core.comment").setup()
-		end,
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = dvim.core.comment.active,
-	},
+	-- {
+	-- 	"https://github.com/numToStr/Comment.nvim",
+	-- 	config = function()
+	-- 		require("core.comment").setup()
+	-- 	end,
+	-- 	event = { "BufReadPost", "BufNewFile" },
+	-- 	enabled = dvim.core.comment.active,
+	-- },
   {
     "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
     lazy = true,
@@ -172,7 +172,11 @@ return {
     lazy = true,
     event = "User FileOpened"
   },
-  { "https://github.com/stevearc/conform.nvim", lazy = true },
+  {
+    "https://github.com/stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true
+  },
   { "https://github.com/utilyre/barbecue.nvim", lazy = true },
   { "https://github.com/tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
   {
