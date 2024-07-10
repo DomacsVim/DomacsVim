@@ -1,6 +1,14 @@
 local M = {}
 
 M.defaults = {
+  linting = {
+    linters_by_ft = {
+      -- -- For example :
+      -- javascript = { "eslint_d" }
+      -- typescript = { "eslint_d" }
+      -- python = { "pylint" }
+    }
+  },
   formatting = {
     formatters_by_ft = {
       -- -- For example :
@@ -19,22 +27,22 @@ M.defaults = {
       friendly_snippets = true,
     },
   },
-	installer = {
+  installer = {
     ensure_installed = { "lua_ls", "bashls" },
     automatic_installation = true,
     handlers = {}
-	},
+  },
   buffer_options = {
     omnifunc = "v:lua.vim.lsp.omnifunc",
     formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:500})",
   },
-	nlsp_settings = {
-		setup = {
-			config_home = dvim_config_dir .. "/lsp-settings",
-			append_default_schemas = true,
-			ignored_servers = {},
-		},
-	},
+  nlsp_settings = {
+    setup = {
+      config_home = dvim_config_dir .. "/lsp-settings",
+      append_default_schemas = true,
+      ignored_servers = {},
+    },
+  },
   buffer_mappings = {
     normal_mode = {
       ["gD"] = vim.lsp.buf.declaration,
@@ -54,31 +62,31 @@ M.defaults = {
     visual_mode = {},
   },
   diagnostics = {
-		setup = {
-			virtual_text = {
-				enable = true,
-				prefix = " ",
-				source = "always",
-			},
-			update_in_insert = false,
-			underline = false,
-			severity_sort = true,
-			float = {
-				focusable = true,
-				style = "minimal",
-				border = "rounded",
-				source = "always",
-				header = "",
-				prefix = "",
-			},
-		},
-		signs = {
-			{ name = "DiagnosticSignError", text = dvim.icons.ui.error },
-			{ name = "DiagnosticSignWarn", text = dvim.icons.ui.warn },
-			{ name = "DiagnosticSignHint", text = dvim.icons.ui.hint },
-			{ name = "DiagnosticSignInfo", text = dvim.icons.ui.info },
-		},
-	},
+    setup = {
+      virtual_text = {
+        enable = true,
+        prefix = " ",
+        source = "always",
+      },
+      update_in_insert = false,
+      underline = false,
+      severity_sort = true,
+      float = {
+        focusable = true,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+      },
+    },
+    signs = {
+      { name = "DiagnosticSignError", text = dvim.icons.ui.error },
+      { name = "DiagnosticSignWarn",  text = dvim.icons.ui.warn },
+      { name = "DiagnosticSignHint",  text = dvim.icons.ui.hint },
+      { name = "DiagnosticSignInfo",  text = dvim.icons.ui.info },
+    },
+  },
 }
 
 local function lsp_buffer_options(bufnr)

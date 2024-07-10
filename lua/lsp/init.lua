@@ -1,5 +1,4 @@
 local log = require("utils.log")
-local utils = require("utils.modules")
 
 log:TRACE("Setting up LSP support")
 
@@ -19,6 +18,19 @@ pcall(function()
 end)
 
 require("conform").setup(dvim.lsp.formatting)
+
+local lint = require("lint")
+
+lint.linters_by_ft = dvim.lsp.linting.linters_by_ft
+
+local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+  group = lint_augroup,
+  callback = function()
+    lint.try_lint()
+  end,
+})
 
 local function set_handler_opts_if_not_set(name, handler, opts)
   if debug.getinfo(vim.lsp.handlers[name], "S").source:find(vim.env.VIMRUNTIME, 1, true) then
