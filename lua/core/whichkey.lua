@@ -100,11 +100,11 @@ M.defaults = {
 			},
 		},
 		mappings = {
-			[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
+			["a"] = { "<cmd>Alpha<CR>", "Dashboard" },
 			["w"] = { "<cmd>w!<CR>", "Save" },
 			["q"] = { "<cmd>confirm q<CR>", "Quit" },
 			["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
-			["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
+			["c"] = { "<cmd>lua require('core.bufferline').buf_kill('bd')<CR>", "Close Buffer" },
 			["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 			["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
 			b = {
@@ -127,10 +127,6 @@ M.defaults = {
 				D = {
 					"<cmd>BufferLineSortByDirectory<cr>",
 					"Sort by directory",
-				},
-				D = {
-					"<cmd>BufferLineSortByExtension<cr>",
-					"Sort by language",
 				},
 			},
 			d = {
@@ -201,7 +197,6 @@ M.defaults = {
 				a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 				d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 				w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-				-- TODO: formatting
 				i = { "<cmd>LspInfo<cr>", "Info" },
 				I = { "<cmd>Mason<cr>", "Mason Info" },
 				j = {
