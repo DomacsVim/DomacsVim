@@ -16,8 +16,10 @@ end
 
 function M.commit()
 	local message = string.format("%s", vim.fn.input("Enter Commit Message: "))
-	vim.fn.system("git add " .. vim.fn.expand("%:p") .. ' && git commit -m "' .. message .. '"')
-	vim.cmd("NvimTreeRefresh")
+  if message ~= nil and type(message) == "string" then
+    vim.fn.system("git add " .. vim.fn.expand("%:p") .. ' && git commit -m "' .. message .. '"')
+    vim.cmd("NvimTreeRefresh")
+  end
 end
 
 function M.push()
