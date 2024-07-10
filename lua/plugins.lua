@@ -1,6 +1,6 @@
 return {
 	{
-		"https://gitlab.com/domacsvim/themer",
+		"https://github.com/domacsvim/themer",
 		config = function()
 			local themer = require("themer")
 			themer.apply_theme()
@@ -144,6 +144,13 @@ return {
     end,
     event = "VimEnter",
   },
+	{
+		"https://github.com/akinsho/bufferline.nvim",
+		config = function()
+			require("core.bufferline").setup()
+		end,
+    event = "VimEnter",
+	},
   { "https://github.com/neovim/nvim-lspconfig", lazy = true },
   {
     "https://github.com/williamboman/mason.nvim",

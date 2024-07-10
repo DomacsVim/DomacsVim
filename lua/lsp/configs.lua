@@ -24,21 +24,21 @@ M.defaults = {
 	},
   buffer_mappings = {
     normal_mode = {
-      ["K"] = "<cmd>lua vim.lsp.buf.hover()<cr>",
-      ["gd"] = "<cmd>lua vim.lsp.buf.definition()<cr>",
-      ["gD"] = "<cmd>lua vim.lsp.buf.declaration()<cr>",
-      ["gr"] = "<cmd>lua vim.lsp.buf.references()<cr>",
-      ["gI"] = "<cmd>lua vim.lsp.buf.implementation()<cr>",
-      ["gs"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>",
-      ["gl"] = function()
-        local float = vim.diagnostic.config().float
-
-        if float then
-          local config = type(float) == "table" and float or {}
-          config.scope = "line"
-
-          vim.diagnostic.open_float(config)
-        end end
+      ["gD"] = vim.lsp.buf.declaration,
+      ["e["] = vim.diagnostic.goto_prev,
+      ["e]"] = vim.diagnostic.goto_next,
+      ["[e"] = vim.diagnostic.goto_prev,
+      ["]e"] = vim.diagnostic.goto_next,
+      ["gd"] = vim.lsp.buf.definition,
+      ["K"] = vim.lsp.buf.hover,
+      ["gi"] = vim.lsp.buf.implementation,
+      ["gs"] = vim.lsp.buf.signature_help,
+      ["gr"] = vim.lsp.buf.rename,
+      ["gR"] = vim.lsp.buf.references,
+      ["gca"] = vim.lsp.buf.code_action,
+      ["F"] = function()
+          vim.lsp.buf.format({ async = true })
+      end,
     },
     insert_mode = {},
     visual_mode = {},

@@ -16,7 +16,8 @@ local modules = {
   breadcrumbs = "core.breadcrumbs",
   mason = "core.mason",
   cmp = "core.cmp",
-  lualine = "core.lualine"
+  lualine = "core.lualine",
+  bufferline = "core.bufferline"
 }
 
 function M.load_default_configs()
