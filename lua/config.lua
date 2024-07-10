@@ -21,9 +21,6 @@ end
 
 -- load default configs
 function M.load_default_configs()
-  -- load defautl options
-  require("options")
-
   -- load lsp default configs
   dvim.lsp = vim.deepcopy(require("lsp.configs").defaults)
 

@@ -71,6 +71,9 @@ end
 -- dvim global variable
 dvim = {}
 
+-- load defautl options
+require("options")
+
 local bootstrap = require("bootstrap")
 
 -- initialize user config file.
