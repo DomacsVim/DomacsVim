@@ -1,7 +1,7 @@
 local M = {}
 
 M.defaults = {
-  configs = {
+	configs = {
 		breakpoint = {
 			text = dvim.icons.ui.bug,
 			texthl = "DiagnosticSignError",
@@ -96,7 +96,7 @@ M.defaults = {
 				},
 			},
 		},
-	}
+	},
 }
 
 function M.setup()

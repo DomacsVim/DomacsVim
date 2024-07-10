@@ -8,7 +8,7 @@ local editor_layout = {
 }
 
 M.defaults = {
-  configs = {
+	configs = {
 		ui = {
 			icons = {
 				-- The list icon to use for installed packages.
@@ -42,29 +42,29 @@ M.defaults = {
 				apply_language_filter = "<C-f>",
 			},
 		},
-    PATH = "skip",
-    install_root_dir = utils.join_paths(vim.fn.stdpath "data", "mason"),
+		PATH = "skip",
+		install_root_dir = utils.join_paths(vim.fn.stdpath("data"), "mason"),
 		max_concurrent_installers = 5,
-    registries = {
-      "lua:mason-registry.index",
-      "github:mason-org/mason-registry",
-    },
-    providers = {
-      "mason.providers.registry-api",
-      "mason.providers.client",
-    },
-  }
+		registries = {
+			"lua:mason-registry.index",
+			"github:mason-org/mason-registry",
+		},
+		providers = {
+			"mason.providers.registry-api",
+			"mason.providers.client",
+		},
+	},
 }
 
 function M.setup()
-  local status_ok, mason = pcall(require, "mason")
-  if not status_ok then
-    return
-  end
+	local status_ok, mason = pcall(require, "mason")
+	if not status_ok then
+		return
+	end
 
-  dvim.core.mason.configs.PATH = "append"
+	dvim.core.mason.configs.PATH = "append"
 
-  mason.setup(dvim.core.mason.configs)
+	mason.setup(dvim.core.mason.configs)
 end
 
 return M

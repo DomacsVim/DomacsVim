@@ -40,17 +40,17 @@ M.defaults = {
 		-- Change the default shell. Can be a string or a function returning a string
 		shell = vim.o.shell,
 		auto_scroll = true, -- automatically scroll to the bottom on terminal output
-    highlights = {
-      Normal = {
-        link = "NormalFloat"
-      },
-      NormalFloat = {
-        link = 'NormalFloat'
-      }
-    },
-    on_open = function()
-      vim.opt.signcolumn = "no"
-    end,
+		highlights = {
+			Normal = {
+				link = "NormalFloat",
+			},
+			NormalFloat = {
+				link = "NormalFloat",
+			},
+		},
+		on_open = function()
+			vim.opt.signcolumn = "no"
+		end,
 		-- This field is only relevant if direction is set to 'float'
 		float_opts = {
 			-- The border key is *almost* the same as 'nvim_open_win'
@@ -112,7 +112,7 @@ function M.setup()
 		return
 	end
 
-  term.setup(dvim.core.terminal.configs)
+	term.setup(dvim.core.terminal.configs)
 end
 
 return M

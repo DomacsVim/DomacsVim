@@ -15,8 +15,8 @@ require("barbecue").setup({
 	},
 	attach_navic = true,
 	create_autocmd = true,
-  show_dirname = false,
-  show_basename = true,
+	show_dirname = false,
+	show_basename = true,
 })
 
 vim.api.nvim_create_autocmd({
@@ -34,24 +34,24 @@ vim.api.nvim_create_autocmd({
 
 local handlers = {
 	function(server_name)
-    lspconfig[server_name].setup({
-      capabilities = capabilities,
-      on_init = function(client, _)
-        dvim_lsp.on_init(client)
-      end,
-      on_attach = function(client, bufnr)
-        dvim_lsp.on_attach(client, bufnr)
-      end,
-    })
+		lspconfig[server_name].setup({
+			capabilities = capabilities,
+			on_init = function(client, _)
+				dvim_lsp.on_init(client)
+			end,
+			on_attach = function(client, bufnr)
+				dvim_lsp.on_attach(client, bufnr)
+			end,
+		})
 	end,
 	["lua_ls"] = function()
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
-      on_init = function(client, _)
-        dvim_lsp.on_init(client)
-      end,
+			on_init = function(client, _)
+				dvim_lsp.on_init(client)
+			end,
 			on_attach = function(client, bufnr)
-        dvim_lsp.on_attach(client, bufnr)
+				dvim_lsp.on_attach(client, bufnr)
 			end,
 			settings = {
 				Lua = {
@@ -86,11 +86,11 @@ local handlers = {
 	["tailwindcss"] = function()
 		lspconfig.tailwindcss.setup({
 			capabilities = capabilities,
-      on_init = function(client, _)
-        dvim_lsp.on_init(client)
-      end,
+			on_init = function(client, _)
+				dvim_lsp.on_init(client)
+			end,
 			on_attach = function(client, bufnr)
-        dvim_lsp.on_attach(client, bufnr)
+				dvim_lsp.on_attach(client, bufnr)
 			end,
 			root_dir = function(fname)
 				local util = require("lspconfig/util")

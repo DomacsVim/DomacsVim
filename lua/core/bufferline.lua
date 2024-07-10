@@ -16,10 +16,10 @@ end
 
 function M.commit()
 	local message = string.format("%s", vim.fn.input("Enter Commit Message: "))
-  if message ~= nil and type(message) == "string" then
-    vim.fn.system("git add " .. vim.fn.expand("%:p") .. ' && git commit -m "' .. message .. '"')
-    vim.cmd("NvimTreeRefresh")
-  end
+	if message ~= nil and type(message) == "string" then
+		vim.fn.system("git add " .. vim.fn.expand("%:p") .. ' && git commit -m "' .. message .. '"')
+		vim.cmd("NvimTreeRefresh")
+	end
 end
 
 function M.push()
@@ -83,14 +83,16 @@ local function custom_filter(buf, buf_nums)
 end
 
 M.defaults = {
-  keymappings = {
-    normal_mode = {
-      ["<Tab>"] = ":bnext<CR>",
-      ["<S-Tab>"] = ":bprevious<CR>",
-      ["<C-S-w>"] = function(bufnr) M.buf_kill("bd", bufnr, false) end
-    }
-  },
-  configs = {
+	keymappings = {
+		normal_mode = {
+			["<Tab>"] = ":bnext<CR>",
+			["<S-Tab>"] = ":bprevious<CR>",
+			["<C-S-w>"] = function(bufnr)
+				M.buf_kill("bd", bufnr, false)
+			end,
+		},
+	},
+	configs = {
 		highlights = {
 			background = {
 				fg = {
@@ -430,7 +432,7 @@ M.defaults = {
 			},
 			sort_by = "id",
 		},
-	}
+	},
 }
 
 function M.buf_kill(kill_command, bufnr, force)
@@ -507,12 +509,12 @@ function M.buf_kill(kill_command, bufnr, force)
 end
 
 function M.setup()
-  local status_ok, bufferline = pcall(require, "bufferline")
-  if not status_ok then
-    return
-  end
+	local status_ok, bufferline = pcall(require, "bufferline")
+	if not status_ok then
+		return
+	end
 
-  vim.opt.showtabline = 2
+	vim.opt.showtabline = 2
 
 	bufferline.setup(dvim.core.bufferline.configs)
 end

@@ -13,12 +13,12 @@ local modules = {
 	terminal = "core.terminal",
 	treesitter = "core.treesitter",
 	which_key = "core.whichkey",
-  breadcrumbs = "core.breadcrumbs",
-  mason = "core.mason",
-  cmp = "core.cmp",
-  lualine = "core.lualine",
-  bufferline = "core.bufferline",
-  dap = "core.dap"
+	breadcrumbs = "core.breadcrumbs",
+	mason = "core.mason",
+	cmp = "core.cmp",
+	lualine = "core.lualine",
+	bufferline = "core.bufferline",
+	dap = "core.dap",
 }
 
 function M.load_default_configs()

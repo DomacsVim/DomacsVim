@@ -19,7 +19,7 @@ local function border(hl_name)
 end
 
 M.defaults = {
-  configs = {
+	configs = {
 		confirm_opts = {
 			select = false,
 		},
@@ -96,7 +96,7 @@ M.defaults = {
 			{ name = "crates" },
 			{ name = "tmux" },
 		},
-  }
+	},
 }
 
 function M.setup()
