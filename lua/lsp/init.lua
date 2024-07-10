@@ -18,14 +18,7 @@ pcall(function()
   require("nlspsettings").setup(dvim.lsp.nlsp_settings.setup)
 end)
 
-require("conform").setup()
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    require("conform").format({ bufnr = args.buf })
-  end,
-})
+require("conform").setup(dvim.lsp.formatting)
 
 local function set_handler_opts_if_not_set(name, handler, opts)
   if debug.getinfo(vim.lsp.handlers[name], "S").source:find(vim.env.VIMRUNTIME, 1, true) then

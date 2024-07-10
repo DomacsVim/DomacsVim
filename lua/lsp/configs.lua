@@ -1,6 +1,19 @@
 local M = {}
 
 M.defaults = {
+  formatting = {
+    formatters_by_ft = {
+      -- -- For example :
+      -- lua = { "stylua" },
+      -- python = { "black" },
+      -- javascript = { { "prettierd", "prettier" } },
+    },
+    format_on_save = {
+      async = false,
+      lsp_fallback = true,
+      timeout_ms = 500
+    },
+  },
   luasnip = {
     sources = {
       friendly_snippets = true,
@@ -36,9 +49,6 @@ M.defaults = {
       ["gr"] = vim.lsp.buf.rename,
       ["gR"] = vim.lsp.buf.references,
       ["gca"] = vim.lsp.buf.code_action,
-      ["F"] = function()
-          vim.lsp.buf.format({ async = true })
-      end,
     },
     insert_mode = {},
     visual_mode = {},
