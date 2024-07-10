@@ -17,7 +17,8 @@ local modules = {
   mason = "core.mason",
   cmp = "core.cmp",
   lualine = "core.lualine",
-  bufferline = "core.bufferline"
+  bufferline = "core.bufferline",
+  dap = "core.dap"
 }
 
 function M.load_default_configs()

@@ -217,4 +217,32 @@ return {
     "https://github.com/folke/neodev.nvim",
     lazy = true,
   },
+  { "https://github.com/nvim-neotest/nvim-nio" },
+	{
+		"https://github.com/mfussenegger/nvim-dap",
+		config = function()
+			require("core.dap").setup()
+		end,
+		event = { "BufReadPost", "BufNewFile" },
+	},
+	{
+		"https://github.com/rcarriga/nvim-dap-ui",
+		config = function()
+			require("core.dap").ui()
+		end,
+		event = { "BufReadPost", "BufNewFile" },
+	},
+	{
+		"https://github.com/jay-babu/mason-nvim-dap.nvim",
+		config = function()
+			require("mason-nvim-dap").setup({
+				handlers = {
+					function(config)
+						require("mason-nvim-dap").default_setup(config)
+					end,
+				},
+			})
+		end,
+		event = { "BufReadPost", "BufNewFile" },
+	},
 }
