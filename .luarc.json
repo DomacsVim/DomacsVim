@@ -1,0 +1,10 @@
+{
+  "diagnostics.globals": [
+    "vim",
+    "dvim",
+    "dvim_runtime_dir",
+    "dvim_config_dir",
+    "dvim_cache_dir",
+    "jit"
+  ]
+}
