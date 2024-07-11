@@ -171,7 +171,7 @@ function M.setup()
   -- remove plugins from rtp before loading lazy, so that all plugins won't be loaded on startup
   vim.opt.rtp:remove(utils.join_paths(_G.plugins_dir, "*"))
 
-  dvim.plugins = vim.tbl_extend("force", defaults, dvim.plugins)
+  table.insert(dvim.plugins, defaults)
 
   local status_ok = xpcall(function()
     table.insert(dvim.lazy.install.colorscheme, 1, dvim.colorscheme)
