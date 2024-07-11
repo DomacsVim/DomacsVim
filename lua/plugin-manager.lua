@@ -11,10 +11,12 @@ dvim.lazy = {
     version = nil,
     -- default `cond` you can use to globally disable a lot of plugins
     -- when running inside vscode for example
+    ---@diagnostic disable-next-line: undefined-doc-name
     cond = nil, ---@type boolean|fun(self:LazyPlugin):boolean|nil
     -- version = "*", -- enable this to try installing the latest stable versions of plugins
   },
   -- leave nil when passing the spec as the first argument to setup()
+  ---@diagnostic disable-next-line: undefined-doc-name
   spec = nil, ---@type LazySpec
   lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
   concurrency = jit.os:find("Windows") and (vim.loop.available_parallelism() * 2) or nil,
