@@ -71,14 +71,6 @@ return {
     enabled = dvim.core.autopairs.active,
     lazy = true
   },
-  -- {
-  -- 	"https://github.com/numToStr/Comment.nvim",
-  -- 	config = function()
-  -- 		require("core.comment").setup()
-  -- 	end,
-  -- 	event = { "BufReadPost", "BufNewFile" },
-  -- 	enabled = dvim.core.comment.active,
-  -- },
   { "https://github.com/JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
     "https://github.com/nvim-tree/nvim-web-devicons",
