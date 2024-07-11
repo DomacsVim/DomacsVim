@@ -44,7 +44,7 @@ M.defaults = {
         luasnip = "(Snippet)",
         buffer = "(Buffer)",
         tmux = "(TMUX)",
-        copilot = "(Copilot)",
+        codeium = "(CODEIUM)",
         treesitter = "(TreeSitter)",
       },
       duplicates = {
@@ -93,6 +93,7 @@ M.defaults = {
       { name = "treesitter" },
       { name = "crates" },
       { name = "tmux" },
+      { name = "codeium" }
     },
   },
 }
