@@ -45,15 +45,14 @@ return {
     enabled = dvim.core.project.active,
     event = "VimEnter",
     cmd = "Telescope projects",
+    lazy = true,
   },
   {
     "https://github.com/nvim-lua/plenary.nvim",
     cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
     lazy = true,
   },
-  {
-    "https://github.com/nvim-telescope/telescope-file-browser.nvim",
-  },
+  { "https://github.com/nvim-telescope/telescope-file-browser.nvim",  lazy = true },
   {
     "https://github.com/nvim-telescope/telescope.nvim",
     config = function()
@@ -70,6 +69,7 @@ return {
       require("core.autopairs").setup()
     end,
     enabled = dvim.core.autopairs.active,
+    lazy = true
   },
   -- {
   -- 	"https://github.com/numToStr/Comment.nvim",
@@ -79,10 +79,7 @@ return {
   -- 	event = { "BufReadPost", "BufNewFile" },
   -- 	enabled = dvim.core.comment.active,
   -- },
-  {
-    "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true,
-  },
+  { "https://github.com/JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
     "https://github.com/nvim-tree/nvim-web-devicons",
     enabled = dvim.icons.active,
@@ -96,6 +93,7 @@ return {
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     enabled = dvim.core.indentlines.active,
+    lazy = true
   },
   {
     "https://github.com/akinsho/toggleterm.nvim",
@@ -261,7 +259,14 @@ return {
   {
     "https://github.com/RRethy/vim-illuminate",
     config = function()
-      dvim.core.illuminate = { configs = {} }
+      dvim.core.illuminate = {
+        configs = {
+          filetypes_denylist = {
+            'NvimTree',
+          },
+        }
+      }
+
       require('illuminate').configure(dvim.core.illuminate.configs)
     end,
     event = { "BufReadPost", "BufNewFile" },
