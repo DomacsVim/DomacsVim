@@ -44,7 +44,7 @@ M.defaults = {
 
     ---@type string
     ---@usage path to store the project history for use in telescope
-    datapath = dvim_cache_dir,
+    datapath = _G.dvim_cache_dir,
   },
 }
 

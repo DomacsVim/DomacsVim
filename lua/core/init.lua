@@ -3,21 +3,21 @@ local M = {}
 -- a list of modules to load configurations
 local modules = {
   autopairs = "core.autopairs",
+  breadcrumbs = "core.breadcrumbs",
+  bufferline = "core.bufferline",
+  cmp = "core.cmp",
+  dap = "core.dap",
   dashboard = "core.dashboard",
   gitsigns = "core.gitsigns",
   indentlines = "core.indentlines",
+  lualine = "core.lualine",
+  mason = "core.mason",
   nvimtree = "core.nvimtree",
   project = "core.project",
   telescope = "core.telescope",
   terminal = "core.terminal",
   treesitter = "core.treesitter",
   which_key = "core.whichkey",
-  breadcrumbs = "core.breadcrumbs",
-  mason = "core.mason",
-  cmp = "core.cmp",
-  lualine = "core.lualine",
-  bufferline = "core.bufferline",
-  dap = "core.dap",
 }
 
 function M.load_default_configs()

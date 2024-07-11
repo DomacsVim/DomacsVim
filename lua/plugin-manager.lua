@@ -5,9 +5,9 @@ local log = require("utils.log")
 
 -- lazy configuration
 dvim.lazy = {
-  root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
+  root = utils.join_paths(vim.fn.stdpath("data"), "lazy"), -- directory where plugins will be installed
   defaults = {
-    lazy = true,                            -- should plugins be lazy-loaded?
+    lazy = true,                                           -- should plugins be lazy-loaded?
     version = nil,
     -- default `cond` you can use to globally disable a lot of plugins
     -- when running inside vscode for example
@@ -18,7 +18,7 @@ dvim.lazy = {
   -- leave nil when passing the spec as the first argument to setup()
   ---@diagnostic disable-next-line: undefined-doc-name
   spec = nil, ---@type LazySpec
-  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
+  lockfile = utils.join_paths(vim.fn.stdpath("config"), "lazy-lock.json"), -- lockfile generated after running update.
   concurrency = jit.os:find("Windows") and (vim.loop.available_parallelism() * 2) or nil,
   git = {
     -- defaults for the `Lazy log` command
@@ -133,12 +133,12 @@ dvim.lazy = {
   -- when the readme opens with :help it will be correctly displayed as markdown
   readme = {
     enabled = true,
-    root = vim.fn.stdpath("state") .. "/lazy/readme",
-    files = { "README.md", "lua/**/README.md" },
+    root = utils.join_paths(vim.fn.stdpath("state"), "lazy", "readme"),
+    files = { "README.md", utils.join_paths("lua", "**", "README.md") },
     -- only generate markdown helptags for plugins that dont have docs
     skip_if_doc_exists = true,
   },
-  state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
+  state = utils.join_paths(vim.fn.stdpath("state"), "lazy", "state.json"), -- state info for checker and other things
   build = {
     -- Plugins can provide a `build.lua` file that will be executed when the plugin is installed
     -- or updated. When the plugin spec also has a `build` command, the plugin's `build.lua` not be

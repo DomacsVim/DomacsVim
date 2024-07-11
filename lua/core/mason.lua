@@ -1,5 +1,6 @@
 local M = {}
 
+local log = require("utils.log")
 local utils = require("utils.modules")
 
 M.defaults = {
@@ -54,6 +55,7 @@ M.defaults = {
 function M.setup()
   local status_ok, mason = pcall(require, "mason")
   if not status_ok then
+    log:ERROR("Failed to load mason module.")
     return
   end
 

@@ -313,13 +313,13 @@ M.defaults = {
       },
     },
     options = {
-      mode = "buffers",            -- set to "tabs" to only show tabpages instead
-      numbers = "none",            -- can be "none" | "ordinal" | "buffer_id" | "both" | function
+      mode = "buffers",               -- set to "tabs" to only show tabpages instead
+      numbers = "none",               -- can be "none" | "ordinal" | "buffer_id" | "both" | function
       close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
         M.buf_kill("bd", bufnr, false)
       end,
       right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
-      left_mouse_command = "buffer %d",     -- can be a string | function, see "Mouse actions"
+      left_mouse_command = "buffer %d",        -- can be a string | function, see "Mouse actions"
       middle_mouse_command = function()
         return M.buf_kill()
       end, -- can be a string | function, see "Mouse actions"
@@ -377,7 +377,7 @@ M.defaults = {
       },
       max_name_length = 18,
       max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-      truncate_names = true, -- whether or not tab names should be truncated
+      truncate_names = true,  -- whether or not tab names should be truncated
       tab_size = 20,
       diagnostics = "",
       diagnostics_update_in_insert = false,
@@ -415,7 +415,7 @@ M.defaults = {
           padding = 1,
         },
       },
-      color_icons = true,    -- whether or not to add the filetype icon highlights
+      color_icons = true,       -- whether or not to add the filetype icon highlights
       show_buffer_icons = true, -- disable filetype icons for buffers
       show_buffer_close_icons = true,
       show_close_icon = false,
