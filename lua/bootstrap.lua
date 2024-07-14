@@ -24,6 +24,7 @@ function M.handle_user_config_file()
           string.format("User-configuration not found. Creating an example configuration in %s", config_path)
       vim.notify_once(message, vim.log.levels.WARN)
       log:WARN(message)
+      ---@diagnostic disable-next-line: param-type-mismatch
       vim.fn.mkdir(dvim_config_dir, "p")
       log:TRACE("The configs directory was created.")
       vim.loop.fs_copyfile(example_config, config_path)

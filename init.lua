@@ -77,9 +77,6 @@ require("options")
 
 local bootstrap = require("bootstrap")
 
--- initialize user config file.
-bootstrap.handle_user_config_file()
-
 -- initialize plugin manager
 bootstrap.initialize_plugin_manager()
 
@@ -92,6 +89,9 @@ local plugin_manager = require("plugin-manager")
 
 -- load the default plugins
 plugin_manager.setup()
+
+-- initialize user config file.
+bootstrap.handle_user_config_file()
 
 -- load lspconfig
 require("lsp")

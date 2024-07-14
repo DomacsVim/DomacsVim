@@ -74,6 +74,9 @@ return {
   { "https://github.com/JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
     "https://github.com/nvim-tree/nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup(dvim.icons.devicons)
+    end,
     enabled = dvim.icons.active,
     lazy = true,
   },
