@@ -3,7 +3,7 @@
 OS=$(uname -s)
 
 DVIM_BRANCH="${DVIM_BRANCH:-main}"
-DVIM_GIT_REPOSITORY="${DVIM_GIT_REPOSITORY:-https://gitlab.com/domacsvim/domacsvim.git}"
+DVIM_GIT_REPOSITORY="${DVIM_GIT_REPOSITORY:-https://github.com/domacsvim/domacsvim.git}"
 DVIM_RUNTIME_DIR="${DVIM_RUNTIME_DIR:-$HOME/.local/share/domacsvim}"
 DVIM_CONFIG_DIR="${DVIM_CONFIG_DIR:-$HOME/.config/dvim}"
 DVIM_CACHE_DIR="${DVIM_CACHE_DIR:-$HOME/.cache/dvim}"
@@ -132,8 +132,12 @@ install_bin(){
     mkdir $HOME/.local/bin
   fi
   if [[ ! -f $HOME/.local/bin/dvim ]]; then
-    curl -s https://gitlab.com/domacsvim/domacsvim/-/raw/main/bin/domacsvim-cli-template.sh >> $HOME/.local/bin/dvim
+    cp $DVIM_RUNTIME_DIR/bin/dvim-cli-template.sh $HOME/.local/bin/dvim
     chmod +x $HOME/.local/bin/dvim
+  fi
+  if [[ ! -f $HOME/.local/bin/dvim-gui ]]; then
+    cp $DVIM_RUNTIME_DIR/bin/dvim-gui-template.sh $HOME/.local/bin/dvim-gui
+    chmod +x $HOME/.local/bin/dvim-gui
   fi
 }
 
