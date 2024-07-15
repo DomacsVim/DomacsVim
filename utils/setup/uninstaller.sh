@@ -38,6 +38,8 @@ main(){
     echo " Deleted $DVIM_RUNTIME_DIR"
     rm -rf "$HOME/.local/bin/dvim"
     echo " Deleted $HOME/.local/bin/dvim"
+    rm -rf "$HOME/.local/bin/dvim-gui"
+    echo " Deleted $HOME/.local/bin/dvim-gui"
   fi
 }
 
