@@ -62,7 +62,8 @@ function M.about()
   local lines = {
     center_text("DomacsVim"),
     "",
-    " Version : 1.0.0",
+    " Version : " ..
+    vim.fn.system("echo $(git -C " .. dvim_runtime_dir .. " rev-parse --abbrev-ref HEAD)"):gsub("%s+", ""),
     " Commit  : " .. version(),
     " Date    : " .. string.format(
       "%s",
