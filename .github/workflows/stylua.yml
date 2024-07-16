@@ -2,12 +2,11 @@ name: Formatting
 
 on: push
 
-env:
-  BRANCH_NAME: ${{ github.head_ref }}
-  TOKEN: ${{ secrets.GH_TOKEN }}
-
 jobs:
   stylua:
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,11 +17,11 @@ jobs:
           # CLI arguments
           args: -f .stylua -v .
 
-      - name: pull-request
-        uses: diillson/auto-pull-request@v1.0.1
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
         with:
-          source_branch: ""                                 # If blank, default: triggered branch
-          destination_branch: "main"                      # If blank, default: master
-          pr_title: "chore(*stylua*): Formatting with stylua." # Title of pull request
-          pr_draft: false                                    # Creates pull request as draft
-          github_token: ${{ secrets.GITHUB_TOKEN }}      # If blank, default: secrets.GITHUB_TOKEN
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat(*stylua*): Formatting with stylua."
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          title: "Formatting with stylua."
+          draft: false
