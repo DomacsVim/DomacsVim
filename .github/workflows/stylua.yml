@@ -4,11 +4,12 @@ on: push
 
 jobs:
   build:
-    runs-on: archlinux-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Install stylua
-        run: sudo pacman -S --noconfirm stylua
-      - name: Formatting with stylua
-        run: stylua --check .
+      - uses: actions/checkout@v4
+      - uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
+          # CLI arguments
+          args: --check .
