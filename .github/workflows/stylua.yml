@@ -1,21 +1,14 @@
-name: format
+name: Stylua
 
-on:
-  pull_request:
-    branches:
-      - "V-0.0.1"
+on: push
 
 jobs:
-  stylua-check:
-    name: "Formatting check with Stylua"
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Lint with stylua
-        uses: JohnnyMorganz/stylua-action@v4.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # CLI arguments
-          version: latest
-          args: --check .
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install stylua
+        run: sudo apt -y install stylua
+      - name: Formatting with stylua
+        run: stylua --check .
