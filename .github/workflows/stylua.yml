@@ -2,17 +2,17 @@ on:
   pull_request:
     branches:
     - V-0.0.1
-
 jobs:
-  Formatting:
+  stylua-check:
     name: "Formatting check with Stylua"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Formatting with stylua
-        uses: JohnnyMorganz/stylua-action@v4.0.0
+      - name: Lint with stylua
+        uses: JohnnyMorganz/stylua-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # CLI arguments
-          version: latest
+          version: 0.15.3
           args: --check .
+
