@@ -11,8 +11,7 @@ jobs:
     runs-on: ubutu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Formatting check with stylua
-      uses: JohnnyMorganz/stylua-action@v4
+    - uses: JohnnyMorganz/stylua-action@v4
       with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # CLI arguments
