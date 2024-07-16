@@ -15,7 +15,7 @@ jobs:
           args: -f .stylua -v .
 
       - name: Create Pull Request
-        id: cpr
+        id: CPR
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -24,4 +24,32 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
           title: 'chore(*all files*): Formatting with stylua.'
+          draft: false
+
+
+jobs:
+  stylua:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: JohnnyMorganz/stylua-action@v4.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
+          # CLI arguments
+          args: -f .stylua -v .
+
+      - name: Create Pull Request
+        id: CPR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(*all files*): Formatting with stylua.'
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: stylua
+          delete-branch: true
+          title: 'Formatting'
+          milestone: 1
           draft: false
