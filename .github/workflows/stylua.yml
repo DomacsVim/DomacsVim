@@ -13,11 +13,10 @@ jobs:
           version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
           # CLI arguments
           args: -f .stylua -v .
-      - name: Run the Action
-        uses: devops-infra/action-pull-request@v0.5.5
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          target_branch: main
           title: Formatting with stylua
-          body: "chore(*stylua*): Formatting with stylua."
-          draft: false
+          commit-message: 'chore(*stylua*): Formatting with stylua.'
+          branch: main
+          delete-branch: true
