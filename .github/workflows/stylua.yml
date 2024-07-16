@@ -4,6 +4,7 @@ on: push
 
 env:
   BRANCH_NAME: ${{ github.head_ref }}
+  TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   stylua:
@@ -33,5 +34,3 @@ jobs:
             --header "Authorization: token ${TOKEN}" \
             -H "Content-Type:application/json" \
             -d "$PAYLOAD"
-        env:
-          TOKEN: ${{ secrets.GH_TOKEN }}
