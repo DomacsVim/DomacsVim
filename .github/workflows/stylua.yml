@@ -2,6 +2,9 @@ name: Formatting
 
 on: push
 
+env:
+  BRANCH_NAME: ${{ github.head_ref }}
+
 jobs:
   stylua:
     runs-on: ubuntu-latest
@@ -13,10 +16,22 @@ jobs:
           version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
           # CLI arguments
           args: -f .stylua -v .
+
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: Formatting with stylua
-          commit-message: 'chore(*stylua*): Formatting with stylua.'
-          branch: main
-          delete-branch: true
+        run: |
+          PAYLOAD=$(cat <<EOF
+            {
+              "title": "Formatting with stylua",
+              "body": "chore(*stylua*): Formatting with stylua.",
+              "head": "${BRANCH_NAME}",
+              "base": "main"
+            }
+          EOF
+          )
+          curl
+            https://api.github.com/repos/my-user/my-repo/pulls \
+            --header "Authorization: token ${TOKEN}" \
+            -H "Content-Type:application/json" \
+            -d "$PAYLOAD"
+        env:
+          TOKEN: ${{ secrets.GH_TOKEN }}
