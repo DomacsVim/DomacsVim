@@ -9,6 +9,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Install stylua
-        run: sudo apt -y install stylua
+        run: sudo pacman -S --noconfirm stylua
       - name: Formatting with stylua
         run: stylua --check .
