@@ -2,9 +2,7 @@ name: Formatting
 
 on: push
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: write-all
 
 jobs:
   stylua:
