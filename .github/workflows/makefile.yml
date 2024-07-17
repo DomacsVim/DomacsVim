@@ -38,5 +38,5 @@ jobs:
     - name: test
       run: |
           echo 'Testing DomacsVim'
-          sudo /root/.local/bin/dvim --cmd ":qa!"
+          sudo /home/runner/.local/bin/dvim" --cmd ":qa!"
 
