@@ -1,6 +1,6 @@
 name: Formatting
 
-on: push
+on: pull
 
 permissions: write-all
 
