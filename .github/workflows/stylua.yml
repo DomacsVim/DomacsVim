@@ -1,6 +1,6 @@
 name: Formatting
 
-on: pull
+on: [push, pull_request]
 
 permissions: write-all
 
