@@ -10,12 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: install_neovim
+    - name: Install dependencies
       run: |
         echo 'Installing DomacsVim dependencies.'
         sudo apt-get update && sudo apt-get install -y libssl-dev ninja-build gettext cmake unzip curl git
       
-    - name: Install dependencies
+    - name: Install neovim
       run: |
           echo 'Installing neovim'
           cd ..
@@ -27,7 +27,7 @@ jobs:
           sudo make clean install
 
 
-    - name: install_domacsvim
+    - name: install domacsvim
       run: |
           echo 'Installing DomacsVim'
           curl -s 'https://gitlab.com/domacsvim/domacsvim/-/raw/V-1.0.0/installer/install.sh' >> domacsvim-install.sh
@@ -38,5 +38,5 @@ jobs:
     - name: test
       run: |
           echo 'Testing DomacsVim'
-          /root/.local/bin/dvim --cmd ":qa!"
+          sudo /root/.local/bin/dvim --cmd ":qa!"
 
