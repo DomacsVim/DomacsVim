@@ -19,6 +19,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
           commit-message: "feat(*stylua*): Formatting with stylua."
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           title: "Formatting with stylua."
