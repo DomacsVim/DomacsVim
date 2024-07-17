@@ -14,12 +14,6 @@ M.defaults = {
     delay = function(ctx)
       return ctx.plugin and 0 or 200
     end,
-    ---@param mapping wk.Mapping
-    filter = function(mapping)
-      -- example to exclude mappings without a description
-      -- return mapping.desc and mapping.desc ~= ""
-      return true
-    end,
     --- You can add any mappings here, or use `require('which-key').add()` later
     ---@type wk.Spec
     spec = {
@@ -544,22 +538,22 @@ M.defaults = {
       c = true, -- Command mode
     },
     plugins = {
-      marks = true, -- shows a list of your marks on ' and `
+      marks = true,     -- shows a list of your marks on ' and `
       registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
       -- the presets plugin, adds help for a bunch of default keybindings in Neovim
       -- No actual key bindings are created
       spelling = {
-        enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+        enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
         suggestions = 20, -- how many suggestions should be shown in the list?
       },
       presets = {
-        operators = true, -- adds help for operators like d, y, ...
-        motions = true, -- adds help for motions
+        operators = true,    -- adds help for operators like d, y, ...
+        motions = true,      -- adds help for motions
         text_objects = true, -- help for text objects triggered after entering an operator
-        windows = true, -- default bindings on <c-w>
-        nav = true, -- misc bindings to work with windows
-        z = true, -- bindings for folds, spelling and others prefixed with z
-        g = true, -- bindings for prefixed with g
+        windows = true,      -- default bindings on <c-w>
+        nav = true,          -- misc bindings to work with windows
+        z = true,            -- bindings for folds, spelling and others prefixed with z
+        g = true,            -- bindings for prefixed with g
       },
     },
     ---@type wk.Win
@@ -583,12 +577,12 @@ M.defaults = {
     },
     layout = {
       -- width = { min = 20 }, -- min and max width of the columns
-      spacing = 3, -- spacing between columns
+      spacing = 3,    -- spacing between columns
       align = "left", -- align columns left, center or right
     },
     keys = {
       scroll_down = "<c-d>", -- binding to scroll down inside the popup
-      scroll_up = "<c-u>", -- binding to scroll up inside the popup
+      scroll_up = "<c-u>",   -- binding to scroll up inside the popup
     },
     ---@type (string|wk.Sorter)[]
     --- Add "manual" as the first element to use the order the mappings were registered
@@ -609,13 +603,13 @@ M.defaults = {
       },
       desc = {
         { "<Plug>%((.*)%)", "%1" },
-        { "^%+", "" },
-        { "<[cC]md>", "" },
-        { "<[cC][rR]>", "" },
-        { "<[sS]ilent>", "" },
-        { "^lua%s+", "" },
-        { "^call%s+", "" },
-        { "^:%s*", "" },
+        { "^%+",            "" },
+        { "<[cC]md>",       "" },
+        { "<[cC][rR]>",     "" },
+        { "<[sS]ilent>",    "" },
+        { "^lua%s+",        "" },
+        { "^call%s+",       "" },
+        { "^:%s*",          "" },
       },
     },
     icons = {
@@ -661,9 +655,6 @@ M.defaults = {
       bt = {},
       -- disable a trigger for a certain context by returning true
       ---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
-      trigger = function(ctx)
-        return false
-      end,
     },
     debug = false, -- enable wk.log in the current directory
   },
