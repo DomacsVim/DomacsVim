@@ -15,13 +15,3 @@ jobs:
           version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
           # CLI arguments
           args: -f .stylua -v .
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
-          commit-message: "feat(*stylua*): Formatting with stylua."
-          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          title: "Formatting with stylua."
-          draft: false
