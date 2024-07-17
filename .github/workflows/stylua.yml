@@ -2,10 +2,11 @@ name: Formatting
 
 on: [push, pull_request]
 
+permissions: write-all
+
 jobs:
   stylua:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - uses: actions/checkout@v4
       - uses: JohnnyMorganz/stylua-action@v4.0.0
