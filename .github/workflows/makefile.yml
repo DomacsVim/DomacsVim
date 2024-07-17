@@ -1,0 +1,42 @@
+name: Makefile CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: install_neovim
+      run: |
+        echo 'Installing DomacsVim dependencies.'
+        apt-get update && apt-get install -y libssl-dev ninja-build gettext cmake unzip curl git
+      
+    - name: Install dependencies
+      run: |
+          echo 'Installing neovim'
+          cd ..
+          rm -rf neovim-master
+          wget https://github.com/neovim/neovim/archive/master.zip
+          unzip master.zip
+          rm -rf master.zip
+          cd neovim-master
+          make clean install
+
+
+    - name: install_domacsvim
+      run: |
+          echo 'Installing DomacsVim'
+          curl -s 'https://gitlab.com/domacsvim/domacsvim/-/raw/V-1.0.0/installer/install.sh' >> domacsvim-install.sh
+          chmod +x ./domacsvim-install.sh
+          ./domacsvim-install.sh --no-install-dependencies
+
+
+    - name: test
+      run: |
+          echo 'Testing DomacsVim'
+          /root/.local/bin/dvim --cmd ":qa!"
+
