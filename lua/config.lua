@@ -11,7 +11,7 @@ function M.default_configs()
       visual_mode = {},
       command_mode = {},
     },
-    icons = require("icons"),
+    icons = require "icons",
     core = {},
     lazy = {},
     plugins = {},
@@ -24,11 +24,11 @@ function M.load_default_configs()
   -- load lsp default configs
   dvim.lsp = vim.deepcopy(require("lsp.configs").defaults)
 
-  local core = require("core")
+  local core = require "core"
   -- load default configs
   core.load_default_configs()
 
-  local keymappings = require("keymappings")
+  local keymappings = require "keymappings"
   -- load the default keymappings
   keymappings.load_keymappings()
 end

@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 -- default configurations
 M.defaults = {
@@ -193,7 +193,7 @@ M.defaults = {
 function M.setup()
   local status_ok, nvimtree = pcall(require, "nvim-tree")
   if not status_ok then
-    log:ERROR("Failed to load nvim-tree module.")
+    log:ERROR "Failed to load nvim-tree module."
     return
   end
 

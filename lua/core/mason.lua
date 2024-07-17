@@ -1,7 +1,7 @@
 local M = {}
 
-local log = require("utils.log")
-local utils = require("utils.modules")
+local log = require "utils.log"
+local utils = require "utils.modules"
 
 M.defaults = {
   configs = {
@@ -39,7 +39,7 @@ M.defaults = {
       },
     },
     PATH = "skip",
-    install_root_dir = utils.join_paths(vim.fn.stdpath("data"), "mason"),
+    install_root_dir = utils.join_paths(vim.fn.stdpath "data", "mason"),
     max_concurrent_installers = 5,
     registries = {
       "lua:mason-registry.index",
@@ -55,7 +55,7 @@ M.defaults = {
 function M.setup()
   local status_ok, mason = pcall(require, "mason")
   if not status_ok then
-    log:ERROR("Failed to load mason module.")
+    log:ERROR "Failed to load mason module."
     return
   end
 

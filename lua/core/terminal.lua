@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 M.defaults = {
   active = true,
@@ -31,12 +31,12 @@ M.defaults = {
     autochdir = false,
     shade_terminals = true,
     start_in_insert = true,
-    insert_mappings = true,   -- whether or not the open mapping applies in insert mode
+    insert_mappings = true, -- whether or not the open mapping applies in insert mode
     terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
     persist_size = true,
-    persist_mode = true,      -- if set to true (default) the previous terminal mode will be remembered
+    persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
     direction = "horizontal",
-    close_on_exit = true,     -- close the terminal window when the process exits
+    close_on_exit = true, -- close the terminal window when the process exits
     -- Change the default shell. Can be a string or a function returning a string
     shell = vim.o.shell,
     auto_scroll = true, -- automatically scroll to the bottom on terminal output
@@ -74,7 +74,7 @@ M.defaults = {
 
 function M.change_log()
   local Terminal = require("toggleterm.terminal").Terminal
-  local change_log = Terminal:new({
+  local change_log = Terminal:new {
     cmd = "git -C " .. dvim_runtime_dir .. " log",
     hidden = true,
     direction = "float",
@@ -83,13 +83,13 @@ function M.change_log()
       width = 100000,
       height = 100000,
     },
-  })
+  }
   change_log:toggle()
 end
 
 function M.lazygit_toggle()
   local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit = Terminal:new({
+  local lazygit = Terminal:new {
     cmd = "lazygit",
     hidden = true,
     direction = "float",
@@ -99,16 +99,16 @@ function M.lazygit_toggle()
       height = 100000,
     },
     on_open = function(_)
-      vim.cmd("startinsert!")
+      vim.cmd "startinsert!"
     end,
-  })
+  }
   lazygit:toggle()
 end
 
 function M.setup()
   local status_ok, term = pcall(require, "toggleterm")
   if not status_ok then
-    log:ERROR("Failed to load toggle-term module.")
+    log:ERROR "Failed to load toggle-term module."
     return
   end
 

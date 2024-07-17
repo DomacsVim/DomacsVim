@@ -1,13 +1,13 @@
 local M = {}
 
-local utils = require("utils.modules")
-local log = require("utils.log")
+local utils = require "utils.modules"
+local log = require "utils.log"
 
 -- lazy configuration
 dvim.lazy = {
-  root = utils.join_paths(vim.fn.stdpath("data"), "lazy"), -- directory where plugins will be installed
+  root = utils.join_paths(vim.fn.stdpath "data", "lazy"), -- directory where plugins will be installed
   defaults = {
-    lazy = true,                                           -- should plugins be lazy-loaded?
+    lazy = true, -- should plugins be lazy-loaded?
     version = nil,
     -- default `cond` you can use to globally disable a lot of plugins
     -- when running inside vscode for example
@@ -18,13 +18,13 @@ dvim.lazy = {
   -- leave nil when passing the spec as the first argument to setup()
   ---@diagnostic disable-next-line: undefined-doc-name
   spec = nil, ---@type LazySpec
-  lockfile = utils.join_paths(vim.fn.stdpath("config"), "lazy-lock.json"), -- lockfile generated after running update.
-  concurrency = jit.os:find("Windows") and (vim.loop.available_parallelism() * 2) or nil,
+  lockfile = utils.join_paths(vim.fn.stdpath "config", "lazy-lock.json"), -- lockfile generated after running update.
+  concurrency = jit.os:find "Windows" and (vim.loop.available_parallelism() * 2) or nil,
   git = {
     -- defaults for the `Lazy log` command
     -- log = { "-10" }, -- show the last 10 commits
     log = { "-10" }, -- show commits from the last 3 days
-    timeout = 120,   -- kill processes that take more than 2 minutes
+    timeout = 120, -- kill processes that take more than 2 minutes
     url_format = "%s.git",
     -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
     -- then set the below to false. This should work, but is NOT supported and will
@@ -34,7 +34,7 @@ dvim.lazy = {
   dev = {
     -- directory where you store your local plugin projects
     path = "~/projects",
-    patterns = {},    -- For example {"folke"}
+    patterns = {}, -- For example {"folke"}
     fallback = false, -- Fallback to git when local plugin doesn't exist
   },
   install = {
@@ -78,8 +78,8 @@ dvim.lazy = {
     -- automatically check for plugin updates
     enabled = false,
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-    notify = true,        -- get a notification when new updates are found
-    frequency = 3600,     -- check for updates every hour
+    notify = true, -- get a notification when new updates are found
+    frequency = 3600, -- check for updates every hour
     check_pinned = false, -- check for pinned packages that can't be updated
   },
   change_detection = {
@@ -93,9 +93,9 @@ dvim.lazy = {
     },
     reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = false,       -- reset the runtime path to $VIMRUNTIME and your config directory
+      reset = false, -- reset the runtime path to $VIMRUNTIME and your config directory
       ---@type string[]
-      paths = {},          -- add any custom paths here that you want to includes in the rtp
+      paths = {}, -- add any custom paths here that you want to includes in the rtp
       ---@type string[] list any plugins you want to disable here
       disabled_plugins = {
         "2html_plugin",
@@ -133,12 +133,12 @@ dvim.lazy = {
   -- when the readme opens with :help it will be correctly displayed as markdown
   readme = {
     enabled = true,
-    root = utils.join_paths(vim.fn.stdpath("state"), "lazy", "readme"),
+    root = utils.join_paths(vim.fn.stdpath "state", "lazy", "readme"),
     files = { "README.md", utils.join_paths("lua", "**", "README.md") },
     -- only generate markdown helptags for plugins that dont have docs
     skip_if_doc_exists = true,
   },
-  state = utils.join_paths(vim.fn.stdpath("state"), "lazy", "state.json"), -- state info for checker and other things
+  state = utils.join_paths(vim.fn.stdpath "state", "lazy", "state.json"), -- state info for checker and other things
   build = {
     -- Plugins can provide a `build.lua` file that will be executed when the plugin is installed
     -- or updated. When the plugin spec also has a `build` command, the plugin's `build.lua` not be
@@ -157,14 +157,14 @@ dvim.lazy = {
 }
 
 -- builtin (core) plugins
-local defaults = require("plugins")
+local defaults = require "plugins"
 
 --
 function M.setup()
-  log:TRACE("loading plugins")
+  log:TRACE "loading plugins"
   local lazy_available, lazy = pcall(require, "lazy")
   if not lazy_available then
-    log:ERROR("skipping loading plugins until lazy.nvim is installed")
+    log:ERROR "skipping loading plugins until lazy.nvim is installed"
     return
   end
 
@@ -179,7 +179,7 @@ function M.setup()
   end, debug.traceback)
 
   if not status_ok then
-    log:WARN("problems detected while loading plugins")
+    log:WARN "problems detected while loading plugins"
     log:TRACE(debug.traceback())
   end
 end

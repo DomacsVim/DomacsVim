@@ -1,7 +1,7 @@
 local M = {}
 
-local log = require("utils.log")
-local utils = require("utils.modules")
+local log = require "utils.log"
+local utils = require "utils.modules"
 
 local function system()
   local system_name = ""
@@ -9,13 +9,13 @@ local function system()
     function()
       local icon
       if vim.loop.os_uname().sysname == "Linux" then
-        if utils.is_file("/etc/arch-release") or utils.is_file("/etc/artix-release") then
+        if utils.is_file "/etc/arch-release" or utils.is_file "/etc/artix-release" then
           icon = "%#StatusLineArchLinux#" .. "  "
           system_name = "ArchLinux"
-        elseif utils.is_file("/etc/fedora-release") or utils.is_file("/etc/redhat-release") then
+        elseif utils.is_file "/etc/fedora-release" or utils.is_file "/etc/redhat-release" then
           icon = "%#StatusLineFedoraLinux#" .. "  "
           system_name = "FedoraLinux"
-        elseif utils.is_file("/etc/SuSE-release") then
+        elseif utils.is_file "/etc/SuSE-release" then
           icon = "%#StatusLineSuseLinux#" .. "  "
           system_name = "SuSELinux"
         else
@@ -23,9 +23,9 @@ local function system()
           system_name = "LinuxDebian or based on"
         end
       elseif
-          vim.loop.os_uname().sysname == "FreeBSD"
-          or vim.loop.os_uname().sysname == "NetBSD"
-          or vim.loop.os_uname().sysname == "OpenBSD"
+        vim.loop.os_uname().sysname == "FreeBSD"
+        or vim.loop.os_uname().sysname == "NetBSD"
+        or vim.loop.os_uname().sysname == "OpenBSD"
       then
         icon = "%#StatusLineBSD#" .. "  "
       elseif vim.loop.os_uname().sysname == "Darwin" then
@@ -47,7 +47,7 @@ local function branch()
     color = "StatusLinegitIcons",
     separator = { right = dvim.core.lualine.configs.options.section_separators.left },
     on_click = function()
-      vim.cmd("Telescope git_commits")
+      vim.cmd "Telescope git_commits"
     end,
   }
 end
@@ -66,7 +66,7 @@ local function diff()
     color = "StatusLineDiffIcons",
     separator = { right = dvim.core.lualine.configs.options.section_separators.left },
     on_click = function()
-      vim.cmd("Telescope git_status")
+      vim.cmd "Telescope git_status"
     end,
   }
 end
@@ -81,7 +81,7 @@ local function diagnostics()
       hint = "StatusLinelspHints",
     },
     on_click = function()
-      vim.cmd("Telescope diagnostics")
+      vim.cmd "Telescope diagnostics"
     end,
   }
 end
@@ -90,17 +90,17 @@ local function filename()
   return {
     "filename",
     color = "StatusLineFileInfo",
-    file_status = true,      -- Displays file status (readonly status, modified status)
-    newfile_status = true,   -- Display new file status (new file means no write after created)
-    shorting_target = 40,    -- Shortens path to leave 40 spaces in the window
+    file_status = true, -- Displays file status (readonly status, modified status)
+    newfile_status = true, -- Display new file status (new file means no write after created)
+    shorting_target = 40, -- Shortens path to leave 40 spaces in the window
     symbols = {
-      modified = "[+]",      -- Text to show when the file is modified.
-      readonly = "[-]",      -- Text to show when the file is non-modifiable or readonly.
+      modified = "[+]", -- Text to show when the file is modified.
+      readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
       unnamed = "[No Name]", -- Text to show for unnamed buffers.
-      newfile = "[New]",     -- Text to show for newly created file before first write
+      newfile = "[New]", -- Text to show for newly created file before first write
     },
     on_click = function()
-      vim.cmd("Telescope file_browser")
+      vim.cmd "Telescope file_browser"
     end,
   }
 end
@@ -111,7 +111,7 @@ local function tabsize()
       return string.format("TabSize: %s", vim.opt.tabstop["_value"])
     end,
     on_click = function()
-      local TSize = vim.fn.input("Enter TabSize : ")
+      local TSize = vim.fn.input "Enter TabSize : "
       vim.opt.tabstop = tonumber(TSize)
     end,
   }
@@ -123,7 +123,7 @@ local function filetype()
     color = "StatusLineFTIcons",
     separator = { left = dvim.core.lualine.configs.options.section_separators.right },
     on_click = function()
-      vim.cmd("Telescope filetypes")
+      vim.cmd "Telescope filetypes"
     end,
   }
 end
@@ -134,7 +134,7 @@ local function lsp()
       local buf_client_names = {}
       if rawget(vim, "lsp") then
         ---@diagnostic disable-next-line: deprecated
-        for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+        for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
           if client.attached_buffers[vim.api.nvim_get_current_buf()] then
             table.insert(buf_client_names, client.name)
           end
@@ -144,10 +144,10 @@ local function lsp()
         return (
           vim.o.columns > 100
           and "%#StatusLineLspStatusSep#"
-          .. dvim.core.lualine.configs.options.section_separators.right
-          .. "%#StatusLineLspStatus#   ["
-          .. language_servers
-          .. "] "
+            .. dvim.core.lualine.configs.options.section_separators.right
+            .. "%#StatusLineLspStatus#   ["
+            .. language_servers
+            .. "] "
         ) or "   [] "
       end
     end,
@@ -170,7 +170,7 @@ end
 local function env_cleanup(venv)
   if string.find(venv, "/") then
     local final_venv = venv
-    for w in venv:gmatch("([^/]+)") do
+    for w in venv:gmatch "([^/]+)" do
       final_venv = w
     end
     venv = final_venv
@@ -180,11 +180,11 @@ end
 
 local function python_venv()
   if vim.bo.filetype == "python" then
-    local venv = os.getenv("CONDA_DEFAULT_ENV")
+    local venv = os.getenv "CONDA_DEFAULT_ENV"
     if venv then
       return "%#StatusLinePythonVenv# (" .. env_cleanup(venv) .. ")"
     end
-    venv = os.getenv("VIRTUAL_ENV")
+    venv = os.getenv "VIRTUAL_ENV"
     if venv then
       return "%#StatusLinePythonVenv# (" .. env_cleanup(venv) .. ")"
     end
@@ -195,7 +195,7 @@ end
 
 -- Npm
 local function npm()
-  if utils.is_file("./package.json") then
+  if utils.is_file "./package.json" then
     return "%#StatusLineNpm# Nodejs"
   else
     return ""
@@ -238,7 +238,7 @@ M.defaults = {
 function M.setup()
   local status_ok, lualine = pcall(require, "lualine")
   if not status_ok then
-    log:ERROR("Failed to load lualine module.")
+    log:ERROR "Failed to load lualine module."
     return
   end
 

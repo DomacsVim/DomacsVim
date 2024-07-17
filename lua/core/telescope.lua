@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 -- default configurations
 M.defaults = {
@@ -55,7 +55,7 @@ M.defaults = {
 function M.setup()
   local status_ok, telescope = pcall(require, "telescope")
   if not status_ok then
-    log:ERROR("Failed to load telescope module.")
+    log:ERROR "Failed to load telescope module."
     return
   end
 
@@ -77,10 +77,10 @@ function M.setup()
     },
   }, dvim.core.telescope.configs.defaults)
   pcall(function()
-    telescope.load_extension("projects")
+    telescope.load_extension "projects"
   end)
   pcall(function()
-    telescope.load_extension("file_browser")
+    telescope.load_extension "file_browser"
   end)
   telescope.setup(dvim.core.telescope.configs)
 end

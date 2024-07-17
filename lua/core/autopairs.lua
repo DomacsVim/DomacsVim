@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 M.defaults = {
   active = true,
@@ -50,7 +50,7 @@ M.defaults = {
 function M.setup()
   local status_ok, autopairs = pcall(require, "nvim-autopairs")
   if not status_ok then
-    log:ERROR("Failed to load autopairs module.")
+    log:ERROR "Failed to load autopairs module."
     return
   end
 

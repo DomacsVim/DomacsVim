@@ -1,12 +1,12 @@
-local dvim_lsp = require("lsp.configs")
-local lspconfig = require("lspconfig")
+local dvim_lsp = require "lsp.configs"
+local lspconfig = require "lspconfig"
 
 local capabilities = dvim_lsp.capabilities()
 
-local themer = require("themer")
+local themer = require "themer"
 local theme = themer.themes(dvim.colorscheme)
 
-require("barbecue").setup({
+require("barbecue").setup {
   theme = {
     separator = { fg = theme.base07 },
   },
@@ -17,7 +17,7 @@ require("barbecue").setup({
   create_autocmd = true,
   show_dirname = false,
   show_basename = true,
-})
+}
 
 vim.api.nvim_create_autocmd({
   "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd({
 
 local handlers = {
   function(server_name)
-    lspconfig[server_name].setup({
+    lspconfig[server_name].setup {
       capabilities = capabilities,
       on_init = function(client, _)
         dvim_lsp.on_init(client)
@@ -42,10 +42,10 @@ local handlers = {
       on_attach = function(client, bufnr)
         dvim_lsp.on_attach(client, bufnr)
       end,
-    })
+    }
   end,
   ["lua_ls"] = function()
-    lspconfig.lua_ls.setup({
+    lspconfig.lua_ls.setup {
       capabilities = capabilities,
       on_init = function(client, _)
         dvim_lsp.on_init(client)
@@ -69,8 +69,8 @@ local handlers = {
           },
           workspace = {
             library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+              [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+              [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
               [require("neodev.config").types()] = true,
               ["${3rd}/busted/library"] = true,
               ["${3rd}/luassert/library"] = true,
@@ -81,10 +81,10 @@ local handlers = {
           },
         },
       },
-    })
+    }
   end,
   ["tailwindcss"] = function()
-    lspconfig.tailwindcss.setup({
+    lspconfig.tailwindcss.setup {
       capabilities = capabilities,
       on_init = function(client, _)
         dvim_lsp.on_init(client)
@@ -93,10 +93,8 @@ local handlers = {
         dvim_lsp.on_attach(client, bufnr)
       end,
       root_dir = function(fname)
-        local util = require("lspconfig/util")
-        return util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.js", "tailwind.cjs")(
-          fname
-        )
+        local util = require "lspconfig/util"
+        return util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.js", "tailwind.cjs")(fname)
       end,
       init_options = {
         userLanguages = {
@@ -155,7 +153,7 @@ local handlers = {
         "vue",
         "svelte",
       },
-    })
+    }
   end,
 }
 

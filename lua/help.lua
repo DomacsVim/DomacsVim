@@ -2,29 +2,29 @@ local M = {}
 
 function M.welcome()
   if vim.bo.filetype ~= "alpha" then
-    vim.cmd("Alpha")
+    vim.cmd "Alpha"
   end
 end
 
 function M.show_all_commands()
-  vim.cmd("Telescope commands")
+  vim.cmd "Telescope commands"
 end
 
 function M.documentation()
   -- TODO: I will create a documentation for domacsvim
-  vim.fn.system("xdg-open https://gitlab.com/domacsvim/domacsvim")
+  vim.fn.system "xdg-open https://gitlab.com/domacsvim/domacsvim"
 end
 
 function M.keyboard_shortcuts_reference()
-  vim.cmd("Telescope keymaps")
+  vim.cmd "Telescope keymaps"
 end
 
 function M.report_issue()
-  vim.fn.system("xdg-open https://gitlab.com/domacsvim/domacsvim/-/issues/new")
+  vim.fn.system "xdg-open https://gitlab.com/domacsvim/domacsvim/-/issues/new"
 end
 
 function M.view_license()
-  vim.fn.system("xdg-open https://gitlab.com/domacsvim/domacsvim/-/blob/main/LICENSE")
+  vim.fn.system "xdg-open https://gitlab.com/domacsvim/domacsvim/-/blob/main/LICENSE"
 end
 
 function M.about()
@@ -60,10 +60,10 @@ function M.about()
   end
 
   local lines = {
-    center_text("DomacsVim"),
+    center_text "DomacsVim",
     "",
-    " Version : " ..
-    vim.fn.system("echo $(git -C " .. dvim_runtime_dir .. " rev-parse --abbrev-ref HEAD)"):gsub("%s+", ""),
+    " Version : "
+      .. vim.fn.system("echo $(git -C " .. dvim_runtime_dir .. " rev-parse --abbrev-ref HEAD)"):gsub("%s+", ""),
     " Commit  : " .. version(),
     " Date    : " .. string.format(
       "%s",
@@ -71,19 +71,18 @@ function M.about()
     ),
     " OS      : " .. string.format("%s", vim.fn.system("uname -srm"):gsub("%s+", "")),
     " Nvim    : "
-    .. string.format("%s", vim.fn.system("nvim --version | grep -oP '(?<=^NVIM v)[0-9|.]+'"):gsub("%s+", "")),
-    " Luajit  : "
-    .. string.format("%s", vim.fn.system("nvim --version | grep -oP '(?<=^LuaJIT).*'"):gsub("%s+", "")),
+      .. string.format("%s", vim.fn.system("nvim --version | grep -oP '(?<=^NVIM v)[0-9|.]+'"):gsub("%s+", "")),
+    " Luajit  : " .. string.format("%s", vim.fn.system("nvim --version | grep -oP '(?<=^LuaJIT).*'"):gsub("%s+", "")),
     " Lua rel : " .. string.format("%s", vim.fn.system("lua -v | grep -oP '(?<=^Lua )[0-9|.]+'"):gsub("%s+", "")),
     "",
     " " .. line(),
     "",
-    center_text("GNU AFFERO GENERAL PUBLIC LICENSE"),
-    center_text("Version 3, 19 November 2007"),
+    center_text "GNU AFFERO GENERAL PUBLIC LICENSE",
+    center_text "Version 3, 19 November 2007",
     "",
-    center_text("Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>"),
-    center_text("Everyone is permitted to copy and distribute verbatim copies"),
-    center_text("of this license document, but changing it is not allowed."),
+    center_text "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+    center_text "Everyone is permitted to copy and distribute verbatim copies",
+    center_text "of this license document, but changing it is not allowed.",
   }
 
   local buffer = vim.api.nvim_create_buf(false, true)
@@ -91,7 +90,7 @@ function M.about()
   vim.api.nvim_open_win(buffer, true, popup_layout)
   vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 
-  vim.cmd([[highlight Header gui=bold]])
+  vim.cmd [[highlight Header gui=bold]]
   vim.fn.matchadd("Header", "DomacsVim")
 end
 

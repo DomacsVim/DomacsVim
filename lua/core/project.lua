@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 M.defaults = {
   active = true,
@@ -51,7 +51,7 @@ M.defaults = {
 function M.setup()
   local status_ok, project = pcall(require, "project_nvim")
   if not status_ok then
-    log:ERROR("Failed to load project_nvim module.")
+    log:ERROR "Failed to load project_nvim module."
     return
   end
 

@@ -1,6 +1,6 @@
-local log = require("utils.log")
+local log = require "utils.log"
 
-log:TRACE("Setting up LSP support")
+log:TRACE "Setting up LSP support"
 
 local lsp_status_ok, _ = pcall(require, "lspconfig")
 if not lsp_status_ok then
@@ -19,7 +19,7 @@ end)
 
 require("conform").setup(dvim.lsp.formatting)
 
-local lint = require("lint")
+local lint = require "lint"
 
 lint.linters_by_ft = dvim.lsp.linting.linters_by_ft
 
@@ -44,4 +44,4 @@ set_handler_opts_if_not_set("textDocument/signatureHelp", vim.lsp.handlers.signa
 -- Enable rounded borders in :LspInfo window.
 require("lspconfig.ui.windows").default_options.border = "rounded"
 
-require("lsp.handler")
+require "lsp.handler"

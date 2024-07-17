@@ -1,6 +1,6 @@
 local M = {}
 
-local utils = require("utils.modules")
+local utils = require "utils.modules"
 
 M.defaults = {
   linting = {
@@ -84,9 +84,9 @@ M.defaults = {
     },
     signs = {
       { name = "DiagnosticSignError", text = dvim.icons.ui.error },
-      { name = "DiagnosticSignWarn",  text = dvim.icons.ui.warn },
-      { name = "DiagnosticSignHint",  text = dvim.icons.ui.hint },
-      { name = "DiagnosticSignInfo",  text = dvim.icons.ui.info },
+      { name = "DiagnosticSignWarn", text = dvim.icons.ui.warn },
+      { name = "DiagnosticSignHint", text = dvim.icons.ui.hint },
+      { name = "DiagnosticSignInfo", text = dvim.icons.ui.info },
     },
   },
 }
@@ -142,7 +142,7 @@ function M.capabilities()
 end
 
 function M.on_init(client, _)
-  if client.supports_method("textDocument/semanticTokens") then
+  if client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end

@@ -1,10 +1,10 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 local fn = vim.fn
 local marginTopPercent = 0.1
-local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
+local headerPadding = fn.max { 2, fn.floor(fn.winheight(0) * marginTopPercent) }
 local padding_up = { type = "padding", val = headerPadding }
 local padding_down = { type = "padding", val = 2 }
 
@@ -110,7 +110,7 @@ M.defaults = {
 function M.setup()
   local status_ok, alpha = pcall(require, "alpha")
   if not status_ok then
-    log:ERROR("Failed to load alpha module.")
+    log:ERROR "Failed to load alpha module."
     return
   end
 

@@ -2,7 +2,7 @@ return {
   {
     "https://github.com/domacsvim/themer",
     config = function()
-      local themer = require("themer")
+      local themer = require "themer"
       themer.apply_theme()
     end,
     lazy = false,
@@ -52,7 +52,7 @@ return {
     cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
     lazy = true,
   },
-  { "https://github.com/nvim-telescope/telescope-file-browser.nvim",  lazy = true },
+  { "https://github.com/nvim-telescope/telescope-file-browser.nvim", lazy = true },
   {
     "https://github.com/nvim-telescope/telescope.nvim",
     config = function()
@@ -69,7 +69,7 @@ return {
       require("core.autopairs").setup()
     end,
     enabled = dvim.core.autopairs.active,
-    lazy = true
+    lazy = true,
   },
   { "https://github.com/JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
@@ -88,7 +88,7 @@ return {
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     enabled = dvim.core.indentlines.active,
-    lazy = true
+    lazy = true,
   },
   {
     "https://github.com/akinsho/toggleterm.nvim",
@@ -144,7 +144,7 @@ return {
     end,
     event = "VimEnter",
   },
-  { "https://github.com/neovim/nvim-lspconfig",        lazy = true },
+  { "https://github.com/neovim/nvim-lspconfig", lazy = true },
   {
     "https://github.com/williamboman/mason.nvim",
     config = function()
@@ -175,7 +175,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     lazy = true,
   },
-  { "https://github.com/utilyre/barbecue.nvim",        lazy = true },
+  { "https://github.com/utilyre/barbecue.nvim", lazy = true },
   { "https://github.com/tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
   {
     "https://github.com/SmiteshP/nvim-navic",
@@ -184,7 +184,7 @@ return {
     end,
     event = "User FileOpened",
   },
-  { "https://github.com/folke/neodev.nvim",        lazy = true },
+  { "https://github.com/folke/neodev.nvim", lazy = true },
   {
     "https://github.com/hrsh7th/nvim-cmp",
     config = function()
@@ -199,10 +199,10 @@ return {
       "cmp-cmdline",
     },
   },
-  { "https://github.com/hrsh7th/cmp-nvim-lsp",     lazy = true },
+  { "https://github.com/hrsh7th/cmp-nvim-lsp", lazy = true },
   { "https://github.com/saadparwaiz1/cmp_luasnip", lazy = true },
-  { "https://github.com/hrsh7th/cmp-buffer",       lazy = true },
-  { "https://github.com/hrsh7th/cmp-path",         lazy = true },
+  { "https://github.com/hrsh7th/cmp-buffer", lazy = true },
+  { "https://github.com/hrsh7th/cmp-path", lazy = true },
   {
     "https://github.com/hrsh7th/cmp-cmdline",
     lazy = true,
@@ -241,13 +241,13 @@ return {
   {
     "https://github.com/jay-babu/mason-nvim-dap.nvim",
     config = function()
-      require("mason-nvim-dap").setup({
+      require("mason-nvim-dap").setup {
         handlers = {
           function(config)
             require("mason-nvim-dap").default_setup(config)
           end,
         },
-      })
+      }
     end,
     event = { "BufReadPost", "BufNewFile" },
   },
@@ -257,13 +257,13 @@ return {
       dvim.core.illuminate = {
         configs = {
           filetypes_denylist = {
-            'NvimTree',
+            "NvimTree",
           },
-        }
+        },
       }
 
-      require('illuminate').configure(dvim.core.illuminate.configs)
+      require("illuminate").configure(dvim.core.illuminate.configs)
     end,
     event = { "BufReadPost", "BufNewFile" },
-  }
+  },
 }

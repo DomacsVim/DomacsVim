@@ -1,22 +1,22 @@
 -- check the neovim version
-if vim.fn.has("nvim-0.9") ~= 1 then
+if vim.fn.has "nvim-0.9" ~= 1 then
   vim.notify("Please upgrade your Neovim base installation. Domacsvim requires v0.9+", vim.log.levels.WARN)
   vim.wait(4000, function()
     return false
   end)
-  vim.cmd("cquit")
+  vim.cmd "cquit"
 end
 
 -- get and set the domacsvim runtimepath
-_G.dvim_runtime_dir = os.getenv("DVIM_RUNTIME_DIR") or debug.getinfo(1, "S").source:sub(2):match("(.*[/\\])"):sub(1, -2)
+_G.dvim_runtime_dir = os.getenv "DVIM_RUNTIME_DIR" or debug.getinfo(1, "S").source:sub(2):match("(.*[/\\])"):sub(1, -2)
 if not vim.tbl_contains(vim.opt.rtp:get(), dvim_runtime_dir) then
   vim.opt.rtp:prepend(dvim_runtime_dir)
 end
 
-local utils = require("utils.modules")
+local utils = require "utils.modules"
 
 -- get the domacsvim config directory
-_G.dvim_config_dir = os.getenv("DVIM_CONFIG_DIR")
+_G.dvim_config_dir = os.getenv "DVIM_CONFIG_DIR"
 if dvim_config_dir then
   if not utils.is_directory(dvim_config_dir) then
     vim.fn.mkdir(dvim_config_dir)
@@ -27,7 +27,7 @@ else
 end
 
 -- get the domacsvim cache directory
-_G.dvim_cache_dir = os.getenv("DVIM_CACHE_DIR")
+_G.dvim_cache_dir = os.getenv "DVIM_CACHE_DIR"
 if dvim_cache_dir then
   if not utils.is_directory(dvim_cache_dir) then
     vim.fn.mkdir(dvim_cache_dir)
@@ -65,7 +65,7 @@ vim.fn.stdpath = function(what)
 end
 
 -- disable extra providers
-for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
+for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
@@ -73,19 +73,19 @@ end
 dvim = {}
 
 -- load defautl options
-require("options")
+require "options"
 
-local bootstrap = require("bootstrap")
+local bootstrap = require "bootstrap"
 
 -- initialize plugin manager
 bootstrap.initialize_plugin_manager()
 
-local config = require("config")
+local config = require "config"
 
 -- load dvim default configuration
 config.load_default_configs()
 
-local plugin_manager = require("plugin-manager")
+local plugin_manager = require "plugin-manager"
 
 -- load the default plugins
 plugin_manager.setup()
@@ -94,4 +94,4 @@ plugin_manager.setup()
 bootstrap.handle_user_config_file()
 
 -- load lspconfig
-require("lsp")
+require "lsp"

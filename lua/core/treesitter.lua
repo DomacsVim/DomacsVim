@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 M.defaults = {
   configs = {
@@ -71,7 +71,7 @@ M.defaults = {
     playground = {
       enable = false,
       disable = {},
-      updatetime = 25,      -- Debounced time for highlighting nodes in the playground from source code
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
       persist_queries = false, -- Whether the query persists across vim sessions
       keybindings = {
         toggle_query_editor = "o",
@@ -97,7 +97,7 @@ M.defaults = {
 function M.setup()
   local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
-    log:ERROR("Failed to load nvim-treesitter.configs module.")
+    log:ERROR "Failed to load nvim-treesitter.configs module."
     return
   end
 

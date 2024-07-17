@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 -- set mapleader key
 vim.g.mapleader = dvim.keys.leadermap
@@ -34,7 +34,7 @@ local function check_input_type(mode, key, value)
   if type(mode) == "string" and type(key) == "string" and type(value) == "string" or type(value) == "function" then
     if mode ~= "" and key ~= "" and value ~= "" then
       result = true
-      log:TRACE("The structure of the keys is correct.")
+      log:TRACE "The structure of the keys is correct."
     end
   elseif value == false or value == {} or value == nil then
     log:TRACE(value)

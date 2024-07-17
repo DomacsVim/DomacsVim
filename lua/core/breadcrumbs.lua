@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 M.defaults = {
   configs = {
@@ -79,7 +79,7 @@ M.defaults = {
 function M.setup()
   local status_ok, navic = pcall(require, "nvim-navic")
   if not status_ok then
-    log:ERROR("Failed to load nvim-navic module.")
+    log:ERROR "Failed to load nvim-navic module."
     return
   end
 

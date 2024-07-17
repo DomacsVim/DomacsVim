@@ -49,17 +49,17 @@ M.defaults = {
         layouts = {
           {
             elements = {
-              { id = "scopes",      size = 0.33 },
+              { id = "scopes", size = 0.33 },
               { id = "breakpoints", size = 0.17 },
-              { id = "stacks",      size = 0.25 },
-              { id = "watches",     size = 0.25 },
+              { id = "stacks", size = 0.25 },
+              { id = "watches", size = 0.25 },
             },
             size = 0.33,
             position = "right",
           },
           {
             elements = {
-              { id = "repl",    size = 0.45 },
+              { id = "repl", size = 0.45 },
               { id = "console", size = 0.55 },
             },
             size = 0.27,
@@ -100,7 +100,7 @@ M.defaults = {
 }
 
 function M.setup()
-  local dap = require("dap")
+  local dap = require "dap"
 
   vim.fn.sign_define("DapBreakpoint", dvim.core.dap.configs.breakpoint)
   vim.fn.sign_define("DapBreakpointRejected", dvim.core.dap.configs.breakpoint_rejected)
@@ -110,8 +110,8 @@ function M.setup()
 end
 
 function M.ui()
-  local dap = require("dap")
-  local dapui = require("dapui")
+  local dap = require "dap"
+  local dapui = require "dapui"
 
   dapui.setup(dvim.core.dap.configs.ui.config)
 

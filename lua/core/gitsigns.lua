@@ -1,6 +1,6 @@
 local M = {}
 
-local log = require("utils.log")
+local log = require "utils.log"
 
 -- default configurations
 M.defaults = {
@@ -57,7 +57,7 @@ M.defaults = {
 function M.setup()
   local status_ok, gitsigns = pcall(require, "gitsigns")
   if not status_ok then
-    log:ERROR("Failed to load gitsigns module.")
+    log:ERROR "Failed to load gitsigns module."
     return
   end
 

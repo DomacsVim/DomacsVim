@@ -2,49 +2,47 @@ local M = {}
 
 local function exec_toggle(opts)
   local Terminal = require("toggleterm.terminal").Terminal
-  local term = Terminal:new({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
+  local term = Terminal:new { cmd = opts.cmd, count = opts.count, direction = opts.direction }
   term:toggle(opts.size, opts.direction)
 end
 
 function M.pull()
-  exec_toggle({
+  exec_toggle {
     cmd = "echo 'Receiving the latest changes. Please wait...' && \
     git pull --ff-only --progress --rebase=false && \
     echo 'Done.'",
-  })
+  }
 end
 
 function M.commit()
-  local message = string.format("%s", vim.fn.input("Enter Commit Message: "))
+  local message = string.format("%s", vim.fn.input "Enter Commit Message: ")
   if message ~= nil and type(message) == "string" then
-    vim.fn.system("git add " .. vim.fn.expand("%:p") .. ' && git commit -m "' .. message .. '"')
-    vim.cmd("NvimTreeRefresh")
+    vim.fn.system("git add " .. vim.fn.expand "%:p" .. ' && git commit -m "' .. message .. '"')
+    vim.cmd "NvimTreeRefresh"
   end
 end
 
 function M.push()
   local remote = string.format("%s", vim.fn.system("git remote"):gsub("%s+", ""))
   local branch = vim.fn.system({ "git", "rev-parse", "--abbrev-ref", "HEAD" }):gsub("%s+", "")
-  exec_toggle({ cmd = "echo 'Pushing the latest changes...' && git push -u " .. remote .. " " .. branch })
+  exec_toggle { cmd = "echo 'Pushing the latest changes...' && git push -u " .. remote .. " " .. branch }
 end
 
 function M.TbToggle_markdown_preview()
-  local cmd = "slides " .. vim.fn.expand("%:p")
-  exec_toggle({ cmd = cmd, direction = "vertical" })
+  local cmd = "slides " .. vim.fn.expand "%:p"
+  exec_toggle { cmd = cmd, direction = "vertical" }
 end
 
-vim.cmd("function! TbOpen_settings(a,b,c,d) \n edit ~/.config/dvim/init.lua \n endfunction")
-vim.cmd("function! TbToggle_search(a,b,c,d) \n Telescope live_grep \n endfunction")
-vim.cmd(
-  "function! TbToggle_markdown_preview(a,b,c,d) \n\
+vim.cmd "function! TbOpen_settings(a,b,c,d) \n edit ~/.config/dvim/init.lua \n endfunction"
+vim.cmd "function! TbToggle_search(a,b,c,d) \n Telescope live_grep \n endfunction"
+vim.cmd "function! TbToggle_markdown_preview(a,b,c,d) \n\
   lua require('core.bufferline').TbToggle_markdown_preview() \n endfunction"
-)
-vim.cmd("function! TbToggle_debuging(a,b,c,d) \n \
+vim.cmd "function! TbToggle_debuging(a,b,c,d) \n \
     lua require('dap').toggle_breakpoint() \n \
-    lua require('dap').continue() \n endfunction")
-vim.cmd("function! GitPull(a,b,c,d) \n lua require('core.bufferline').pull() \n endfunction")
-vim.cmd("function! GitCommit(a,b,c,d) \n lua require('core.bufferline').commit() \n endfunction")
-vim.cmd("function! GitPush(a,b,c,d) \n lua require('core.bufferline').push() \n endfunction")
+    lua require('dap').continue() \n endfunction"
+vim.cmd "function! GitPull(a,b,c,d) \n lua require('core.bufferline').pull() \n endfunction"
+vim.cmd "function! GitCommit(a,b,c,d) \n lua require('core.bufferline').commit() \n endfunction"
+vim.cmd "function! GitPush(a,b,c,d) \n lua require('core.bufferline').push() \n endfunction"
 
 local function is_ft(b, ft)
   return vim.bo[b].filetype == ft
@@ -74,7 +72,7 @@ local function custom_filter(buf, buf_nums)
     return true
   end
   local tab_num = vim.fn.tabpagenr()
-  local last_tab = vim.fn.tabpagenr("$")
+  local last_tab = vim.fn.tabpagenr "$"
   local is_log = is_ft(buf, "log")
   if last_tab == 1 then
     return true
@@ -313,13 +311,13 @@ M.defaults = {
       },
     },
     options = {
-      mode = "buffers",               -- set to "tabs" to only show tabpages instead
-      numbers = "none",               -- can be "none" | "ordinal" | "buffer_id" | "both" | function
+      mode = "buffers", -- set to "tabs" to only show tabpages instead
+      numbers = "none", -- can be "none" | "ordinal" | "buffer_id" | "both" | function
       close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
         M.buf_kill("bd", bufnr, false)
       end,
       right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
-      left_mouse_command = "buffer %d",        -- can be a string | function, see "Mouse actions"
+      left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
       middle_mouse_command = function()
         return M.buf_kill()
       end, -- can be a string | function, see "Mouse actions"
@@ -338,7 +336,7 @@ M.defaults = {
       --- some limitations that will *NOT* be fixed.
       name_formatter = function(buf) -- buf contains a "name", "path" and "bufnr"
         -- remove extension from markdown files for example
-        if buf.name:match("%.md") then
+        if buf.name:match "%.md" then
           return vim.fn.fnamemodify(buf.name, ":t:r")
         end
       end,
@@ -377,7 +375,7 @@ M.defaults = {
       },
       max_name_length = 18,
       max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-      truncate_names = true,  -- whether or not tab names should be truncated
+      truncate_names = true, -- whether or not tab names should be truncated
       tab_size = 20,
       diagnostics = "",
       diagnostics_update_in_insert = false,
@@ -415,7 +413,7 @@ M.defaults = {
           padding = 1,
         },
       },
-      color_icons = true,       -- whether or not to add the filetype icon highlights
+      color_icons = true, -- whether or not to add the filetype icon highlights
       show_buffer_icons = true, -- disable filetype icons for buffers
       show_buffer_close_icons = true,
       show_close_icon = false,
@@ -456,7 +454,7 @@ function M.buf_kill(kill_command, bufnr, force)
       choice = fn.confirm(fmt([[Save changes to "%s"?]], bufname), "&Yes\n&No\n&Cancel")
       if choice == 1 then
         vim.api.nvim_buf_call(bufnr, function()
-          vim.cmd("w")
+          vim.cmd "w"
         end)
       elseif choice == 2 then
         force = true

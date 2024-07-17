@@ -2,7 +2,7 @@ local M = {}
 
 local function has_words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
 local function border(hl_name)
@@ -57,7 +57,7 @@ M.defaults = {
       fields = { "abbr", "menu", "kind" },
       format = function(entry, vim_item)
         vim_item.kind =
-            string.format("%s  %s", dvim.core.cmp.configs.formatting.kind_icons[vim_item.kind], vim_item.kind)
+          string.format("%s  %s", dvim.core.cmp.configs.formatting.kind_icons[vim_item.kind], vim_item.kind)
         vim_item.menu = dvim.core.cmp.configs.formatting.source_names[entry.source.name]
         return vim_item
       end,
@@ -66,10 +66,10 @@ M.defaults = {
     window = {
       completion = {
         scrollbar = false,
-        border = border("CmpDocBorder"),
+        border = border "CmpDocBorder",
       },
       documentation = {
-        border = border("CmpDocBorder"),
+        border = border "CmpDocBorder",
       },
     },
     sources = {
@@ -93,16 +93,16 @@ M.defaults = {
       { name = "treesitter" },
       { name = "crates" },
       { name = "tmux" },
-      { name = "codeium" }
+      { name = "codeium" },
     },
   },
 }
 
 function M.setup()
-  local cmp = require("cmp")
-  local luasnip = require("luasnip")
-  local cmp_types = require("cmp.types.cmp")
-  local cmp_mapping = require("cmp.config.mapping")
+  local cmp = require "cmp"
+  local luasnip = require "luasnip"
+  local cmp_types = require "cmp.types.cmp"
+  local cmp_mapping = require "cmp.config.mapping"
 
   local ConfirmBehavior = cmp_types.ConfirmBehavior
   local SelectBehavior = cmp_types.SelectBehavior
@@ -115,21 +115,21 @@ function M.setup()
     end,
   }
 
-  dvim.core.cmp.configs.mapping = cmp_mapping.preset.insert({
-    ["<Down>"] = cmp_mapping(cmp_mapping.select_next_item({ behavior = SelectBehavior.Select }), { "i" }),
-    ["<Up>"] = cmp_mapping(cmp_mapping.select_prev_item({ behavior = SelectBehavior.Select }), { "i" }),
+  dvim.core.cmp.configs.mapping = cmp_mapping.preset.insert {
+    ["<Down>"] = cmp_mapping(cmp_mapping.select_next_item { behavior = SelectBehavior.Select }, { "i" }),
+    ["<Up>"] = cmp_mapping(cmp_mapping.select_prev_item { behavior = SelectBehavior.Select }, { "i" }),
     ["<C-k>"] = cmp_mapping.scroll_docs(-4),
     ["<C-j>"] = cmp_mapping.scroll_docs(4),
-    ["<C-y>"] = cmp_mapping({
-      i = cmp_mapping.confirm({ behavior = ConfirmBehavior.Replace, select = false }),
+    ["<C-y>"] = cmp_mapping {
+      i = cmp_mapping.confirm { behavior = ConfirmBehavior.Replace, select = false },
       c = function(fallback)
         if cmp.visible() then
-          cmp.confirm({ behavior = ConfirmBehavior.Replace, select = false })
+          cmp.confirm { behavior = ConfirmBehavior.Replace, select = false }
         else
           fallback()
         end
       end,
-    }),
+    },
     ["<C-n>"] = cmp_mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -167,7 +167,7 @@ function M.setup()
       end
       fallback() -- if not exited early, always fallback
     end),
-  })
+  }
 
   cmp.setup(dvim.core.cmp.configs)
 end

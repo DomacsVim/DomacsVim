@@ -1,7 +1,7 @@
 local M = {}
 
 local uv = vim.loop
-local path_sep = uv.os_uname().version:match("Windows") and "\\" or "/"
+local path_sep = uv.os_uname().version:match "Windows" and "\\" or "/"
 
 -- checking directory (type)
 function M.is_directory(path)
@@ -21,7 +21,7 @@ function M.runtime_error(runtime_path)
     vim.wait(5000, function()
       return false
     end)
-    vim.cmd("cquit")
+    vim.cmd "cquit"
   end
 end
 
