@@ -133,8 +133,7 @@ local function lsp()
     function()
       local buf_client_names = {}
       if rawget(vim, "lsp") then
-        ---@diagnostic disable-next-line: deprecated
-        for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+        for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
           if client.attached_buffers[vim.api.nvim_get_current_buf()] then
             table.insert(buf_client_names, client.name)
           end
