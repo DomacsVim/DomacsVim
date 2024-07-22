@@ -36,7 +36,7 @@ M.defaults = {
       { "<leader>eu", "<cmd>undo<cr>",                                                         desc = "Undo",                              mode = "n" },
       { "<leader>er", "<cmd>redo<cr>",                                                         desc = "Redo",                              mode = "n" },
       { "<leader>ea", "ggVG",                                                                  desc = "Select All",                        mode = "n" },
-      { "<leader>ec", "ggVGy",                                                                 desc = "Copy All",                          mode = "n" },
+      { "<leader>eC", "ggVGy",                                                                 desc = "Copy All",                          mode = "n" },
       { "<leader>ek", "<cmd>m .-2<cr>==",                                                      desc = "Move Line Up",                      mode = "n" },
       { "<leader>ej", "<cmd>m .+1<cr>==<cr>",                                                  desc = "Move Line Down",                    mode = "n" },
       { "<leader>ec", "gcc",                                                                   desc = "Comment This Line",                 mode = "n" },
@@ -89,8 +89,8 @@ M.defaults = {
       { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",                     desc = "Undo Stage Hunk",                   mode = "n" },
       { "<leader>go", "<cmd>Telescope git_status<cr>",                                         desc = "Open changed file",                 mode = "n" },
       { "<leader>gb", "<cmd>Telescope git_branches<cr>",                                       desc = "Checkout branch",                   mode = "n" },
-      { "<leader>gc", "<cmd>Telescope git_commits<cr>",                                        desc = "Checkout commit",                   mode = "n" },
-      { "<leader>gC", "<cmd>Telescope git_bcommits<cr>",                                       desc = "Checkout commit(for current file)", mode = "n" },
+      { "<leader>gm", "<cmd>Telescope git_commits<cr>",                                        desc = "Checkout commit",                   mode = "n" },
+      { "<leader>gM", "<cmd>Telescope git_bcommits<cr>",                                       desc = "Checkout commit(for current file)", mode = "n" },
       { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>",                                       desc = "Git Diff",                          mode = "n" },
       { "<leader>r",  group = "Run" }, -- group
       { "<leader>rt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>",                         desc = "Toggle Breakpoint",                 mode = "n" },
@@ -118,16 +118,6 @@ M.defaults = {
     },
     -- show a warning when issues were detected with your mappings
     notify = true,
-    -- Enable/disable WhichKey for certain mapping modes
-    modes = {
-      n = true, -- Normal mode
-      i = true, -- Insert mode
-      x = true, -- Visual mode
-      s = true, -- Select mode
-      o = true, -- Operator pending mode
-      t = true, -- Terminal mode
-      c = true, -- Command mode
-    },
     plugins = {
       marks = true,     -- shows a list of your marks on ' and `
       registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -150,7 +140,7 @@ M.defaults = {
     ---@type wk.Win
     win = {
       -- don't allow the popup to overlap with the cursor
-      no_overlap = false,
+      no_overlap = true,
       -- width = 1,
       -- height = { min = 4, max = 25 },
       -- col = 0,
@@ -239,16 +229,14 @@ M.defaults = {
     -- Which-key automatically sets up triggers for your mappings.
     -- But you can disable this and setup the triggers yourself.
     -- Be aware, that triggers are not needed for visual and operator pending mode.
-    triggers = true, -- automatically setup triggers
+    triggers = {
+      { "<auto>", mode = "nxsot" },
+    },
+    -- Start
     disable = {
       -- disable WhichKey for certain buf types and file types.
       ft = {},
       bt = {},
-      -- disable a trigger for a certain context by returning true
-      ---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
-      trigger = function(ctx)
-        return false
-      end,
     },
     debug = false, -- enable wk.log in the current directory
   }
