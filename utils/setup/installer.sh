@@ -149,8 +149,8 @@ footer_message(){
 
 install(){
   install_dependencies
-  install_bin
   clone_dvim
+  install_bin
   footer_message
 }
 
@@ -352,9 +352,9 @@ main(){
   parse_arguments "$@"
   clear
   welcome_message
-  check_neovim_min_version
   backup
   install
+  check_neovim_min_version
 }
 
 main "$@"
