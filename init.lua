@@ -85,13 +85,13 @@ local config = require("config")
 -- load dvim default configuration
 config.load_default_configs()
 
+-- initialize user config file.
+bootstrap.handle_user_config_file()
+
 local plugin_manager = require("plugin-manager")
 
 -- load the default plugins
 plugin_manager.setup()
-
--- initialize user config file.
-bootstrap.handle_user_config_file()
 
 -- load lspconfig
 require("lsp")
