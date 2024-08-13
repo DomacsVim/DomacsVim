@@ -94,7 +94,8 @@ local handlers = {
       end,
       root_dir = function(fname)
         local util = require("lspconfig/util")
-        return util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.js", "tailwind.cjs")(
+        return util.root_pattern("tailwind.config.ts", "tailwind.config.js", "tailwind.config.cjs", "tailwind.js",
+          "tailwind.cjs")(
           fname
         )
       end,
