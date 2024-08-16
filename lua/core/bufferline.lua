@@ -88,7 +88,7 @@ M.defaults = {
     normal_mode = {
       [">"] = ":bnext<CR>",
       ["<"] = ":bprevious<CR>",
-      ["<C-w>"] = function(bufnr)
+      ["<C-S-w>"] = function(bufnr)
         M.buf_kill("bd", bufnr, false)
       end,
     },
