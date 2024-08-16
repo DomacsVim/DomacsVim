@@ -86,8 +86,8 @@ end
 M.defaults = {
   keymappings = {
     normal_mode = {
-      [">>"] = ":bnext<CR>",
-      ["<<"] = ":bprevious<CR>",
+      [">"] = ":bnext<CR>",
+      ["<"] = ":bprevious<CR>",
       ["<C-w>"] = function(bufnr)
         M.buf_kill("bd", bufnr, false)
       end,
