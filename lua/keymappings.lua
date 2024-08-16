@@ -20,8 +20,23 @@ local modes = {
 -- default keybindings
 local defaults = {
   term_mode = {},
-  insert_mode = {},
-  normal_mode = {},
+  insert_mode = {
+    ["<C-S-h>"] = "<Home>",
+    ["<C-S-e>"] = "<End>",
+    ["<C-h>"] = "<Left>",
+    ["<C-l>"] = "<Right>",
+    ["<C-j>"] = "<Down>",
+    ["<C-k>"] = "<Up>",
+  },
+  normal_mode = {
+    ["<Tab>"] = ">>",
+    ["<S-Tab>"] = "<<",
+    ["<C-h>"] = "<C-w>h",
+    ["<C-l>"] = "<C-w>l",
+    ["<C-j>"] = "<C-w>j",
+    ["<C-k>"] = "<C-w>k",
+    ["<Esc>"] = "<cmd>noh<CR>",
+  },
   visual_mode = {},
   command_mode = {},
 }

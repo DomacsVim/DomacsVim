@@ -59,6 +59,9 @@ M.defaults = {
       ["gr"] = vim.lsp.buf.rename,
       ["gR"] = vim.lsp.buf.references,
       ["gca"] = vim.lsp.buf.code_action,
+      ["<leader>fm"] = function()
+        require("conform").format { lsp_fallback = true }
+      end
     },
     insert_mode = {},
     visual_mode = {},
