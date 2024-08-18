@@ -29,6 +29,8 @@ local defaults = {
     ["<C-k>"] = "<Up>",
   },
   normal_mode = {
+    ["<S-h>"] = "<Home>",
+    ["<S-e>"] = "<End>",
     ["<Tab>"] = ">>",
     ["<S-Tab>"] = "<<",
     ["<C-h>"] = "<C-w>h",
@@ -37,7 +39,10 @@ local defaults = {
     ["<C-k>"] = "<C-w>k",
     ["<Esc>"] = "<cmd>noh<CR>",
   },
-  visual_mode = {},
+  visual_mode = {
+    ["<Tab>"] = ">",
+    ["<S-Tab>"] = "<",
+  },
   command_mode = {},
 }
 
