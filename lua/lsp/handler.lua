@@ -44,6 +44,22 @@ local handlers = {
       end,
     })
   end,
+  ["html"] = function()
+    lspconfig.html.setup({
+      capabilities = capabilities,
+      on_init = function(client, _)
+        dvim_lsp.on_init(client)
+      end,
+      on_attach = function(client, bufnr)
+        dvim_lsp.on_attach(client, bufnr)
+      end,
+      filetypes = {
+        "html",
+        "htmldjango",
+        "templ",
+      }
+    })
+  end,
   ["lua_ls"] = function()
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
