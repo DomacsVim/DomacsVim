@@ -17,7 +17,11 @@ pcall(function()
   require("nlspsettings").setup(dvim.lsp.nlsp_settings.setup)
 end)
 
-require("conform").setup(dvim.lsp.formatting)
+for _, j in pairs(dvim.lsp.formatting.formatters_by_ft) do
+  if j ~= false then
+    require("conform").setup(dvim.lsp.formatting)
+  end
+end
 
 local lint = require("lint")
 
